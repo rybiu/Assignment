@@ -7,12 +7,17 @@ namespace DevideManagement.Utils
         const string DATA_SOURCE = "SE141150";
         const string DATABASE_NAME = "management";
 
-        public static SqlConnection getConnection()
-        {
+        public static SqlConnection connection;
 
-            string connetionString = @"Data Source=" + DATA_SOURCE + ";Initial Catalog=" + DATABASE_NAME + ";Integrated Security=True";
-            SqlConnection con = new SqlConnection(connetionString);
-            return con;
+        public static SqlConnection GetConnectionInstance()
+        {
+            if (connection == null)
+            {
+                string connetionString = @"Data Source=" + DATA_SOURCE + ";Initial Catalog=" + DATABASE_NAME + ";Integrated Security=True";
+                connection = new SqlConnection(connetionString);
+            }
+            return connection;
         }
+
     }
 }

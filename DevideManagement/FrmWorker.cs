@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace DevideManagement
 {
-    public partial class Form1 : Form
+    public partial class FrmWorker : Form
     {
-        public Form1()
+        public FrmWorker()
         {
             InitializeComponent();
         }
