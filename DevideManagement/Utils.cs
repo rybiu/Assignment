@@ -1,4 +1,6 @@
-﻿using System.Data.SqlClient;
+﻿using System;
+using System.Data;
+using System.Data.SqlClient;
 
 namespace DevideManagement.Utils
 {
@@ -17,6 +19,60 @@ namespace DevideManagement.Utils
                 connection = new SqlConnection(connetionString);
             }
             return connection;
+        }
+
+    }
+
+    class Pagination
+    {
+        const int PageSize = 5;
+        public int PageIndex { get; set; }
+        public DataTable Data { get; set; }
+
+        public Pagination()
+        {
+            PageIndex = 1;
+        }
+
+        public DataTable GetCurrentPage()
+        {
+            PageIndex = (int)Math.Min(PageIndex, Math.Ceiling((decimal)Data.Rows.Count / PageSize));
+            DataTable dt = Data.Clone();
+            for (int i = (PageIndex - 1) * PageSize; i < Math.Min(Data.Rows.Count, PageIndex * PageSize); i++)
+            {
+                dt.ImportRow(Data.Rows[i]);
+            }
+            return dt;
+        }
+
+        public void GoToPrePage()
+        {
+            PageIndex--;
+        }
+
+        public void GoToNextPage()
+        {
+            PageIndex++;
+        }
+
+        public void GoToFirstPage()
+        {
+            PageIndex = 1;
+        }
+
+        public void GoToLastPage()
+        {
+            PageIndex = (int)Math.Ceiling((decimal)Data.Rows.Count / PageSize);
+        }
+
+        public bool HasPrePage()
+        {
+            return PageIndex > 1;
+        }
+
+        public bool HasNextPage()
+        {
+            return PageIndex < Math.Ceiling((decimal)Data.Rows.Count / PageSize);
         }
 
     }

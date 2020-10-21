@@ -16,7 +16,8 @@ namespace DevideManagement
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new bnLeft());
+            new frmLogin().Show();
+            Application.Run();
         }
     }
 }

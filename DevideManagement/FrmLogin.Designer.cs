@@ -1,6 +1,6 @@
 ﻿namespace DevideManagement
 {
-    partial class bnLeft
+    partial class frmLogin
     {
         /// <summary>
         /// Required designer variable.
@@ -59,6 +59,8 @@
             this.pnRight.Name = "pnRight";
             this.pnRight.Size = new System.Drawing.Size(482, 545);
             this.pnRight.TabIndex = 0;
+            this.pnRight.MouseDown += new System.Windows.Forms.MouseEventHandler(this.pnRight_MouseDown);
+            this.pnRight.MouseMove += new System.Windows.Forms.MouseEventHandler(this.pnRight_MouseMove);
             // 
             // label5
             // 
@@ -102,6 +104,7 @@
             this.txtPassword.PasswordChar = '*';
             this.txtPassword.Size = new System.Drawing.Size(338, 27);
             this.txtPassword.TabIndex = 12;
+            this.txtPassword.Text = "000000";
             // 
             // txtUsername
             // 
@@ -113,6 +116,7 @@
             this.txtUsername.Name = "txtUsername";
             this.txtUsername.Size = new System.Drawing.Size(338, 27);
             this.txtUsername.TabIndex = 11;
+            this.txtUsername.Text = "admin";
             // 
             // label3
             // 
@@ -143,9 +147,9 @@
             this.label1.ForeColor = System.Drawing.Color.White;
             this.label1.Location = new System.Drawing.Point(66, 41);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(93, 25);
+            this.label1.Size = new System.Drawing.Size(103, 25);
             this.label1.TabIndex = 8;
-            this.label1.Text = "s i g n  i n";
+            this.label1.Text = "s i g n    i n";
             // 
             // btnExit
             // 
@@ -173,7 +177,7 @@
             this.btnLogin.UseVisualStyleBackColor = false;
             this.btnLogin.Click += new System.EventHandler(this.btnLogin_Click);
             // 
-            // bnLeft
+            // frmLogin
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -181,11 +185,11 @@
             this.ClientSize = new System.Drawing.Size(598, 544);
             this.Controls.Add(this.pnRight);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Name = "bnLeft";
+            this.Name = "frmLogin";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Login";
-            this.MouseDown += new System.Windows.Forms.MouseEventHandler(this.bnLeft_MouseDown);
-            this.MouseMove += new System.Windows.Forms.MouseEventHandler(this.bnLeft_MouseMove);
+            this.MouseDown += new System.Windows.Forms.MouseEventHandler(this.pnLeft_MouseDown);
+            this.MouseMove += new System.Windows.Forms.MouseEventHandler(this.pnLeft_MouseMove);
             this.pnRight.ResumeLayout(false);
             this.pnRight.PerformLayout();
             this.ResumeLayout(false);

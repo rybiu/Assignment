@@ -12,11 +12,11 @@ using System.Windows.Forms;
 
 namespace DevideManagement
 {
-    public partial class bnLeft : Form
+    public partial class frmLogin : Form
     {
         int x, y;
 
-        public bnLeft()
+        public frmLogin()
         {
             InitializeComponent();
         }
@@ -34,7 +34,7 @@ namespace DevideManagement
             AccountDTO dto = dao.GetAccount(username, password);
             if (dto != null)
             {
-                Hide();
+                Dispose();
                 new FrmManager(dto).Show();
             } else
             {
@@ -52,15 +52,32 @@ namespace DevideManagement
             }
         }
 
-        private void bnLeft_MouseMove(object sender, MouseEventArgs e)
-        {
-            //Location = new Point(x = x - e.X, y = y - e.Y);
-        }
-
-        private void bnLeft_MouseDown(object sender, MouseEventArgs e)
+        private void pnRight_MouseDown(object sender, MouseEventArgs e)
         {
             x = e.X;
             y = e.Y;
+        }
+
+        private void pnRight_MouseMove(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Left)
+            {
+                Location = new Point(Location.X + e.X - x, Location.Y + e.Y - y);
+            }
+        }
+
+        private void pnLeft_MouseDown(object sender, MouseEventArgs e)
+        {
+            x = e.X;
+            y = e.Y;
+        }
+
+        private void pnLeft_MouseMove(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Left)
+            {
+                Location = new Point(Location.X + e.X - x, Location.Y + e.Y - y);
+            }
         }
     }
 }

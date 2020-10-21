@@ -1,34 +1,43 @@
 ﻿using DevideManagement.DAO;
 using DevideManagement.DTO;
+using DevideManagement.Utils;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace DevideManagement
 {
     public partial class FrmUser : Form
     {
-        int pageIndex = 1;
+        Pagination Pagination;
+        DataTable dtUserList;
 
         public FrmUser()
         {
             InitializeComponent();
+            Pagination = new Pagination();
+            AccountDAO dao = new AccountDAO();
+            DataTable list = dao.GetAccounts(AccountDTO.ROLE.USER);
+            list.PrimaryKey = new DataColumn[] { list.Columns["id"] };
+            Pagination.Data = list;
         }
 
         private void LoadTable()
         {
-            AccountDAO dao = new AccountDAO();
-            List<AccountDTO> list = dao.GetAccounts(AccountDTO.ROLE.USER);
-            dgvUser.DataSource = list;
+            dtUserList = Pagination.GetCurrentPage();
+            dgvUser.DataSource = dtUserList;
             dgvUser.Columns[2].Visible = false;
             dgvUser.Columns[3].Visible = false;
-            dgvUser.Columns[4].Visible = false;
+            txtUserID.DataBindings.Clear();
+            txtUsername.DataBindings.Clear();
+            txtPassword.DataBindings.Clear();
+            txtRoomID.DataBindings.Clear();
+            txtUserID.DataBindings.Add("Text", dtUserList, "id");
+            txtUsername.DataBindings.Add("Text", dtUserList, "username");
+            txtPassword.DataBindings.Add("Text", dtUserList, "password");
+            txtRoomID.DataBindings.Add("Text", dtUserList, "room_id");
+            btnPrePage.Enabled = Pagination.HasPrePage();
+            btnNextPage.Enabled = Pagination.HasNextPage();
         }
 
         private void FrmUser_Load(object sender, EventArgs e)
@@ -48,21 +57,6 @@ namespace DevideManagement
             }
         }
 
-        private void dgvUser_SelectionChanged(object sender, EventArgs e)
-        {
-            if (dgvUser.SelectedCells.Count == 0) return;
-            int rowIndex = (int)dgvUser.SelectedCells[0].RowIndex;
-            int id = (int)dgvUser.Rows[rowIndex].Cells[0].Value;
-            AccountDAO dao = new AccountDAO();
-            AccountDTO dto = dao.GetAccount(id);
-            txtUserID.Text = dto.id.ToString();
-            txtUsername.Text = dto.username;
-            txtPassword.Text = dto.password;
-            txtRoomID.Text = string.Empty;
-            ckShowPassword.Checked = false;
-            if (dto.roomId != -1) txtRoomID.Text = dto.roomId.ToString();
-        }
-
         private void btnNew_Click(object sender, EventArgs e)
         {
             txtUserID.Text = string.Empty;
@@ -74,7 +68,6 @@ namespace DevideManagement
         private void btnAdd_Click(object sender, EventArgs e)
         {
             string username = txtUsername.Text.Trim();
-            string password = txtPassword.Text.Trim();
             AccountDAO dao = new AccountDAO();
             if (username.Length == 0)
             {
@@ -86,20 +79,20 @@ namespace DevideManagement
                 MessageBox.Show("This username has existed.");
                 return;
             }
-            if (txtPassword.Text.Trim().Length == 0)
+            string password = txtPassword.Text.Trim();
+            if (password.Length == 0)
             {
                 MessageBox.Show("Password must be not empty.");
                 return;
             }
-            AccountDTO dto = new AccountDTO
-            {
-                username = txtUsername.Text.Trim(),
-                password = txtPassword.Text.Trim()
-            };
+            AccountDTO dto = new AccountDTO { username = username, password = password, role = AccountDTO.ROLE.USER };
             if (dao.AddAccount(dto))
             {
-                MessageBox.Show("Add success.");
+                int id = dao.GetLastAccountId();
+                Pagination.Data.Rows.Add(id, username, password);
+                Pagination.GoToLastPage();
                 LoadTable();
+                MessageBox.Show("Add success.");
             }
             else
             {
@@ -120,11 +113,14 @@ namespace DevideManagement
             };
             if (dao.UpdateAccount(dto))
             {
-                MessageBox.Show("Update success!");
+                DataRow row = Pagination.Data.Rows.Find(id);
+                row["username"] = dto.username;
+                row["password"] = dto.password;
                 LoadTable();
+                MessageBox.Show("Update success.");
             } else
             {
-                MessageBox.Show("Update fail!");
+                MessageBox.Show("Update fail.");
             }
         }
 
@@ -135,13 +131,32 @@ namespace DevideManagement
             AccountDAO dao = new AccountDAO();
             if (dao.DeleteAccount(id))
             {
-                MessageBox.Show("Delete success!");
+                DataRow row = Pagination.Data.Rows.Find(id);
+                Pagination.Data.Rows.Remove(row);
                 LoadTable();
+                MessageBox.Show("Delete success.");
             }
             else
             {
-                MessageBox.Show("Delete fail!");
+                MessageBox.Show("Delete fail.");
             }
+        }
+
+        private void dgvUser_SelectionChanged(object sender, EventArgs e)
+        {
+            ckShowPassword.Checked = false;
+        }
+
+        private void btnPrePage_Click(object sender, EventArgs e)
+        {
+            Pagination.GoToPrePage();
+            LoadTable();
+        }
+
+        private void btnNextPage_Click(object sender, EventArgs e)
+        {
+            Pagination.GoToNextPage();
+            LoadTable();
         }
     }
 }

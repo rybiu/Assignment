@@ -16,267 +16,188 @@ namespace DevideManagement.DAO
     {
         public bool AddAccount(AccountDTO account)
         {
-            SqlConnection con = null;
-            try
-            {
-                con = DBHelper.GetConnectionInstance();
-                con.Open();
-                string sql = "INSERT INTO account(username, password, role) VALUES(@username, @password, @role)";
-                SqlCommand cmd = new SqlCommand(sql, con);
-                cmd.Parameters.AddWithValue("username", account.username);
-                cmd.Parameters.AddWithValue("password", account.password);
-                cmd.Parameters.AddWithValue("role", account.role.ToString());
-                return cmd.ExecuteNonQuery() > 0;
-            }
-            finally
-            {
-                if (con != null) con.Close();
-            }
+            SqlConnection con = DBHelper.GetConnectionInstance();
+            if (con.State == ConnectionState.Closed) con.Open();
+            string sql = "INSERT INTO account(username, password, role) VALUES(@username, @password, @role)";
+            SqlCommand cmd = new SqlCommand(sql, con);
+            cmd.Parameters.AddWithValue("username", account.username);
+            cmd.Parameters.AddWithValue("password", account.password);
+            cmd.Parameters.AddWithValue("role", account.role.ToString());
+            bool result =  cmd.ExecuteNonQuery() > 0;
+            con.Close();
+            return result;
         }
         public bool DeleteAccount(int id)
         {
-            SqlConnection con = null;
-            try
-            {
-                con = DBHelper.GetConnectionInstance();
-                con.Open();
-                string sql = "UPDATE account SET status = 0 WHERE id = @id";
-                SqlCommand cmd = new SqlCommand(sql, con);
-                cmd.Parameters.AddWithValue("id", id);
-                return cmd.ExecuteNonQuery() > 0;
-            }
-            catch (SqlException ex)
-            {
-                Console.WriteLine(ex);
-            } finally
-            {
-                if (con != null) con.Close();
-            }
-            return false;
+            SqlConnection con = DBHelper.GetConnectionInstance();
+            if (con.State == ConnectionState.Closed) con.Open();
+            string sql = "UPDATE account SET status = 0 WHERE id = @id";
+            SqlCommand cmd = new SqlCommand(sql, con);
+            cmd.Parameters.AddWithValue("id", id);
+            bool result = cmd.ExecuteNonQuery() > 0;
+            con.Close();
+            return result;
         }
         public bool UpdateAccount(AccountDTO account)
         {
-            SqlConnection con = null;
-            try
-            {
-                con = DBHelper.GetConnectionInstance();
-                con.Open();
-                string sql = "UPDATE account SET username = @username, password = @password WHERE id = @id";
-                SqlCommand cmd = new SqlCommand(sql, con);
-                cmd.Parameters.AddWithValue("id", account.id);
-                cmd.Parameters.AddWithValue("username", account.username);
-                cmd.Parameters.AddWithValue("password", account.password);
-                return cmd.ExecuteNonQuery() > 0;
-            }
-            catch (SqlException ex)
-            {
-                Console.WriteLine(ex);
-            }
-            finally
-            {
-                if (con != null) con.Close();
-            }
-            return false;
+            SqlConnection con = DBHelper.GetConnectionInstance();
+            if (con.State == ConnectionState.Closed) con.Open();
+            string sql = "UPDATE account SET username = @username, password = @password WHERE id = @id";
+            SqlCommand cmd = new SqlCommand(sql, con);
+            cmd.Parameters.AddWithValue("id", account.id);
+            cmd.Parameters.AddWithValue("username", account.username);
+            cmd.Parameters.AddWithValue("password", account.password);
+            bool result = cmd.ExecuteNonQuery() > 0;
+            con.Close();
+            return result;
         }
         public AccountDTO GetAccount(int id)
         {
-            SqlConnection con = null;
-            try
+            SqlConnection con = DBHelper.GetConnectionInstance();
+            if (con.State == ConnectionState.Closed) con.Open();
+            string sql = "SELECT username, password, role, room_id FROM account a WHERE a.id = @id AND status = 1";
+            SqlCommand cmd = new SqlCommand(sql, con);
+            cmd.Parameters.AddWithValue("id", id);
+            SqlDataReader dr = cmd.ExecuteReader(CommandBehavior.CloseConnection);
+            AccountDTO result = null;
+            if (dr.Read())
             {
-                con = DBHelper.GetConnectionInstance();
-                con.Open();
-                string sql = "SELECT username, password, role, room_id FROM account a WHERE a.id = @id AND status = 1";
-                SqlCommand cmd = new SqlCommand(sql, con);
-                cmd.Parameters.AddWithValue("id", id);
-                SqlDataReader dr = cmd.ExecuteReader(CommandBehavior.CloseConnection);
-                if (dr.Read())
+                string username = dr.GetString(0);
+                string password = dr.GetString(1);
+                Enum.TryParse(dr.GetString(2), out AccountDTO.ROLE role);
+                int roomId = -1;
+                if (!dr.IsDBNull(3)) roomId = dr.GetInt32(3);
+                result = new AccountDTO
                 {
-                    string username = dr.GetString(0);
-                    string password = dr.GetString(1);
-                    Enum.TryParse(dr.GetString(2), out AccountDTO.ROLE role);
-                    int roomId = -1;
-                    if (!dr.IsDBNull(3)) roomId = dr.GetInt32(3);
-                    return new AccountDTO
-                    {
-                        id = id,
-                        username = username,
-                        password = password,
-                        role = role,
-                        roomId = roomId
-                    };
-                }
+                    id = id,
+                    username = username,
+                    password = password,
+                    role = role,
+                    roomId = roomId
+                };
             }
-            finally
-            {
-                if (con != null) con.Close();
-            }
-            return null;
+            con.Close();
+            return result;
         }
         public AccountDTO GetAccount(string username, string password)
         {
-            SqlConnection con = null;
-            try
+            SqlConnection con = DBHelper.GetConnectionInstance();
+            if (con.State == ConnectionState.Closed) con.Open();
+            string sql = "SELECT id, role, room_id FROM account "
+                        + "WHERE username = @username AND password = @password AND status = 1";
+            SqlCommand cmd = new SqlCommand(sql, con);
+            cmd.Parameters.AddWithValue("username", username);
+            cmd.Parameters.AddWithValue("password", password);
+            SqlDataReader dr = cmd.ExecuteReader(CommandBehavior.CloseConnection);
+            AccountDTO result = null;
+            if (dr.Read())
             {
-                con = DBHelper.GetConnectionInstance();
-                con.Open();
-                string sql = "SELECT id, role, room_id FROM account "
-                            + "WHERE username = @username AND password = @password AND status = 1";
-                SqlCommand cmd = new SqlCommand(sql, con);
-                cmd.Parameters.AddWithValue("username", username);
-                cmd.Parameters.AddWithValue("password", password);
-                SqlDataReader dr = cmd.ExecuteReader(CommandBehavior.CloseConnection);
-                if (dr.Read())
+                int id = dr.GetInt32(0);
+                Enum.TryParse(dr.GetString(1), out AccountDTO.ROLE role);
+                int roomId = -1;
+                if (!dr.IsDBNull(2))  roomId = dr.GetInt32(2);
+                result = new AccountDTO
                 {
-                    int id = dr.GetInt32(0);
-                    Enum.TryParse(dr.GetString(1), out AccountDTO.ROLE role);
-                    int roomId = -1;
-                    if (!dr.IsDBNull(2))  roomId = dr.GetInt32(2);
-                    return new AccountDTO
-                    {
-                        id = id,
-                        username = username,
-                        password = password,
-                        role = role,
-                        roomId = roomId
-                    };
-                }
+                    id = id,
+                    username = username,
+                    password = password,
+                    role = role,
+                    roomId = roomId
+                };
             }
-            finally
-            {
-                if (con != null) con.Close();
-            }
-            return null;
+            con.Close();
+            return result;
         }
-        public List<AccountDTO> GetAccounts(AccountDTO.ROLE role)
+        public int GetLastAccountId()
         {
-            SqlConnection con = null;
-            List<AccountDTO> list = null;
-            try
-            {
-                con = DBHelper.GetConnectionInstance();
-                con.Open();
-                string sql = "SELECT id, username FROM account WHERE role = @role AND status = 1";
-                SqlCommand cmd = new SqlCommand(sql, con);
-                cmd.Parameters.AddWithValue("role", role.ToString());
-                SqlDataReader dr = cmd.ExecuteReader(CommandBehavior.CloseConnection);
-                while (dr.Read())
-                {
-                    int id = dr.GetInt32(0);
-                    string username = dr.GetString(1);
-                    if (list == null) list = new List<AccountDTO>();
-                    list.Add(new AccountDTO { id = id, username = username });
-                }
-            }
-            finally
-            {
-                if (con != null) con.Close();
-            }
+            SqlConnection con = DBHelper.GetConnectionInstance();
+            if (con.State == ConnectionState.Closed) con.Open();
+            string sql = "SELECT MAX(id) AS id FROM account";
+            SqlCommand cmd = new SqlCommand(sql, con);
+            SqlDataReader dr = cmd.ExecuteReader(CommandBehavior.CloseConnection);
+            int id = -1;
+            if (dr.Read()) id = dr.GetInt32(0);
+            con.Close();
+            return id;
+        }
+        public DataTable GetAccounts(AccountDTO.ROLE role)
+        {
+            SqlConnection con = DBHelper.GetConnectionInstance();
+            if (con.State == ConnectionState.Closed) con.Open();
+            string sql = "SELECT id, username, password, room_id FROM account WHERE role = @role AND status = 1";
+            SqlCommand cmd = new SqlCommand(sql, con);
+            cmd.Parameters.AddWithValue("role", role.ToString());
+            SqlDataAdapter da = new SqlDataAdapter(cmd);
+            DataTable list = new DataTable();
+            da.Fill(list);
+            con.Close();
             return list;
         }
         public List<AccountDTO> GetAccounts(int roomId)
         {
-            SqlConnection con = null;
+            SqlConnection con = DBHelper.GetConnectionInstance();
+            if (con.State == ConnectionState.Closed) con.Open();
+            string sql = "SELECT id, username FROM account WHERE room_id = @roomId AND role = 'USER' AND status = 1";
+            SqlCommand cmd = new SqlCommand(sql, con);
+            cmd.Parameters.AddWithValue("roomId", roomId);
+            SqlDataReader dr = cmd.ExecuteReader(CommandBehavior.CloseConnection);
             List<AccountDTO> list = null;
-            try
+            while (dr.Read())
             {
-                con = DBHelper.GetConnectionInstance();
-                con.Open();
-                string sql = "SELECT id, username FROM account WHERE room_id = @roomId AND role = 'USER' AND status = 1";
-                SqlCommand cmd = new SqlCommand(sql, con);
-                cmd.Parameters.AddWithValue("roomId", roomId);
-                SqlDataReader dr = cmd.ExecuteReader(CommandBehavior.CloseConnection);
-                while (dr.Read())
-                {
-                    int id = int.Parse(dr["id"].ToString());
-                    string username = dr["username"].ToString();
-                    if (list == null) list = new List<AccountDTO>();
-                    list.Add(new AccountDTO { id = id, username = username });
-                }
+                int id = dr.GetInt32(0);
+                string username = dr.GetString(1);
+                if (list == null) list = new List<AccountDTO>();
+                list.Add(new AccountDTO { id = id, username = username });
             }
-            catch (SqlException ex)
-            {
-                Console.WriteLine(ex);
-            }
-            finally
-            {
-                if (con != null) con.Close();
-            }
+            con.Close();
             return list;
         }
         public List<AccountDTO> GetAccountsNoneRoom()
         {
-            SqlConnection con = null;
+            SqlConnection con = DBHelper.GetConnectionInstance();
+            if (con.State == ConnectionState.Closed) con.Open();
+            string sql = "SELECT id, username FROM account WHERE room_id IS NULL AND role = 'USER' AND status = 1";
+            SqlCommand cmd = new SqlCommand(sql, con);
+            SqlDataReader dr = cmd.ExecuteReader(CommandBehavior.CloseConnection);
             List<AccountDTO> list = null;
-            try
+            while (dr.Read())
             {
-                con = DBHelper.GetConnectionInstance();
-                con.Open();
-                string sql = "SELECT id, username FROM account WHERE room_id IS NULL AND role = 'USER' AND status = 1";
-                SqlCommand cmd = new SqlCommand(sql, con);
-                SqlDataReader dr = cmd.ExecuteReader(CommandBehavior.CloseConnection);
-                while (dr.Read())
-                {
-                    int id = int.Parse(dr["id"].ToString());
-                    string username = dr["username"].ToString();
-                    if (list == null) list = new List<AccountDTO>();
-                    list.Add(new AccountDTO { id = id, username = username });
-                }
+                int id = dr.GetInt32(0);
+                string username = dr.GetString(1);
+                if (list == null) list = new List<AccountDTO>();
+                list.Add(new AccountDTO { id = id, username = username });
             }
-            finally
-            {
-                if (con != null) con.Close();
-            }
+            con.Close();
             return list;
         }
         public bool SetRoomId(int id, int roomId)
         {
-            SqlConnection con = null;
-            try
-            {
-                con = DBHelper.GetConnectionInstance();
-                con.Open();
-                string sql = "UPDATE account SET room_id = @roomId WHERE id = @id";
-                SqlCommand cmd = new SqlCommand(sql, con);
-                if (roomId != -1)  cmd.Parameters.AddWithValue("roomId", roomId);
-                if (roomId == -1)  cmd.Parameters.AddWithValue("roomId", DBNull.Value);
-                cmd.Parameters.AddWithValue("id", id);
-                return cmd.ExecuteNonQuery() > 0;
-            }
-            catch (SqlException ex)
-            {
-                Console.WriteLine(ex);
-            }
-            finally
-            {
-                if (con != null) con.Close();
-            }
-            return false;
+            SqlConnection con = DBHelper.GetConnectionInstance();
+            if (con.State == ConnectionState.Closed) con.Open();
+            string sql = "UPDATE account SET room_id = @roomId WHERE id = @id";
+            SqlCommand cmd = new SqlCommand(sql, con);
+            if (roomId != -1)  cmd.Parameters.AddWithValue("roomId", roomId);
+            if (roomId == -1)  cmd.Parameters.AddWithValue("roomId", DBNull.Value);
+            cmd.Parameters.AddWithValue("id", id);
+            bool result = cmd.ExecuteNonQuery() > 0;
+            con.Close();
+            return result;
         }
         public int IsExist(string username)
         {
-            SqlConnection con = null;
-            try
+            SqlConnection con = DBHelper.GetConnectionInstance();
+            if (con.State == ConnectionState.Closed) con.Open();
+            string sql = "SELECT id FROM account WHERE username = @username AND status = 1";
+            SqlCommand cmd = new SqlCommand(sql, con);
+            cmd.Parameters.AddWithValue("username", username);
+            SqlDataReader dr = cmd.ExecuteReader();
+            int id = -1;
+            if (dr.Read())
             {
-                con = DBHelper.GetConnectionInstance();
-                con.Open();
-                string sql = "SELECT id FROM account WHERE username = @username AND status = 1";
-                SqlCommand cmd = new SqlCommand(sql, con);
-                cmd.Parameters.AddWithValue("username", username);
-                SqlDataReader dr = cmd.ExecuteReader();
-                if (dr.Read())
-                {
-                    return int.Parse(dr["id"].ToString());
-                }
+                id = dr.GetInt32(0);
             }
-            catch (SqlException ex)
-            {
-                Console.WriteLine(ex);
-            }
-            finally
-            {
-                if (con != null) con.Close();
-            }
-            return -1;
+            con.Close();
+            return id;
         }
     }
     

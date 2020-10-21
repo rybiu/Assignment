@@ -81,14 +81,12 @@ namespace DevideManagement
             pnlHome.Controls.Add(frmUser);
             frmUser.Dock = DockStyle.Fill;
             frmUser.Show();
-            
-
         }
 
         private void lblLogOut_Click(object sender, EventArgs e)
         {
-            this.Close();
-            Application.Exit();
+            Dispose();
+            new frmLogin().Show();
         }
 
         private void pictureBox2_Click(object sender, EventArgs e)
@@ -131,6 +129,7 @@ namespace DevideManagement
             pnlHome.Controls.Remove(frmWorker);
             pnlHome.Controls.Remove(frmStatistic);
             pnlHome.Controls.Remove(frmRoom);
+
             frmDevice = new FrmDevice();
             frmDevice.TopLevel = false;
             pnlHome.Controls.Add(frmDevice);

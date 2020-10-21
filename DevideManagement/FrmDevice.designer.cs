@@ -31,8 +31,6 @@
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.btnNewDevice = new System.Windows.Forms.Button();
             this.btnHistoryRepair = new System.Windows.Forms.Button();
-            this.btnNextPre = new System.Windows.Forms.Button();
-            this.btnPreDevide = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
             this.txtWarrantyDate = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
@@ -51,6 +49,8 @@
             this.btnChooseImage = new System.Windows.Forms.Button();
             this.btnDeviceUpdate = new System.Windows.Forms.Button();
             this.btnDeviceDelete = new System.Windows.Forms.Button();
+            this.btnNextPage = new System.Windows.Forms.Button();
+            this.btnPrePage = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
@@ -68,8 +68,8 @@
             // 
             // btnNewDevice
             // 
-            this.btnNewDevice.BackColor = System.Drawing.Color.DarkSlateGray;
-            this.btnNewDevice.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnNewDevice.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(47)))), ((int)(((byte)(65)))));
+            this.btnNewDevice.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnNewDevice.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.btnNewDevice.Location = new System.Drawing.Point(20, 134);
             this.btnNewDevice.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
@@ -82,8 +82,8 @@
             // 
             // btnHistoryRepair
             // 
-            this.btnHistoryRepair.BackColor = System.Drawing.Color.DarkSlateGray;
-            this.btnHistoryRepair.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnHistoryRepair.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(47)))), ((int)(((byte)(65)))));
+            this.btnHistoryRepair.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnHistoryRepair.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.btnHistoryRepair.Location = new System.Drawing.Point(137, 134);
             this.btnHistoryRepair.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
@@ -93,32 +93,6 @@
             this.btnHistoryRepair.Text = "REPAIR HISTORY";
             this.btnHistoryRepair.UseVisualStyleBackColor = false;
             this.btnHistoryRepair.Click += new System.EventHandler(this.btnHistoryRepair_Click);
-            // 
-            // btnNextPre
-            // 
-            this.btnNextPre.BackColor = System.Drawing.Color.DarkSlateGray;
-            this.btnNextPre.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnNextPre.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.btnNextPre.Location = new System.Drawing.Point(511, 134);
-            this.btnNextPre.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.btnNextPre.Name = "btnNextPre";
-            this.btnNextPre.Size = new System.Drawing.Size(60, 22);
-            this.btnNextPre.TabIndex = 10;
-            this.btnNextPre.Text = ">>";
-            this.btnNextPre.UseVisualStyleBackColor = false;
-            // 
-            // btnPreDevide
-            // 
-            this.btnPreDevide.BackColor = System.Drawing.Color.DarkSlateGray;
-            this.btnPreDevide.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnPreDevide.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.btnPreDevide.Location = new System.Drawing.Point(442, 134);
-            this.btnPreDevide.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.btnPreDevide.Name = "btnPreDevide";
-            this.btnPreDevide.Size = new System.Drawing.Size(60, 22);
-            this.btnPreDevide.TabIndex = 9;
-            this.btnPreDevide.Text = "<<";
-            this.btnPreDevide.UseVisualStyleBackColor = false;
             // 
             // panel1
             // 
@@ -140,15 +114,15 @@
             this.panel1.Controls.Add(this.btnDeviceUpdate);
             this.panel1.Controls.Add(this.btnDeviceDelete);
             this.panel1.Location = new System.Drawing.Point(2, 178);
-            this.panel1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.panel1.Margin = new System.Windows.Forms.Padding(2);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(607, 238);
+            this.panel1.Size = new System.Drawing.Size(596, 238);
             this.panel1.TabIndex = 11;
             // 
             // txtWarrantyDate
             // 
             this.txtWarrantyDate.Location = new System.Drawing.Point(318, 200);
-            this.txtWarrantyDate.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtWarrantyDate.Margin = new System.Windows.Forms.Padding(2);
             this.txtWarrantyDate.Name = "txtWarrantyDate";
             this.txtWarrantyDate.Size = new System.Drawing.Size(97, 27);
             this.txtWarrantyDate.TabIndex = 18;
@@ -166,7 +140,7 @@
             // txtBoughtDate
             // 
             this.txtBoughtDate.Location = new System.Drawing.Point(107, 200);
-            this.txtBoughtDate.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtBoughtDate.Margin = new System.Windows.Forms.Padding(2);
             this.txtBoughtDate.Name = "txtBoughtDate";
             this.txtBoughtDate.Size = new System.Drawing.Size(89, 27);
             this.txtBoughtDate.TabIndex = 16;
@@ -184,7 +158,7 @@
             // txtDeviceDescription
             // 
             this.txtDeviceDescription.Location = new System.Drawing.Point(107, 102);
-            this.txtDeviceDescription.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtDeviceDescription.Margin = new System.Windows.Forms.Padding(2);
             this.txtDeviceDescription.Multiline = true;
             this.txtDeviceDescription.Name = "txtDeviceDescription";
             this.txtDeviceDescription.Size = new System.Drawing.Size(311, 89);
@@ -203,7 +177,7 @@
             // txtDeviceType
             // 
             this.txtDeviceType.Location = new System.Drawing.Point(107, 67);
-            this.txtDeviceType.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtDeviceType.Margin = new System.Windows.Forms.Padding(2);
             this.txtDeviceType.Name = "txtDeviceType";
             this.txtDeviceType.Size = new System.Drawing.Size(171, 27);
             this.txtDeviceType.TabIndex = 12;
@@ -211,7 +185,7 @@
             // txtDeviceName
             // 
             this.txtDeviceName.Location = new System.Drawing.Point(107, 40);
-            this.txtDeviceName.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtDeviceName.Margin = new System.Windows.Forms.Padding(2);
             this.txtDeviceName.Name = "txtDeviceName";
             this.txtDeviceName.Size = new System.Drawing.Size(311, 27);
             this.txtDeviceName.TabIndex = 11;
@@ -219,7 +193,7 @@
             // txtDeviceID
             // 
             this.txtDeviceID.Location = new System.Drawing.Point(107, 7);
-            this.txtDeviceID.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtDeviceID.Margin = new System.Windows.Forms.Padding(2);
             this.txtDeviceID.Name = "txtDeviceID";
             this.txtDeviceID.Size = new System.Drawing.Size(311, 27);
             this.txtDeviceID.TabIndex = 10;
@@ -266,8 +240,8 @@
             // 
             // btnDeviceAdd
             // 
-            this.btnDeviceAdd.BackColor = System.Drawing.Color.DarkSlateGray;
-            this.btnDeviceAdd.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnDeviceAdd.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(47)))), ((int)(((byte)(65)))));
+            this.btnDeviceAdd.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnDeviceAdd.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.btnDeviceAdd.Location = new System.Drawing.Point(431, 150);
             this.btnDeviceAdd.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
@@ -279,8 +253,8 @@
             // 
             // btnChooseImage
             // 
-            this.btnChooseImage.BackColor = System.Drawing.Color.DarkSlateGray;
-            this.btnChooseImage.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnChooseImage.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(47)))), ((int)(((byte)(65)))));
+            this.btnChooseImage.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnChooseImage.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.btnChooseImage.Location = new System.Drawing.Point(431, 102);
             this.btnChooseImage.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
@@ -292,8 +266,8 @@
             // 
             // btnDeviceUpdate
             // 
-            this.btnDeviceUpdate.BackColor = System.Drawing.Color.DarkSlateGray;
-            this.btnDeviceUpdate.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnDeviceUpdate.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(47)))), ((int)(((byte)(65)))));
+            this.btnDeviceUpdate.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnDeviceUpdate.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.btnDeviceUpdate.Location = new System.Drawing.Point(431, 56);
             this.btnDeviceUpdate.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
@@ -305,8 +279,8 @@
             // 
             // btnDeviceDelete
             // 
-            this.btnDeviceDelete.BackColor = System.Drawing.Color.DarkSlateGray;
-            this.btnDeviceDelete.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnDeviceDelete.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(47)))), ((int)(((byte)(65)))));
+            this.btnDeviceDelete.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnDeviceDelete.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.btnDeviceDelete.Location = new System.Drawing.Point(431, 10);
             this.btnDeviceDelete.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
@@ -316,15 +290,41 @@
             this.btnDeviceDelete.Text = "DELETE";
             this.btnDeviceDelete.UseVisualStyleBackColor = false;
             // 
+            // btnNextPage
+            // 
+            this.btnNextPage.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(47)))), ((int)(((byte)(65)))));
+            this.btnNextPage.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnNextPage.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.btnNextPage.Location = new System.Drawing.Point(499, 134);
+            this.btnNextPage.Margin = new System.Windows.Forms.Padding(4);
+            this.btnNextPage.Name = "btnNextPage";
+            this.btnNextPage.Size = new System.Drawing.Size(72, 30);
+            this.btnNextPage.TabIndex = 20;
+            this.btnNextPage.Text = ">>";
+            this.btnNextPage.UseVisualStyleBackColor = false;
+            // 
+            // btnPrePage
+            // 
+            this.btnPrePage.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(47)))), ((int)(((byte)(65)))));
+            this.btnPrePage.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnPrePage.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.btnPrePage.Location = new System.Drawing.Point(419, 134);
+            this.btnPrePage.Margin = new System.Windows.Forms.Padding(4);
+            this.btnPrePage.Name = "btnPrePage";
+            this.btnPrePage.Size = new System.Drawing.Size(72, 30);
+            this.btnPrePage.TabIndex = 19;
+            this.btnPrePage.Text = "<<";
+            this.btnPrePage.UseVisualStyleBackColor = false;
+            // 
             // FrmDevice
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.PowderBlue;
             this.ClientSize = new System.Drawing.Size(600, 426);
+            this.Controls.Add(this.btnNextPage);
+            this.Controls.Add(this.btnPrePage);
             this.Controls.Add(this.panel1);
-            this.Controls.Add(this.btnNextPre);
-            this.Controls.Add(this.btnPreDevide);
             this.Controls.Add(this.btnHistoryRepair);
             this.Controls.Add(this.btnNewDevice);
             this.Controls.Add(this.dataGridView1);
@@ -346,8 +346,6 @@
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.Button btnNewDevice;
         private System.Windows.Forms.Button btnHistoryRepair;
-        private System.Windows.Forms.Button btnNextPre;
-        private System.Windows.Forms.Button btnPreDevide;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.TextBox txtWarrantyDate;
         private System.Windows.Forms.Label label7;
@@ -366,5 +364,7 @@
         private System.Windows.Forms.Button btnChooseImage;
         private System.Windows.Forms.Button btnDeviceUpdate;
         private System.Windows.Forms.Button btnDeviceDelete;
+        private System.Windows.Forms.Button btnNextPage;
+        private System.Windows.Forms.Button btnPrePage;
     }
 }

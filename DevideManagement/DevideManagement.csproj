@@ -72,23 +72,23 @@
     <Compile Include="FrmStatistic.designer.cs">
       <DependentUpon>FrmStatistic.cs</DependentUpon>
     </Compile>
-    <Compile Include="FrmUser.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="FrmUser.designer.cs">
-      <DependentUpon>FrmUser.cs</DependentUpon>
-    </Compile>
     <Compile Include="FrmWorker.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="FrmWorker.designer.cs">
       <DependentUpon>FrmWorker.cs</DependentUpon>
     </Compile>
-    <Compile Include="Login.cs">
+    <Compile Include="FrmUser.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Login.Designer.cs">
-      <DependentUpon>Login.cs</DependentUpon>
+    <Compile Include="FrmUser.designer.cs">
+      <DependentUpon>FrmUser.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmLogin.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmLogin.Designer.cs">
+      <DependentUpon>FrmLogin.cs</DependentUpon>
     </Compile>
     <Compile Include="MenuItem.cs">
       <SubType>UserControl</SubType>
@@ -114,14 +114,14 @@
     <EmbeddedResource Include="FrmStatistic.resx">
       <DependentUpon>FrmStatistic.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FrmUser.resx">
-      <DependentUpon>FrmUser.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="FrmWorker.resx">
       <DependentUpon>FrmWorker.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Login.resx">
-      <DependentUpon>Login.cs</DependentUpon>
+    <EmbeddedResource Include="FrmUser.resx">
+      <DependentUpon>FrmUser.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmLogin.resx">
+      <DependentUpon>FrmLogin.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MenuItem.aa-DJ.resx">
       <DependentUpon>MenuItem.cs</DependentUpon>
