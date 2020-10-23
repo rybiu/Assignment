@@ -1,11 +1,11 @@
-﻿using DevideManagement.DAO;
-using DevideManagement.DTO;
-using DevideManagement.Utils;
+﻿using DeviceManagement.DAO;
+using DeviceManagement.DTO;
+using DeviceManagement.Utils;
 using System;
 using System.Data;
 using System.Windows.Forms;
 
-namespace DevideManagement
+namespace DeviceManagement
 {
     public partial class FrmWorker : Form
     {

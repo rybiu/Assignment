@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Data;
 using System.Data.SqlClient;
+using System.Drawing.Imaging;
+using System.IO;
 
-namespace DevideManagement.Utils
+namespace DeviceManagement.Utils
 {
     class DBHelper
     {
@@ -75,5 +77,18 @@ namespace DevideManagement.Utils
             return PageIndex < Math.Ceiling((decimal)Data.Rows.Count / PageSize);
         }
 
+    }
+
+    class ImageHelper
+    {
+        public static byte[] ImageToByteArray(System.Drawing.Image imageIn)
+        {
+            if (imageIn == null) return null;
+            using (var ms = new MemoryStream())
+            {
+                imageIn.Save(ms, ImageFormat.Jpeg);
+                return ms.ToArray();
+            }
+        }
     }
 }

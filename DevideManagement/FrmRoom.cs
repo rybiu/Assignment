@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace DevideManagement
+namespace DeviceManagement
 {
     public partial class FrmRoom : Form
     {

@@ -1,4 +1,4 @@
-﻿namespace DevideManagement
+﻿namespace DeviceManagement
 {
     partial class FrmDevice
     {
@@ -28,343 +28,434 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.btnNewDevice = new System.Windows.Forms.Button();
-            this.btnHistoryRepair = new System.Windows.Forms.Button();
-            this.panel1 = new System.Windows.Forms.Panel();
+            this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmDevice));
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            this.lbStatusInactive = new System.Windows.Forms.Label();
             this.txtWarrantyDate = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
             this.txtBoughtDate = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
             this.txtDeviceDescription = new System.Windows.Forms.TextBox();
-            this.Status = new System.Windows.Forms.Label();
+            this.lbStatusActive = new System.Windows.Forms.Label();
             this.txtDeviceType = new System.Windows.Forms.TextBox();
             this.txtDeviceName = new System.Windows.Forms.TextBox();
-            this.txtDeviceID = new System.Windows.Forms.TextBox();
+            this.txtDeviceId = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.btnDeviceAdd = new System.Windows.Forms.Button();
             this.btnChooseImage = new System.Windows.Forms.Button();
-            this.btnDeviceUpdate = new System.Windows.Forms.Button();
-            this.btnDeviceDelete = new System.Windows.Forms.Button();
+            this.btnRemoveImage = new System.Windows.Forms.Button();
+            this.btnAdd = new System.Windows.Forms.Button();
+            this.btnUpdate = new System.Windows.Forms.Button();
+            this.btnDelete = new System.Windows.Forms.Button();
+            this.btnHistory = new System.Windows.Forms.Button();
             this.btnNextPage = new System.Windows.Forms.Button();
             this.btnPrePage = new System.Windows.Forms.Button();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
-            this.panel1.SuspendLayout();
+            this.btnNew = new System.Windows.Forms.Button();
+            this.dgvDevice = new System.Windows.Forms.DataGridView();
+            this.pbImage = new System.Windows.Forms.PictureBox();
+            this.ttDevide = new System.Windows.Forms.ToolTip(this.components);
+            ((System.ComponentModel.ISupportInitialize)(this.dgvDevice)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbImage)).BeginInit();
             this.SuspendLayout();
             // 
-            // dataGridView1
+            // lbStatusInactive
             // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(20, 11);
-            this.dataGridView1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.RowHeadersWidth = 51;
-            this.dataGridView1.RowTemplate.Height = 24;
-            this.dataGridView1.Size = new System.Drawing.Size(551, 115);
-            this.dataGridView1.TabIndex = 0;
-            // 
-            // btnNewDevice
-            // 
-            this.btnNewDevice.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(47)))), ((int)(((byte)(65)))));
-            this.btnNewDevice.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnNewDevice.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.btnNewDevice.Location = new System.Drawing.Point(20, 134);
-            this.btnNewDevice.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.btnNewDevice.Name = "btnNewDevice";
-            this.btnNewDevice.Size = new System.Drawing.Size(100, 38);
-            this.btnNewDevice.TabIndex = 1;
-            this.btnNewDevice.Text = "NEW";
-            this.btnNewDevice.UseVisualStyleBackColor = false;
-            this.btnNewDevice.Click += new System.EventHandler(this.btnNewDevice_Click);
-            // 
-            // btnHistoryRepair
-            // 
-            this.btnHistoryRepair.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(47)))), ((int)(((byte)(65)))));
-            this.btnHistoryRepair.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnHistoryRepair.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.btnHistoryRepair.Location = new System.Drawing.Point(137, 134);
-            this.btnHistoryRepair.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.btnHistoryRepair.Name = "btnHistoryRepair";
-            this.btnHistoryRepair.Size = new System.Drawing.Size(157, 38);
-            this.btnHistoryRepair.TabIndex = 2;
-            this.btnHistoryRepair.Text = "REPAIR HISTORY";
-            this.btnHistoryRepair.UseVisualStyleBackColor = false;
-            this.btnHistoryRepair.Click += new System.EventHandler(this.btnHistoryRepair_Click);
-            // 
-            // panel1
-            // 
-            this.panel1.Controls.Add(this.txtWarrantyDate);
-            this.panel1.Controls.Add(this.label7);
-            this.panel1.Controls.Add(this.txtBoughtDate);
-            this.panel1.Controls.Add(this.label6);
-            this.panel1.Controls.Add(this.txtDeviceDescription);
-            this.panel1.Controls.Add(this.Status);
-            this.panel1.Controls.Add(this.txtDeviceType);
-            this.panel1.Controls.Add(this.txtDeviceName);
-            this.panel1.Controls.Add(this.txtDeviceID);
-            this.panel1.Controls.Add(this.label4);
-            this.panel1.Controls.Add(this.label3);
-            this.panel1.Controls.Add(this.label2);
-            this.panel1.Controls.Add(this.label1);
-            this.panel1.Controls.Add(this.btnDeviceAdd);
-            this.panel1.Controls.Add(this.btnChooseImage);
-            this.panel1.Controls.Add(this.btnDeviceUpdate);
-            this.panel1.Controls.Add(this.btnDeviceDelete);
-            this.panel1.Location = new System.Drawing.Point(2, 178);
-            this.panel1.Margin = new System.Windows.Forms.Padding(2);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(596, 238);
-            this.panel1.TabIndex = 11;
+            this.lbStatusInactive.AutoSize = true;
+            this.lbStatusInactive.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbStatusInactive.Image = ((System.Drawing.Image)(resources.GetObject("lbStatusInactive.Image")));
+            this.lbStatusInactive.Location = new System.Drawing.Point(334, 399);
+            this.lbStatusInactive.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lbStatusInactive.Name = "lbStatusInactive";
+            this.lbStatusInactive.Size = new System.Drawing.Size(37, 29);
+            this.lbStatusInactive.TabIndex = 58;
+            this.lbStatusInactive.Text = "    ";
+            this.lbStatusInactive.Visible = false;
             // 
             // txtWarrantyDate
             // 
-            this.txtWarrantyDate.Location = new System.Drawing.Point(318, 200);
+            this.txtWarrantyDate.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtWarrantyDate.Location = new System.Drawing.Point(415, 540);
             this.txtWarrantyDate.Margin = new System.Windows.Forms.Padding(2);
             this.txtWarrantyDate.Name = "txtWarrantyDate";
-            this.txtWarrantyDate.Size = new System.Drawing.Size(97, 27);
-            this.txtWarrantyDate.TabIndex = 18;
+            this.txtWarrantyDate.Size = new System.Drawing.Size(110, 27);
+            this.txtWarrantyDate.TabIndex = 57;
+            this.ttDevide.SetToolTip(this.txtWarrantyDate, "MM/dd/yyyy");
             // 
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(198, 202);
+            this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label7.Location = new System.Drawing.Point(288, 543);
             this.label7.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(118, 20);
-            this.label7.TabIndex = 17;
-            this.label7.Text = "Warranty Date";
+            this.label7.Size = new System.Drawing.Size(114, 20);
+            this.label7.TabIndex = 56;
+            this.label7.Text = "Warranty date";
             // 
             // txtBoughtDate
             // 
-            this.txtBoughtDate.Location = new System.Drawing.Point(107, 200);
+            this.txtBoughtDate.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtBoughtDate.Location = new System.Drawing.Point(139, 540);
             this.txtBoughtDate.Margin = new System.Windows.Forms.Padding(2);
             this.txtBoughtDate.Name = "txtBoughtDate";
-            this.txtBoughtDate.Size = new System.Drawing.Size(89, 27);
-            this.txtBoughtDate.TabIndex = 16;
+            this.txtBoughtDate.Size = new System.Drawing.Size(110, 27);
+            this.txtBoughtDate.TabIndex = 55;
+            this.ttDevide.SetToolTip(this.txtBoughtDate, "MM/dd/yyyy");
             // 
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(7, 202);
+            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.Location = new System.Drawing.Point(30, 543);
             this.label6.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(103, 20);
-            this.label6.TabIndex = 15;
-            this.label6.Text = "Bought Date";
+            this.label6.Size = new System.Drawing.Size(99, 20);
+            this.label6.TabIndex = 54;
+            this.label6.Text = "Bought date";
             // 
             // txtDeviceDescription
             // 
-            this.txtDeviceDescription.Location = new System.Drawing.Point(107, 102);
+            this.txtDeviceDescription.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtDeviceDescription.Location = new System.Drawing.Point(139, 449);
             this.txtDeviceDescription.Margin = new System.Windows.Forms.Padding(2);
             this.txtDeviceDescription.Multiline = true;
             this.txtDeviceDescription.Name = "txtDeviceDescription";
-            this.txtDeviceDescription.Size = new System.Drawing.Size(311, 89);
-            this.txtDeviceDescription.TabIndex = 14;
+            this.txtDeviceDescription.Size = new System.Drawing.Size(386, 72);
+            this.txtDeviceDescription.TabIndex = 53;
+            this.ttDevide.SetToolTip(this.txtDeviceDescription, "Input device description");
             // 
-            // Status
+            // lbStatusActive
             // 
-            this.Status.AutoSize = true;
-            this.Status.Location = new System.Drawing.Point(280, 70);
-            this.Status.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.Status.Name = "Status";
-            this.Status.Size = new System.Drawing.Size(53, 20);
-            this.Status.TabIndex = 13;
-            this.Status.Text = "label5";
+            this.lbStatusActive.AutoSize = true;
+            this.lbStatusActive.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbStatusActive.Image = ((System.Drawing.Image)(resources.GetObject("lbStatusActive.Image")));
+            this.lbStatusActive.Location = new System.Drawing.Point(334, 399);
+            this.lbStatusActive.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lbStatusActive.Name = "lbStatusActive";
+            this.lbStatusActive.Size = new System.Drawing.Size(37, 29);
+            this.lbStatusActive.TabIndex = 52;
+            this.lbStatusActive.Text = "    ";
+            this.lbStatusActive.VisibleChanged += new System.EventHandler(this.lbStatusActive_VisibleChanged);
             // 
             // txtDeviceType
             // 
-            this.txtDeviceType.Location = new System.Drawing.Point(107, 67);
+            this.txtDeviceType.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtDeviceType.Location = new System.Drawing.Point(140, 403);
             this.txtDeviceType.Margin = new System.Windows.Forms.Padding(2);
             this.txtDeviceType.Name = "txtDeviceType";
-            this.txtDeviceType.Size = new System.Drawing.Size(171, 27);
-            this.txtDeviceType.TabIndex = 12;
+            this.txtDeviceType.Size = new System.Drawing.Size(173, 27);
+            this.txtDeviceType.TabIndex = 51;
             // 
             // txtDeviceName
             // 
-            this.txtDeviceName.Location = new System.Drawing.Point(107, 40);
+            this.txtDeviceName.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtDeviceName.Location = new System.Drawing.Point(139, 355);
             this.txtDeviceName.Margin = new System.Windows.Forms.Padding(2);
             this.txtDeviceName.Name = "txtDeviceName";
-            this.txtDeviceName.Size = new System.Drawing.Size(311, 27);
-            this.txtDeviceName.TabIndex = 11;
+            this.txtDeviceName.Size = new System.Drawing.Size(232, 27);
+            this.txtDeviceName.TabIndex = 50;
             // 
-            // txtDeviceID
+            // txtDeviceId
             // 
-            this.txtDeviceID.Location = new System.Drawing.Point(107, 7);
-            this.txtDeviceID.Margin = new System.Windows.Forms.Padding(2);
-            this.txtDeviceID.Name = "txtDeviceID";
-            this.txtDeviceID.Size = new System.Drawing.Size(311, 27);
-            this.txtDeviceID.TabIndex = 10;
+            this.txtDeviceId.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtDeviceId.Location = new System.Drawing.Point(140, 309);
+            this.txtDeviceId.Margin = new System.Windows.Forms.Padding(2);
+            this.txtDeviceId.Name = "txtDeviceId";
+            this.txtDeviceId.ReadOnly = true;
+            this.txtDeviceId.Size = new System.Drawing.Size(231, 27);
+            this.txtDeviceId.TabIndex = 49;
             // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(7, 104);
+            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.Location = new System.Drawing.Point(29, 452);
             this.label4.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(95, 20);
-            this.label4.TabIndex = 9;
+            this.label4.TabIndex = 48;
             this.label4.Text = "Description";
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(7, 70);
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Location = new System.Drawing.Point(30, 406);
             this.label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(45, 20);
-            this.label3.TabIndex = 8;
+            this.label3.TabIndex = 47;
             this.label3.Text = "Type";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(7, 42);
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(29, 358);
             this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(53, 20);
-            this.label2.TabIndex = 7;
+            this.label2.TabIndex = 46;
             this.label2.Text = "Name";
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(7, 10);
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(30, 312);
             this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(83, 20);
-            this.label1.TabIndex = 6;
+            this.label1.TabIndex = 45;
             this.label1.Text = "Device ID";
-            // 
-            // btnDeviceAdd
-            // 
-            this.btnDeviceAdd.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(47)))), ((int)(((byte)(65)))));
-            this.btnDeviceAdd.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnDeviceAdd.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.btnDeviceAdd.Location = new System.Drawing.Point(431, 150);
-            this.btnDeviceAdd.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.btnDeviceAdd.Name = "btnDeviceAdd";
-            this.btnDeviceAdd.Size = new System.Drawing.Size(148, 38);
-            this.btnDeviceAdd.TabIndex = 5;
-            this.btnDeviceAdd.Text = "ADD";
-            this.btnDeviceAdd.UseVisualStyleBackColor = false;
             // 
             // btnChooseImage
             // 
             this.btnChooseImage.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(47)))), ((int)(((byte)(65)))));
             this.btnChooseImage.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnChooseImage.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.btnChooseImage.Location = new System.Drawing.Point(431, 102);
-            this.btnChooseImage.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.btnChooseImage.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.btnChooseImage.Location = new System.Drawing.Point(552, 462);
+            this.btnChooseImage.Margin = new System.Windows.Forms.Padding(4);
             this.btnChooseImage.Name = "btnChooseImage";
-            this.btnChooseImage.Size = new System.Drawing.Size(148, 38);
-            this.btnChooseImage.TabIndex = 4;
-            this.btnChooseImage.Text = "CHOOSE IMAGE";
+            this.btnChooseImage.Size = new System.Drawing.Size(170, 43);
+            this.btnChooseImage.TabIndex = 44;
+            this.btnChooseImage.Text = "Choose Image";
+            this.ttDevide.SetToolTip(this.btnChooseImage, "Choose a device image");
             this.btnChooseImage.UseVisualStyleBackColor = false;
+            this.btnChooseImage.Click += new System.EventHandler(this.btnChooseImage_Click);
             // 
-            // btnDeviceUpdate
+            // btnRemoveImage
             // 
-            this.btnDeviceUpdate.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(47)))), ((int)(((byte)(65)))));
-            this.btnDeviceUpdate.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnDeviceUpdate.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.btnDeviceUpdate.Location = new System.Drawing.Point(431, 56);
-            this.btnDeviceUpdate.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.btnDeviceUpdate.Name = "btnDeviceUpdate";
-            this.btnDeviceUpdate.Size = new System.Drawing.Size(148, 38);
-            this.btnDeviceUpdate.TabIndex = 3;
-            this.btnDeviceUpdate.Text = "UPDATE";
-            this.btnDeviceUpdate.UseVisualStyleBackColor = false;
+            this.btnRemoveImage.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(47)))), ((int)(((byte)(65)))));
+            this.btnRemoveImage.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnRemoveImage.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.btnRemoveImage.Location = new System.Drawing.Point(552, 517);
+            this.btnRemoveImage.Margin = new System.Windows.Forms.Padding(4);
+            this.btnRemoveImage.Name = "btnRemoveImage";
+            this.btnRemoveImage.Size = new System.Drawing.Size(170, 43);
+            this.btnRemoveImage.TabIndex = 43;
+            this.btnRemoveImage.Text = "Remove Image";
+            this.ttDevide.SetToolTip(this.btnRemoveImage, "Remove current device image");
+            this.btnRemoveImage.UseVisualStyleBackColor = false;
+            this.btnRemoveImage.Click += new System.EventHandler(this.btnRemoveImage_Click);
             // 
-            // btnDeviceDelete
+            // btnAdd
             // 
-            this.btnDeviceDelete.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(47)))), ((int)(((byte)(65)))));
-            this.btnDeviceDelete.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnDeviceDelete.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.btnDeviceDelete.Location = new System.Drawing.Point(431, 10);
-            this.btnDeviceDelete.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.btnDeviceDelete.Name = "btnDeviceDelete";
-            this.btnDeviceDelete.Size = new System.Drawing.Size(148, 38);
-            this.btnDeviceDelete.TabIndex = 2;
-            this.btnDeviceDelete.Text = "DELETE";
-            this.btnDeviceDelete.UseVisualStyleBackColor = false;
+            this.btnAdd.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(47)))), ((int)(((byte)(65)))));
+            this.btnAdd.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAdd.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.btnAdd.Location = new System.Drawing.Point(552, 407);
+            this.btnAdd.Margin = new System.Windows.Forms.Padding(4);
+            this.btnAdd.Name = "btnAdd";
+            this.btnAdd.Size = new System.Drawing.Size(170, 43);
+            this.btnAdd.TabIndex = 42;
+            this.btnAdd.Text = "Add";
+            this.ttDevide.SetToolTip(this.btnAdd, "Add new device");
+            this.btnAdd.UseVisualStyleBackColor = false;
+            this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
+            // 
+            // btnUpdate
+            // 
+            this.btnUpdate.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(47)))), ((int)(((byte)(65)))));
+            this.btnUpdate.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnUpdate.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.btnUpdate.Location = new System.Drawing.Point(552, 352);
+            this.btnUpdate.Margin = new System.Windows.Forms.Padding(4);
+            this.btnUpdate.Name = "btnUpdate";
+            this.btnUpdate.Size = new System.Drawing.Size(170, 43);
+            this.btnUpdate.TabIndex = 41;
+            this.btnUpdate.Text = "Update";
+            this.ttDevide.SetToolTip(this.btnUpdate, "Update selected device");
+            this.btnUpdate.UseVisualStyleBackColor = false;
+            this.btnUpdate.Click += new System.EventHandler(this.btnUpdate_Click);
+            // 
+            // btnDelete
+            // 
+            this.btnDelete.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(47)))), ((int)(((byte)(65)))));
+            this.btnDelete.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnDelete.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.btnDelete.Location = new System.Drawing.Point(552, 297);
+            this.btnDelete.Margin = new System.Windows.Forms.Padding(4);
+            this.btnDelete.Name = "btnDelete";
+            this.btnDelete.Size = new System.Drawing.Size(170, 47);
+            this.btnDelete.TabIndex = 40;
+            this.btnDelete.Text = "Delete";
+            this.ttDevide.SetToolTip(this.btnDelete, "Delete selected device");
+            this.btnDelete.UseVisualStyleBackColor = false;
+            this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
+            // 
+            // btnHistory
+            // 
+            this.btnHistory.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(47)))), ((int)(((byte)(65)))));
+            this.btnHistory.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnHistory.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.btnHistory.Location = new System.Drawing.Point(224, 212);
+            this.btnHistory.Margin = new System.Windows.Forms.Padding(4);
+            this.btnHistory.Name = "btnHistory";
+            this.btnHistory.Size = new System.Drawing.Size(190, 52);
+            this.btnHistory.TabIndex = 39;
+            this.btnHistory.Text = "Repair History";
+            this.ttDevide.SetToolTip(this.btnHistory, "View repair history");
+            this.btnHistory.UseVisualStyleBackColor = false;
             // 
             // btnNextPage
             // 
             this.btnNextPage.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(47)))), ((int)(((byte)(65)))));
             this.btnNextPage.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnNextPage.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.btnNextPage.Location = new System.Drawing.Point(499, 134);
+            this.btnNextPage.Location = new System.Drawing.Point(640, 209);
             this.btnNextPage.Margin = new System.Windows.Forms.Padding(4);
             this.btnNextPage.Name = "btnNextPage";
             this.btnNextPage.Size = new System.Drawing.Size(72, 30);
-            this.btnNextPage.TabIndex = 20;
+            this.btnNextPage.TabIndex = 38;
             this.btnNextPage.Text = ">>";
+            this.ttDevide.SetToolTip(this.btnNextPage, "Go to the next page");
             this.btnNextPage.UseVisualStyleBackColor = false;
+            this.btnNextPage.Click += new System.EventHandler(this.btnNextPage_Click);
             // 
             // btnPrePage
             // 
             this.btnPrePage.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(47)))), ((int)(((byte)(65)))));
             this.btnPrePage.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnPrePage.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.btnPrePage.Location = new System.Drawing.Point(419, 134);
+            this.btnPrePage.Location = new System.Drawing.Point(560, 209);
             this.btnPrePage.Margin = new System.Windows.Forms.Padding(4);
             this.btnPrePage.Name = "btnPrePage";
             this.btnPrePage.Size = new System.Drawing.Size(72, 30);
-            this.btnPrePage.TabIndex = 19;
+            this.btnPrePage.TabIndex = 37;
             this.btnPrePage.Text = "<<";
+            this.ttDevide.SetToolTip(this.btnPrePage, "Go to the previous page");
             this.btnPrePage.UseVisualStyleBackColor = false;
+            this.btnPrePage.Click += new System.EventHandler(this.btnPrePage_Click);
+            // 
+            // btnNew
+            // 
+            this.btnNew.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(47)))), ((int)(((byte)(65)))));
+            this.btnNew.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnNew.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.btnNew.Location = new System.Drawing.Point(50, 212);
+            this.btnNew.Margin = new System.Windows.Forms.Padding(4);
+            this.btnNew.Name = "btnNew";
+            this.btnNew.Size = new System.Drawing.Size(146, 52);
+            this.btnNew.TabIndex = 36;
+            this.btnNew.Text = "New";
+            this.ttDevide.SetToolTip(this.btnNew, "Create new devide");
+            this.btnNew.UseVisualStyleBackColor = false;
+            this.btnNew.Click += new System.EventHandler(this.btnNew_Click);
+            // 
+            // dgvDevice
+            // 
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvDevice.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
+            this.dgvDevice.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle6.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvDevice.DefaultCellStyle = dataGridViewCellStyle6;
+            this.dgvDevice.Location = new System.Drawing.Point(37, 12);
+            this.dgvDevice.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.dgvDevice.Name = "dgvDevice";
+            this.dgvDevice.ReadOnly = true;
+            this.dgvDevice.RowHeadersWidth = 51;
+            this.dgvDevice.RowTemplate.Height = 24;
+            this.dgvDevice.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgvDevice.Size = new System.Drawing.Size(685, 185);
+            this.dgvDevice.TabIndex = 35;
+            this.dgvDevice.SelectionChanged += new System.EventHandler(this.dgvDevice_SelectionChanged);
+            // 
+            // pbImage
+            // 
+            this.pbImage.Location = new System.Drawing.Point(390, 295);
+            this.pbImage.Name = "pbImage";
+            this.pbImage.Size = new System.Drawing.Size(135, 135);
+            this.pbImage.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pbImage.TabIndex = 59;
+            this.pbImage.TabStop = false;
             // 
             // FrmDevice
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 20F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.PowderBlue;
-            this.ClientSize = new System.Drawing.Size(600, 426);
+            this.ClientSize = new System.Drawing.Size(755, 600);
+            this.Controls.Add(this.pbImage);
+            this.Controls.Add(this.lbStatusInactive);
+            this.Controls.Add(this.txtWarrantyDate);
+            this.Controls.Add(this.label7);
+            this.Controls.Add(this.txtBoughtDate);
+            this.Controls.Add(this.label6);
+            this.Controls.Add(this.txtDeviceDescription);
+            this.Controls.Add(this.lbStatusActive);
+            this.Controls.Add(this.txtDeviceType);
+            this.Controls.Add(this.txtDeviceName);
+            this.Controls.Add(this.txtDeviceId);
+            this.Controls.Add(this.label4);
+            this.Controls.Add(this.label3);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.btnChooseImage);
+            this.Controls.Add(this.btnRemoveImage);
+            this.Controls.Add(this.btnAdd);
+            this.Controls.Add(this.btnUpdate);
+            this.Controls.Add(this.btnDelete);
+            this.Controls.Add(this.btnHistory);
             this.Controls.Add(this.btnNextPage);
             this.Controls.Add(this.btnPrePage);
-            this.Controls.Add(this.panel1);
-            this.Controls.Add(this.btnHistoryRepair);
-            this.Controls.Add(this.btnNewDevice);
-            this.Controls.Add(this.dataGridView1);
-            this.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Controls.Add(this.btnNew);
+            this.Controls.Add(this.dgvDevice);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Name = "FrmDevice";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
-            this.Text = "FrmDevide";
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
-            this.panel1.ResumeLayout(false);
-            this.panel1.PerformLayout();
+            this.Text = "FrmUser";
+            this.Load += new System.EventHandler(this.FrmDevice_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.dgvDevice)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbImage)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
         #endregion
 
-        private System.Windows.Forms.DataGridView dataGridView1;
-        private System.Windows.Forms.Button btnNewDevice;
-        private System.Windows.Forms.Button btnHistoryRepair;
-        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Label lbStatusInactive;
         private System.Windows.Forms.TextBox txtWarrantyDate;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.TextBox txtBoughtDate;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.TextBox txtDeviceDescription;
-        private System.Windows.Forms.Label Status;
+        private System.Windows.Forms.Label lbStatusActive;
         private System.Windows.Forms.TextBox txtDeviceType;
         private System.Windows.Forms.TextBox txtDeviceName;
-        private System.Windows.Forms.TextBox txtDeviceID;
+        private System.Windows.Forms.TextBox txtDeviceId;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Button btnDeviceAdd;
         private System.Windows.Forms.Button btnChooseImage;
-        private System.Windows.Forms.Button btnDeviceUpdate;
-        private System.Windows.Forms.Button btnDeviceDelete;
+        private System.Windows.Forms.Button btnRemoveImage;
+        private System.Windows.Forms.Button btnAdd;
+        private System.Windows.Forms.Button btnUpdate;
+        private System.Windows.Forms.Button btnDelete;
+        private System.Windows.Forms.Button btnHistory;
         private System.Windows.Forms.Button btnNextPage;
         private System.Windows.Forms.Button btnPrePage;
+        private System.Windows.Forms.Button btnNew;
+        private System.Windows.Forms.DataGridView dgvDevice;
+        private System.Windows.Forms.PictureBox pbImage;
+        private System.Windows.Forms.ToolTip ttDevide;
     }
 }

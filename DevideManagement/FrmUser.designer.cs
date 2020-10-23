@@ -1,4 +1,4 @@
-﻿namespace DevideManagement
+﻿namespace DeviceManagement
 {
     partial class FrmUser
     {
@@ -107,7 +107,7 @@
             this.btnAdd.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(47)))), ((int)(((byte)(65)))));
             this.btnAdd.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnAdd.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.btnAdd.Location = new System.Drawing.Point(551, 459);
+            this.btnAdd.Location = new System.Drawing.Point(551, 494);
             this.btnAdd.Margin = new System.Windows.Forms.Padding(4);
             this.btnAdd.Name = "btnAdd";
             this.btnAdd.Size = new System.Drawing.Size(170, 43);
@@ -121,7 +121,7 @@
             this.btnUpdate.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(47)))), ((int)(((byte)(65)))));
             this.btnUpdate.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnUpdate.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.btnUpdate.Location = new System.Drawing.Point(551, 386);
+            this.btnUpdate.Location = new System.Drawing.Point(551, 421);
             this.btnUpdate.Margin = new System.Windows.Forms.Padding(4);
             this.btnUpdate.Name = "btnUpdate";
             this.btnUpdate.Size = new System.Drawing.Size(170, 43);
@@ -135,7 +135,7 @@
             this.btnDelete.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(47)))), ((int)(((byte)(65)))));
             this.btnDelete.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnDelete.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.btnDelete.Location = new System.Drawing.Point(551, 319);
+            this.btnDelete.Location = new System.Drawing.Point(551, 354);
             this.btnDelete.Margin = new System.Windows.Forms.Padding(4);
             this.btnDelete.Name = "btnDelete";
             this.btnDelete.Size = new System.Drawing.Size(170, 47);
@@ -148,7 +148,7 @@
             // 
             this.ckShowPassword.AutoSize = true;
             this.ckShowPassword.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ckShowPassword.Location = new System.Drawing.Point(178, 439);
+            this.ckShowPassword.Location = new System.Drawing.Point(178, 474);
             this.ckShowPassword.Name = "ckShowPassword";
             this.ckShowPassword.Size = new System.Drawing.Size(133, 21);
             this.ckShowPassword.TabIndex = 27;
@@ -159,7 +159,7 @@
             // txtRoomID
             // 
             this.txtRoomID.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtRoomID.Location = new System.Drawing.Point(178, 479);
+            this.txtRoomID.Location = new System.Drawing.Point(178, 514);
             this.txtRoomID.Name = "txtRoomID";
             this.txtRoomID.ReadOnly = true;
             this.txtRoomID.Size = new System.Drawing.Size(276, 27);
@@ -168,7 +168,7 @@
             // txtPassword
             // 
             this.txtPassword.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtPassword.Location = new System.Drawing.Point(178, 406);
+            this.txtPassword.Location = new System.Drawing.Point(178, 441);
             this.txtPassword.Name = "txtPassword";
             this.txtPassword.PasswordChar = '*';
             this.txtPassword.Size = new System.Drawing.Size(276, 27);
@@ -177,7 +177,7 @@
             // txtUsername
             // 
             this.txtUsername.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtUsername.Location = new System.Drawing.Point(178, 362);
+            this.txtUsername.Location = new System.Drawing.Point(178, 397);
             this.txtUsername.Name = "txtUsername";
             this.txtUsername.Size = new System.Drawing.Size(276, 27);
             this.txtUsername.TabIndex = 24;
@@ -185,7 +185,7 @@
             // txtUserID
             // 
             this.txtUserID.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtUserID.Location = new System.Drawing.Point(178, 319);
+            this.txtUserID.Location = new System.Drawing.Point(178, 354);
             this.txtUserID.Name = "txtUserID";
             this.txtUserID.ReadOnly = true;
             this.txtUserID.Size = new System.Drawing.Size(276, 27);
@@ -195,7 +195,7 @@
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(77, 482);
+            this.label5.Location = new System.Drawing.Point(77, 517);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(75, 20);
             this.label5.TabIndex = 22;
@@ -205,7 +205,7 @@
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(77, 409);
+            this.label4.Location = new System.Drawing.Point(77, 444);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(83, 20);
             this.label4.TabIndex = 21;
@@ -215,7 +215,7 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(77, 365);
+            this.label3.Location = new System.Drawing.Point(77, 400);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(86, 20);
             this.label3.TabIndex = 20;
@@ -225,7 +225,7 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(77, 322);
+            this.label2.Location = new System.Drawing.Point(77, 357);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(67, 20);
             this.label2.TabIndex = 19;
@@ -236,7 +236,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.PowderBlue;
-            this.ClientSize = new System.Drawing.Size(755, 533);
+            this.ClientSize = new System.Drawing.Size(755, 600);
             this.Controls.Add(this.ckShowPassword);
             this.Controls.Add(this.txtRoomID);
             this.Controls.Add(this.txtPassword);

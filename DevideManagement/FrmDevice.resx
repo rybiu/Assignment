@@ -117,4 +117,29 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="lbStatusInactive.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABkAAAAZCAYAAADE6YVjAAAABGdBTUEAALGPC/xhBQAAAMtJREFUSEvt
+        lF0OATEURrsDYgUsEW+WJQhWgIStEB78vHC+RJOmaTsX460nOQ9zb2e+THtnXKUSMsETLrGrQgH1V3jD
+        oQpWjvh8u8NckOrq+7VXNDNFf2MuKA6QazTTwQ2GDzhgD4X6Wwz7e/R9M7mgAbYS4EltySO6Lp2ZmdQb
+        eX96g5g+3jEM0LXqrZA6ZG84DF/z9zPJjammqzTeZpq+g9x4fxS0wPABqS1JbeUczVywFOCJg85oZoz6
+        Sc6w6VDV1zqtH6lQqYBzL6ugc5EYHWH2AAAAAElFTkSuQmCC
+</value>
+  </data>
+  <metadata name="ttDevide.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 17</value>
+  </metadata>
+  <data name="lbStatusActive.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABkAAAAZCAYAAADE6YVjAAAABGdBTUEAALGPC/xhBQAAAV1JREFUSEvl
+        1bsuRUEUxvFdqUVc4voKhNCIV/ASSqJRKL2DE+I1XB5CQtwSQSNxrXRCQcH/czLJZGbNzB4lX/LLYV9m
+        ndl7zZnmX2UCq9jHBR5whj2sYAS/zhB28ImvDJ3voA9VmcMzrEFTnjCFVlGBd1gDldyiB9noEdXOwHnB
+        JIrRO7AGKPELDGO9+2ccdVHpJVvCAtf4wKgOhFGbWoPkWAXcuTVEOYA/wCE28Ood8+UKyC6inMO/aBHK
+        AsJCYYEr+OdFx6I8wr/oGL1Q/EJtCojWTZRwJnICt5LncYeZn/+67X6J8B7nFFH022RdfAQ3I7fQcjNw
+        zHeS6y5/RqUZOMuIMg71t3WDqNASbrxjKcl1omzDuqnWJpIZRNhlte7Rj2xm8QZrgBLdN41W0b6gdrUG
+        StET0BesygC2kGsG0XntjMVHlMsYtJdrT9eC1R6vT60DtWmyi/5amuYbspkojGZ7ox4AAAAASUVORK5C
+        YII=
+</value>
+  </data>
 </root>

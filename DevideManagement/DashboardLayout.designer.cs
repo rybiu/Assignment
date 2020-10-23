@@ -1,4 +1,4 @@
-﻿namespace DevideManagement
+﻿namespace DeviceManagement
 {
     partial class FrmManager
     {
@@ -63,7 +63,7 @@
             this.panelEdge.Location = new System.Drawing.Point(-1, 0);
             this.panelEdge.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.panelEdge.Name = "panelEdge";
-            this.panelEdge.Size = new System.Drawing.Size(148, 587);
+            this.panelEdge.Size = new System.Drawing.Size(148, 650);
             this.panelEdge.TabIndex = 0;
             // 
             // lblStatistic
@@ -138,11 +138,11 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.lblHome.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblHome.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.lblHome.Location = new System.Drawing.Point(0, 80);
+            this.lblHome.Location = new System.Drawing.Point(0, 70);
             this.lblHome.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblHome.Name = "lblHome";
             this.lblHome.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.lblHome.Size = new System.Drawing.Size(144, 36);
+            this.lblHome.Size = new System.Drawing.Size(144, 69);
             this.lblHome.TabIndex = 0;
             this.lblHome.Text = "Home";
             this.lblHome.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -244,9 +244,9 @@
             // 
             this.pnlHome.BackColor = System.Drawing.SystemColors.ActiveBorder;
             this.pnlHome.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.pnlHome.Location = new System.Drawing.Point(396, 51);
+            this.pnlHome.Location = new System.Drawing.Point(396, 50);
             this.pnlHome.Name = "pnlHome";
-            this.pnlHome.Size = new System.Drawing.Size(755, 533);
+            this.pnlHome.Size = new System.Drawing.Size(755, 600);
             this.pnlHome.TabIndex = 13;
             // 
             // FrmManager
@@ -254,7 +254,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(120F, 120F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(97)))), ((int)(((byte)(212)))), ((int)(((byte)(195)))));
-            this.ClientSize = new System.Drawing.Size(1151, 584);
+            this.ClientSize = new System.Drawing.Size(1151, 650);
             this.Controls.Add(this.pictureBox2);
             this.Controls.Add(this.pnlHome);
             this.Controls.Add(this.lbPassword);

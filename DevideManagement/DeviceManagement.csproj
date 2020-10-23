@@ -54,12 +54,6 @@
       <DependentUpon>DashboardLayout.cs</DependentUpon>
     </Compile>
     <Compile Include="DTO.cs" />
-    <Compile Include="FrmDevice.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="FrmDevice.designer.cs">
-      <DependentUpon>FrmDevice.cs</DependentUpon>
-    </Compile>
     <Compile Include="FrmRoom.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -71,6 +65,12 @@
     </Compile>
     <Compile Include="FrmStatistic.designer.cs">
       <DependentUpon>FrmStatistic.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmDevice.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmDevice.designer.cs">
+      <DependentUpon>FrmDevice.cs</DependentUpon>
     </Compile>
     <Compile Include="FrmWorker.cs">
       <SubType>Form</SubType>
@@ -102,9 +102,6 @@
     <EmbeddedResource Include="DashboardLayout.resx">
       <DependentUpon>DashboardLayout.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FrmDevice.resx">
-      <DependentUpon>FrmDevice.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="FrmRoom.resx">
       <DependentUpon>FrmRoom.cs</DependentUpon>
     </EmbeddedResource>
@@ -113,6 +110,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FrmStatistic.resx">
       <DependentUpon>FrmStatistic.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmDevice.resx">
+      <DependentUpon>FrmDevice.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FrmWorker.resx">
       <DependentUpon>FrmWorker.cs</DependentUpon>
@@ -137,6 +137,7 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

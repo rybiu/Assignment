@@ -1,4 +1,4 @@
-﻿namespace DevideManagement
+﻿namespace DeviceManagement
 {
     partial class FrmRoom
     {

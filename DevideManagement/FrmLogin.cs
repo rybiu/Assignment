@@ -1,5 +1,5 @@
-﻿using DevideManagement.DAO;
-using DevideManagement.DTO;
+﻿using DeviceManagement.DAO;
+using DeviceManagement.DTO;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -10,7 +10,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace DevideManagement
+namespace DeviceManagement
 {
     public partial class frmLogin : Form
     {

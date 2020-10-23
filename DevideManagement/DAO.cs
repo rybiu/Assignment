@@ -1,16 +1,17 @@
-﻿using DevideManagement.DTO;
-using DevideManagement.Utils;
+﻿using DeviceManagement.DTO;
+using DeviceManagement.Utils;
 using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
+using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace DevideManagement.DAO
+namespace DeviceManagement.DAO
 {
     public class AccountDAO
     {
@@ -201,299 +202,234 @@ namespace DevideManagement.DAO
         }
     }
     
-    public class DevideDAO
+    public class DeviceDAO
     {
+
         public bool AddDevice(DeviceDTO device)
         {
-            SqlConnection con = null;
-            try
+            SqlConnection con = DBHelper.GetConnectionInstance();
+            if (con.State == ConnectionState.Closed) con.Open();
+            string sql = "INSERT INTO device(name, description, type, bought_date, warranty_date, image) " +
+                            "VALUES(@name, @description, @type, @bought_date, @warranty_date, @image)";
+            SqlCommand cmd = new SqlCommand(sql, con);
+            cmd.Parameters.AddWithValue("name", device.name);
+            cmd.Parameters.AddWithValue("description", device.description);
+            cmd.Parameters.AddWithValue("type", device.type);
+            if (device.boughtDate != null)
             {
-                con = DBHelper.GetConnectionInstance();
-                string sql = "INSERT INTO device(name, description, type, bought_date, warranty_date, image_url) " +
-                             "VALUES(@name, @description, @type, @bought_date, @warranty_date, @image_url)";
-                SqlCommand cmd = new SqlCommand(sql, con);
-                cmd.Parameters.AddWithValue("name", device.name);
-                cmd.Parameters.AddWithValue("description", device.description);
-                cmd.Parameters.AddWithValue("type", device.type);
                 cmd.Parameters.AddWithValue("bought_date", device.boughtDate);
+            } else
+            {
+                cmd.Parameters.Add("bought_date", SqlDbType.Date).Value = DBNull.Value;
+
+            }
+            if (device.warrantyDate != null)
+            {
                 cmd.Parameters.AddWithValue("warranty_date", device.warrantyDate);
-                cmd.Parameters.AddWithValue("image_url", device.image);
-                return cmd.ExecuteNonQuery() > 0;
             }
-            catch (SqlException ex)
+            else
             {
-                Console.WriteLine(ex);
+                cmd.Parameters.Add("warranty_date", SqlDbType.Date).Value = DBNull.Value;
+
             }
-            finally
+            if (device.image != null)
             {
-                if (con != null) con.Close();
+                cmd.Parameters.AddWithValue("image", device.image);
+            } else
+            {
+                cmd.Parameters.Add("image", SqlDbType.Image).Value = DBNull.Value;
             }
-            return false;
+            bool result = cmd.ExecuteNonQuery() > 0;
+            con.Close();
+            return result;
         }
         public bool DeleteDevice(int id)
         {
-            SqlConnection con = null;
-            try
-            {
-                con = DBHelper.GetConnectionInstance();
-                string sql = "UPDATE device SET status = 0 WHERE id = @id";
-                SqlCommand cmd = new SqlCommand(sql, con);
-                cmd.Parameters.AddWithValue("id", id);
-                return cmd.ExecuteNonQuery() > 0;
-            }
-            catch (SqlException ex)
-            {
-                Console.WriteLine(ex);
-            }
-            finally
-            {
-                if (con != null) con.Close();
-            }
-            return false;
+            SqlConnection con = DBHelper.GetConnectionInstance();
+            if (con.State == ConnectionState.Closed) con.Open();
+            string sql = "UPDATE device SET status = 0 WHERE id = @id";
+            SqlCommand cmd = new SqlCommand(sql, con);
+            cmd.Parameters.AddWithValue("id", id);
+            bool result = cmd.ExecuteNonQuery() > 0;
+            con.Close();
+            return result;
         }
         public bool UpdateDevice(DeviceDTO device)
         {
-            SqlConnection con = null;
-            try
-            {
-                con = DBHelper.GetConnectionInstance();
-                string sql = "UPDATE device SET "
-                            + "name = @name, "
-                            + "description = @description, "
-                            + "type = @type, "
-                            + "bought_date = @bought_date, "
-                            + "warranty_date = @warranty_date, "
-                            + "image_url = @image_url"
-                            + "WHERE id = @id";
-                SqlCommand cmd = new SqlCommand(sql, con);
-                cmd.Parameters.AddWithValue("name", device.name);
-                cmd.Parameters.AddWithValue("description", device.description);
-                cmd.Parameters.AddWithValue("type", device.type);
-                cmd.Parameters.AddWithValue("bought_date", device.boughtDate);
-                cmd.Parameters.AddWithValue("warranty_date", device.warrantyDate);
-                cmd.Parameters.AddWithValue("image_url", device.image);
-                cmd.Parameters.AddWithValue("id", device.id);
-                return cmd.ExecuteNonQuery() > 0;
-            }
-            catch (SqlException ex)
-            {
-                Console.WriteLine(ex);
-            }
-            finally
-            {
-                if (con != null) con.Close();
-            }
-            return false;
+            SqlConnection con = DBHelper.GetConnectionInstance();
+            if (con.State == ConnectionState.Closed) con.Open();
+            string sql = "UPDATE device SET "
+                        + "name = @name, "
+                        + "description = @description, "
+                        + "type = @type, "
+                        + "bought_date = @bought_date, "
+                        + "warranty_date = @warranty_date "
+                        + "WHERE id = @id";
+            SqlCommand cmd = new SqlCommand(sql, con);
+            cmd.Parameters.AddWithValue("name", device.name);
+            cmd.Parameters.AddWithValue("description", device.description);
+            cmd.Parameters.AddWithValue("type", device.type);
+            cmd.Parameters.AddWithValue("bought_date", device.boughtDate);
+            cmd.Parameters.AddWithValue("warranty_date", device.warrantyDate);
+            cmd.Parameters.AddWithValue("id", device.id);
+            bool result = cmd.ExecuteNonQuery() > 0;
+            con.Close();
+            return result;
         }
-        public bool UpdateDevice(int id, string field, object value)
+        public bool UpdateDeviceImage(int id, byte[] image)
         {
-            SqlConnection con = null;
-            try
+            SqlConnection con = DBHelper.GetConnectionInstance();
+            if (con.State == ConnectionState.Closed) con.Open();
+            string sql = "UPDATE device SET image = @image WHERE id = @id";
+            SqlCommand cmd = new SqlCommand(sql, con);
+            if (image != null)
             {
-                con = DBHelper.GetConnectionInstance();
-                string sql = "UPDATE device SET " + field +  " = @value WHERE id = @id";
-                SqlCommand cmd = new SqlCommand(sql, con);
-                cmd.Parameters.AddWithValue("value", value);
-                cmd.Parameters.AddWithValue("id", id);
-                return cmd.ExecuteNonQuery() > 0;
+                cmd.Parameters.AddWithValue("image", image);
             }
-            catch (SqlException ex)
+            else 
             {
-                Console.WriteLine(ex);
+                cmd.Parameters.Add("image", SqlDbType.Image).Value = DBNull.Value;
             }
-            finally
-            {
-                if (con != null) con.Close();
-            }
-            return false;
+            cmd.Parameters.AddWithValue("id", id);
+            bool result = cmd.ExecuteNonQuery() > 0;
+            con.Close();
+            return result;
         }
         public DeviceDTO GetDevice(int id)
         {
-            SqlConnection con = null;
-            List<DeviceDTO> list = null;
-            try
+            SqlConnection con = DBHelper.GetConnectionInstance();
+            if (con.State == ConnectionState.Closed) con.Open();
+            string sql = "SELECT name, type, description, image, bought_date, warranty_date, action "
+                        + "FROM device "
+                        + "WHERE id = @id AND status = 1";
+            SqlCommand cmd = new SqlCommand(sql, con);
+            cmd.Parameters.AddWithValue("id", id);
+            SqlDataReader dr = cmd.ExecuteReader(CommandBehavior.CloseConnection);
+            DeviceDTO result = null;
+            if (dr.Read())
             {
-                con = DBHelper.GetConnectionInstance();
-                string sql = "SELECT name, type, description, image_url, bought_date, warranty_date, action "
-                            + "FROM device "
-                            + "WHERE id = @id AND status = 1";
-                SqlCommand cmd = new SqlCommand(sql, con);
-                cmd.Parameters.AddWithValue("id", id);
-                SqlDataReader dr = cmd.ExecuteReader(CommandBehavior.CloseConnection);
-                if (dr.Read())
-                {
-                    string name = dr["name"].ToString();
-                    string type = dr["type"].ToString();
-                    string description = dr["description"].ToString();
-                    string image = dr["image_url"].ToString();
-                    DateTime boughtDate = DateTime.Parse(dr["bought_date"].ToString());
-                    DateTime warrantyDate = DateTime.Parse(dr["warranty_date"].ToString());
-                    bool action = bool.Parse(dr["action"].ToString());
-                    if (list == null) list = new List<DeviceDTO>();
-                    return new DeviceDTO { name = name, type = type, description = description, image = image, boughtDate = boughtDate, warrantyDate = warrantyDate };
-                }
+                string name = dr["name"].ToString();
+                string type = dr["type"].ToString();
+                string description = dr["description"].ToString();
+                DateTime boughtDate = dr.GetDateTime(4);
+                DateTime warrantyDate = dr.GetDateTime(5);
+                bool action = bool.Parse(dr["action"].ToString());
+                result = new DeviceDTO { name = name, type = type, description = description, boughtDate = boughtDate, warrantyDate = warrantyDate, action = action };
             }
-            catch (SqlException ex)
-            {
-                Console.WriteLine(ex);
-            }
-            finally
-            {
-                if (con != null) con.Close();
-            }
-            return null;
+            con.Close();
+            return result;
         }
-        public List<DeviceDTO> GetDevices()
+        public DataTable GetDevices()
         {
-            SqlConnection con = null;
-            List<DeviceDTO> list = null;
-            try
-            {
-                con = DBHelper.GetConnectionInstance();
-                string sql = "SELECT id, name, action FROM device WHERE status = 1";
-                SqlCommand cmd = new SqlCommand(sql, con);
-                SqlDataReader dr = cmd.ExecuteReader(CommandBehavior.CloseConnection);
-                while (dr.Read())
-                {
-                    int id = int.Parse(dr["id"].ToString());
-                    string name = dr["name"].ToString();
-                    bool action = bool.Parse(dr["action"].ToString());
-                    if (list == null) list = new List<DeviceDTO>();
-                    list.Add(new DeviceDTO { id = id, name = name, action = action });
-                }
-            }
-            catch (SqlException ex)
-            {
-                Console.WriteLine(ex);
-            }
-            finally
-            {
-                if (con != null) con.Close();
-            }
+            SqlConnection con = DBHelper.GetConnectionInstance();
+            if (con.State == ConnectionState.Closed) con.Open();
+            string sql = "SELECT id, name, type, description, image, bought_date, warranty_date, action FROM device WHERE status = 1";
+            SqlCommand cmd = new SqlCommand(sql, con);
+            SqlDataAdapter da = new SqlDataAdapter(cmd);
+            DataTable list = new DataTable();
+            da.Fill(list);
+            con.Close();
             return list;
         }
         public List<DeviceDTO> GetDevices(int roomId, string searchValue)
         {
-            SqlConnection con = null;
+            SqlConnection con = DBHelper.GetConnectionInstance();
+            if (con.State == ConnectionState.Closed) con.Close();
+            string sql = "SELECT id, name, action FROM device "
+                        + "WHERE room_id = @roomId AND status = 1 AND name LIKE @name";
+            SqlCommand cmd = new SqlCommand(sql, con);
+            cmd.Parameters.AddWithValue("roomId", roomId);
+            cmd.Parameters.AddWithValue("name", "%" + searchValue + "%");
+            SqlDataReader dr = cmd.ExecuteReader(CommandBehavior.CloseConnection);
             List<DeviceDTO> list = null;
-            try
+            while (dr.Read())
             {
-                con = DBHelper.GetConnectionInstance();
-                string sql = "SELECT id, name, action FROM device "
-                            + "WHERE room_id = @roomId AND status = 1 AND name LIKE @name";
-                SqlCommand cmd = new SqlCommand(sql, con);
-                cmd.Parameters.AddWithValue("roomId", roomId);
-                cmd.Parameters.AddWithValue("name", "%" + searchValue + "%");
-                SqlDataReader dr = cmd.ExecuteReader(CommandBehavior.CloseConnection);
-                while (dr.Read())
-                {
-                    int id = int.Parse(dr["id"].ToString());
-                    string name = dr["name"].ToString();
-                    bool action = bool.Parse(dr["action"].ToString());
-                    if (list == null) list = new List<DeviceDTO>();
-                    list.Add(new DeviceDTO { id = id, name = name, action = action });
-                }
+                int id = int.Parse(dr["id"].ToString());
+                string name = dr["name"].ToString();
+                bool action = bool.Parse(dr["action"].ToString());
+                if (list == null) list = new List<DeviceDTO>();
+                list.Add(new DeviceDTO { id = id, name = name, action = action });
             }
-            catch (SqlException ex)
-            {
-                Console.WriteLine(ex);
-            }
-            finally
-            {
-                if (con != null) con.Close();
-            }
+            con.Close();
             return list;
         }
         public List<DeviceDTO> GetDevices(string searchValue)
         {
-            SqlConnection con = null;
+            SqlConnection con = DBHelper.GetConnectionInstance();
+            if (con.State == ConnectionState.Closed) con.Open();
+            string sql = "SELECT id, name, action FROM device "
+                        + "WHERE status = 1 AND name LIKE @name";
+            SqlCommand cmd = new SqlCommand(sql, con);
+            cmd.Parameters.AddWithValue("name", "%" + searchValue + "%");
+            SqlDataReader dr = cmd.ExecuteReader(CommandBehavior.CloseConnection);
             List<DeviceDTO> list = null;
-            try
+            while (dr.Read())
             {
-                con = DBHelper.GetConnectionInstance();
-                string sql = "SELECT id, name, action FROM device "
-                            + "WHERE status = 1 AND name LIKE @name";
-                SqlCommand cmd = new SqlCommand(sql, con);
-                cmd.Parameters.AddWithValue("name", "%" + searchValue + "%");
-                SqlDataReader dr = cmd.ExecuteReader(CommandBehavior.CloseConnection);
-                while (dr.Read())
-                {
-                    int id = int.Parse(dr["id"].ToString());
-                    string name = dr["name"].ToString();
-                    bool action = bool.Parse(dr["action"].ToString());
-                    if (list == null) list = new List<DeviceDTO>();
-                    list.Add(new DeviceDTO { id = id, name = name, action = action });
-                }
+                int id = int.Parse(dr["id"].ToString());
+                string name = dr["name"].ToString();
+                bool action = bool.Parse(dr["action"].ToString());
+                if (list == null) list = new List<DeviceDTO>();
+                list.Add(new DeviceDTO { id = id, name = name, action = action });
             }
-            catch (SqlException ex)
-            {
-                Console.WriteLine(ex);
-            }
-            finally
-            {
-                if (con != null) con.Close();
-            }
+            con.Close();
             return list;
         }
         public List<DeviceDTO> GetDevices(int roomId)
         {
-            SqlConnection con = null;
+            SqlConnection con = DBHelper.GetConnectionInstance();
+            if (con.State == ConnectionState.Closed) con.Open();
+            string sql = "SELECT id, name FROM device WHERE room_id = @roomId AND status = 1";
+            SqlCommand cmd = new SqlCommand(sql, con);
+            cmd.Parameters.AddWithValue("roomId", roomId);
+            SqlDataReader dr = cmd.ExecuteReader(CommandBehavior.CloseConnection);
             List<DeviceDTO> list = null;
-            try
+            while (dr.Read())
             {
-                con = DBHelper.GetConnectionInstance();
-                string sql = "SELECT id, name FROM device WHERE room_id = @roomId AND status = 1";
-                SqlCommand cmd = new SqlCommand(sql, con);
-                cmd.Parameters.AddWithValue("roomId", roomId);
-                SqlDataReader dr = cmd.ExecuteReader(CommandBehavior.CloseConnection);
-                while (dr.Read())
-                {
-                    int id = int.Parse(dr["id"].ToString());
-                    string name = dr["name"].ToString();
-                    bool action = bool.Parse(dr["action"].ToString());
-                    if (list == null) list = new List<DeviceDTO>();
-                    list.Add(new DeviceDTO { id = id, name = name, action = action });
-                }
+                int id = int.Parse(dr["id"].ToString());
+                string name = dr["name"].ToString();
+                bool action = bool.Parse(dr["action"].ToString());
+                if (list == null) list = new List<DeviceDTO>();
+                list.Add(new DeviceDTO { id = id, name = name, action = action });
             }
-            catch (SqlException ex)
-            {
-                Console.WriteLine(ex);
-            }
-            finally
-            {
-                if (con != null) con.Close();
-            }
+            con.Close();
             return list;
         }
         public List<DeviceDTO> GetDevicesNoneRoom()
         {
-            SqlConnection con = null;
+            SqlConnection con = DBHelper.GetConnectionInstance();
+            if (con.State == ConnectionState.Closed) con.Open();
+            string sql = "SELECT id, name FROM device WHERE room_id IS NULL AND status = 1";
+            SqlCommand cmd = new SqlCommand(sql, con);
+            SqlDataReader dr = cmd.ExecuteReader(CommandBehavior.CloseConnection);
             List<DeviceDTO> list = null;
-            try
+            while (dr.Read())
             {
-                con = DBHelper.GetConnectionInstance();
-                string sql = "SELECT id, name FROM device WHERE room_id IS NULL AND status = 1";
-                SqlCommand cmd = new SqlCommand(sql, con);
-                SqlDataReader dr = cmd.ExecuteReader(CommandBehavior.CloseConnection);
-                while (dr.Read())
-                {
-                    int id = int.Parse(dr["id"].ToString());
-                    string name = dr["name"].ToString();
-                    bool action = bool.Parse(dr["action"].ToString());
-                    if (list == null) list = new List<DeviceDTO>();
-                    list.Add(new DeviceDTO { id = id, name = name, action = action });
-                }
+                int id = int.Parse(dr["id"].ToString());
+                string name = dr["name"].ToString();
+                bool action = bool.Parse(dr["action"].ToString());
+                if (list == null) list = new List<DeviceDTO>();
+                list.Add(new DeviceDTO { id = id, name = name, action = action });
             }
-            catch (SqlException ex)
-            {
-                Console.WriteLine(ex);
-            }
-            finally
-            {
-                if (con != null) con.Close();
-            }
+            con.Close();
             return list;
         }
+        public int GetLastId()
+        {
+            SqlConnection con = DBHelper.GetConnectionInstance();
+            if (con.State == ConnectionState.Closed) con.Open();
+            string sql = "SELECT MAX(id) FROM device";
+            SqlCommand cmd = new SqlCommand(sql, con);
+            SqlDataReader dr = cmd.ExecuteReader(CommandBehavior.CloseConnection);
+            int id = -1;
+            if (dr.Read())
+            {
+                id = dr.GetInt32(0);
+            }
+            con.Close();
+            return id;
+        }
+
+
         /*public Map<Device, Integer> getDevicesByFixedTime(int min, int max)
         {
             SqlConnection con = null;

@@ -1,13 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace DevideManagement.DTO
+namespace DeviceManagement.DTO
 {
     public class AccountDTO
     {
@@ -25,9 +26,9 @@ namespace DevideManagement.DTO
         public string name { get; set; }
         public string type { get; set; }
         public string description { get; set; }
-        public string image { get; set; }
-        public DateTime boughtDate { get; set; }
-        public DateTime warrantyDate { get; set; }
+        public byte[] image { get; set; }
+        public DateTime? boughtDate { get; set; }
+        public DateTime? warrantyDate { get; set; }
         public bool action { get; set; }
         public int roomId { get; set; }
 
