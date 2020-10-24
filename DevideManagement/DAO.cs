@@ -1,4 +1,5 @@
-﻿using DeviceManagement.DTO;
+﻿using DeviceManagement.DAO;
+using DeviceManagement.DTO;
 using DeviceManagement.Utils;
 using System;
 using System.Collections.Generic;
@@ -387,9 +388,8 @@ namespace DeviceManagement.DAO
             {
                 int id = int.Parse(dr["id"].ToString());
                 string name = dr["name"].ToString();
-                bool action = bool.Parse(dr["action"].ToString());
                 if (list == null) list = new List<DeviceDTO>();
-                list.Add(new DeviceDTO { id = id, name = name, action = action });
+                list.Add(new DeviceDTO { id = id, name = name });
             }
             con.Close();
             return list;
@@ -406,9 +406,8 @@ namespace DeviceManagement.DAO
             {
                 int id = int.Parse(dr["id"].ToString());
                 string name = dr["name"].ToString();
-                bool action = bool.Parse(dr["action"].ToString());
                 if (list == null) list = new List<DeviceDTO>();
-                list.Add(new DeviceDTO { id = id, name = name, action = action });
+                list.Add(new DeviceDTO { id = id, name = name });
             }
             con.Close();
             return list;
@@ -429,127 +428,218 @@ namespace DeviceManagement.DAO
             return id;
         }
 
-
-        /*public Map<Device, Integer> getDevicesByFixedTime(int min, int max)
+        public bool SetRoomId(int id, int roomId)
         {
-            SqlConnection con = null;
-            List<DeviceDTO> list = null;
-            try
+            SqlConnection con = DBHelper.GetConnectionInstance();
+            if (con.State == ConnectionState.Closed) con.Open();
+            string sql = "UPDATE device SET room_id = @roomId WHERE id = @id";
+            SqlCommand cmd = new SqlCommand(sql, con);
+            if (roomId != -1) cmd.Parameters.AddWithValue("roomId", roomId);
+            if (roomId == -1) cmd.Parameters.AddWithValue("roomId", DBNull.Value);
+            cmd.Parameters.AddWithValue("id", id);
+            bool result = cmd.ExecuteNonQuery() > 0;
+            con.Close();
+            return result;
+        }
+
+
+        public List<dynamic> GetDevicesByFixedTime(int min, int max)
+        {
+            SqlConnection con = DBHelper.GetConnectionInstance();
+            if (con.State == ConnectionState.Closed) con.Open();
+            string sql = "SELECT d.id, d.name, r.times " +
+                    "FROM (" +
+                    "	SELECT device_id, COUNT(*) AS times" +
+                    "	FROM request" +
+                    "	GROUP BY device_id" +
+                    "	HAVING COUNT(*) >= @min AND COUNT(*) <= @max" +
+                    ") r JOIN device d ON r.device_id = d.id AND d.status = 1";
+            SqlCommand cmd = new SqlCommand(sql, con);
+            cmd.Parameters.AddWithValue("min", min);
+            cmd.Parameters.AddWithValue("max", max);
+            SqlDataReader dr = cmd.ExecuteReader();
+            List<dynamic> result = null;
+            while (dr.Read())
             {
-                con = DBHelper.getConnection();
-                string sql = "SELECT id, name FROM device WHERE room_id IS NULL AND status = 1";
-                SqlCommand cmd = new SqlCommand(sql, con);
-                SqlDataReader dr = cmd.ExecuteReader(CommandBehavior.CloseConnection);
-                while (dr.Read())
-                {
-                    int id = int.Parse(dr["id"].ToString());
-                    string name = dr["name"].ToString();
-                    bool action = bool.Parse(dr["action"].ToString());
-                    if (list == null) list = new List<DeviceDTO>();
-                    list.Add(new DeviceDTO(id, name, action));
-                }
+                int id = dr.GetInt32(0);
+                string name = dr.GetString(1);
+                int time = dr.GetInt32(2);
+                if (result == null) result = new List<dynamic>();
+                result.Add(new { id = id, name = name, fixedTime = time });
             }
-            catch (SqlException ex)
+            con.Close();
+            return result;
+        }
+        public List<dynamic> GetDevicesByStatus(bool status, string startDate, string endDate)
+        {
+            SqlConnection con = DBHelper.GetConnectionInstance();
+            if (con.State == ConnectionState.Closed) con.Open();
+            string temp = status ? "NOT" : "";
+            string sql = "SELECT id, name "
+                    + "FROM device "
+                    + "WHERE id " + temp + " IN ("
+                    + "    SELECT device_id "
+                    + "    FROM request "
+                    + "    WHERE (request_date >= @startDate AND request_date <= @endDate) "
+                    + "    OR (end_date >= @startDate AND end_date <= @endDate) "
+                    + "    OR (request_date <= @startDate AND end_date >= @endDate)"
+                    + ") AND status = 1";
+            SqlCommand cmd = new SqlCommand(sql, con);
+            cmd.Parameters.AddWithValue("startDate", startDate);
+            cmd.Parameters.AddWithValue("endDate", endDate);
+            SqlDataReader dr = cmd.ExecuteReader();
+            List<dynamic> result = null;
+            while (dr.Read())
             {
-                Console.WriteLine(ex);
+                int id = dr.GetInt32(0);
+                string name = dr.GetString(1);
+                if (result == null) result = new List<dynamic>();
+                result.Add(new { id = id, name = name });
             }
-            finally
-            {
-                if (con != null) con.Close();
-            }
-            return list;
-        }*/
+            con.Close();
+            return result;
+        }
     }
-}
+
 
     public class RoomDAO
     {
         public bool AddRoom(string roomName)
         {
-            SqlConnection con = null;
-            try
-            {
-                con = DBHelper.GetConnectionInstance();
-                string sql = "INSERT INTO room(name) VALUES (@roomName)";
-                SqlCommand cmd = new SqlCommand(sql, con);
-                cmd.Parameters.AddWithValue("roomName", roomName);
-                return cmd.ExecuteNonQuery() > 0;
-            }
-            catch (SqlException ex)
-            {
-                Console.WriteLine(ex);
-            }
-            finally
-            {
-                if (con != null) con.Close();
-            }
-            return false;
+            SqlConnection con = DBHelper.GetConnectionInstance();
+            if (con.State == ConnectionState.Closed) con.Open();
+            string sql = "INSERT INTO room(name) VALUES (@roomName)";
+            SqlCommand cmd = new SqlCommand(sql, con);
+            cmd.Parameters.AddWithValue("roomName", roomName);
+            bool result = cmd.ExecuteNonQuery() > 0;
+            con.Close();
+            return result;
         }
         public bool DeleteRoom(int id)
         {
-            SqlConnection con = null;
-            try
-            {
-                con = DBHelper.GetConnectionInstance();
-                string sql = "DELETE FROM room WHERE id = @id";
-                SqlCommand cmd = new SqlCommand(sql, con);
-                cmd.Parameters.AddWithValue("id", id);
-                return cmd.ExecuteNonQuery() > 0;
-            }
-            catch (SqlException ex)
-            {
-                Console.WriteLine(ex);
-            }
-            finally
-            {
-                if (con != null) con.Close();
-            }
-            return false;
+            SqlConnection con = DBHelper.GetConnectionInstance();
+            if (con.State == ConnectionState.Closed) con.Open();
+            string sql = "DELETE FROM room WHERE id = @id";
+            SqlCommand cmd = new SqlCommand(sql, con);
+            cmd.Parameters.AddWithValue("id", id);
+            bool result = cmd.ExecuteNonQuery() > 0;
+            con.Close();
+            return result;
         }
         public bool UpdateRoom(int id, string roomName)
         {
-            SqlConnection con = null;
-            try
-            {
-                con = DBHelper.GetConnectionInstance();
-                string sql = "UPDATE room SET name = @roomName WHERE id = @id";
-                SqlCommand cmd = new SqlCommand(sql, con);
-                cmd.Parameters.AddWithValue("roomName", roomName);
-                cmd.Parameters.AddWithValue("id", id);
-                return cmd.ExecuteNonQuery() > 0;
-            }
-            catch (SqlException ex)
-            {
-                Console.WriteLine(ex);
-            }
-            finally
-            {
-                if (con != null) con.Close();
-            }
-            return false;
-        }
-    /*public List<RoomDAO> GetRooms()
-    {
-        SqlConnection con = null;
-        try
-        {
-            con = DBHelper.GetConnectionInstance();
+            SqlConnection con = DBHelper.GetConnectionInstance();
+            if (con.State == ConnectionState.Closed) con.Open();
             string sql = "UPDATE room SET name = @roomName WHERE id = @id";
             SqlCommand cmd = new SqlCommand(sql, con);
             cmd.Parameters.AddWithValue("roomName", roomName);
             cmd.Parameters.AddWithValue("id", id);
-            return cmd.ExecuteNonQuery() > 0;
+            bool result = cmd.ExecuteNonQuery() > 0;
+            con.Close();
+            return result;
         }
-        catch (SqlException ex)
+    public List<RoomDTO> GetRooms()
+    {
+        SqlConnection con = DBHelper.GetConnectionInstance();
+        if (con.State == ConnectionState.Closed) con.Open();
+        string sql = "select id, name, ISNULL(num_user, 0), ISNULL(num_device, 0) from room r " +
+                    "left join( "+
+                    "select room_id, count(*) as num_user "+
+                    "from account " +
+                    "where status = 1 " +
+                    "group by room_id " +
+                    ") a on r.id = a.room_id " +
+                    "left join( " +
+                    "select room_id, count(*) as num_device "+
+                    "from device "+
+                    "where status = 1 " +
+                    "group by room_id " +
+                    ") d on r.id = d.room_id";
+        SqlCommand cmd = new SqlCommand(sql, con);
+        SqlDataReader dr = cmd.ExecuteReader();
+        List<RoomDTO> result = null;
+        while (dr.Read())
         {
-            Console.WriteLine(ex);
+            int id = dr.GetInt32(0);
+            string name = dr.GetString(1);
+            int numberAccount = dr.GetInt32(2);
+            int numberDevide = dr.GetInt32(3);
+            if (result == null) result = new List<RoomDTO>();
+            result.Add(new RoomDTO() { id = id, name = name, numberAccount = numberAccount, numberDevide = numberDevide });
         }
-        finally
-        {
-            if (con != null) con.Close();
-        }
-        return false;
+        con.Close();
+        return result;
     }
-}*/
+
+}
+
+    public class RequestDAO
+    {
+        public bool AddRequest(int userId, string reqDes, int deviceId)
+        {
+            SqlConnection con = DBHelper.GetConnectionInstance();
+            if (con.State == ConnectionState.Closed) con.Open();
+            string sql = "INSERT INTO request (user_id, request_date, request_description, request_status, device_id) " +
+                "VALUES (@userId, @reqDate, @reqDes, 'SENT', @deviceId)";
+            SqlCommand cmd = new SqlCommand(sql, con);
+            cmd.Parameters.AddWithValue("userId", userId);
+            cmd.Parameters.AddWithValue("reqDate", DateTime.Now.ToString());
+            cmd.Parameters.AddWithValue("reqDes", reqDes);
+            cmd.Parameters.AddWithValue("deviceId", deviceId);
+            bool result = cmd.ExecuteNonQuery() > 0;
+            con.Close();
+            return result;
+        }
+
+        public DataTable GetRequests(int deviceId)
+        {
+            SqlConnection con = DBHelper.GetConnectionInstance();
+            if (con.State == ConnectionState.Closed) con.Open();
+            string sql = "SELECT id, user_id, worker_id, request_status, request_date, request_description, start_date, end_date, takeover_description FROM request WHERE device_id = @deviceId";
+            SqlCommand cmd = new SqlCommand(sql, con);
+            cmd.Parameters.AddWithValue("deviceId", deviceId);
+            SqlDataAdapter da = new SqlDataAdapter(cmd);
+            DataTable result = new DataTable();
+            da.Fill(result);
+            con.Close();
+            return result;
+        }
+    
+        public bool UpdateStart(int id, int workerId)
+        {
+            SqlConnection con = DBHelper.GetConnectionInstance();
+            if (con.State == ConnectionState.Closed) con.Open();
+            string sql = "UPDATE request SET "
+                + "request_status = 'STARTED', "
+                + "start_date = @start_date, "
+                + "worker_id = @worker_id "
+                + "WHERE id = @id";
+            SqlCommand cmd = new SqlCommand(sql, con);
+            cmd.Parameters.AddWithValue("start_date", DateTime.Now);
+            cmd.Parameters.AddWithValue("worker_id", workerId);
+            cmd.Parameters.AddWithValue("id", id);
+            bool result = cmd.ExecuteNonQuery() > 0;
+            con.Close();
+            return result;
+        }
+    
+        public bool UpdateEnd(int id, string takeDes)
+        {
+            SqlConnection con = DBHelper.GetConnectionInstance();
+            if (con.State == ConnectionState.Closed) con.Open();
+            string sql = "UPDATE request SET "
+                + "request_status = 'FINISHED', "
+                + "end_date = @end_date, "
+                + "takeover_description = @takeover_description "
+                + "WHERE id = @id";
+            SqlCommand cmd = new SqlCommand(sql, con);
+            cmd.Parameters.AddWithValue("end_date", DateTime.Now);
+            cmd.Parameters.AddWithValue("takeover_description", takeDes);
+            cmd.Parameters.AddWithValue("id", id);
+            bool result = cmd.ExecuteNonQuery() > 0;
+            con.Close();
+            return result;
+        }
+    }
 
 }

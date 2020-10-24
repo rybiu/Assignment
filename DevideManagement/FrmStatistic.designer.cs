@@ -28,53 +28,69 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.panel2 = new System.Windows.Forms.Panel();
+            this.dgvDevice = new System.Windows.Forms.DataGridView();
+            this.plFixedTime = new System.Windows.Forms.Panel();
+            this.btnFilterFixedTime = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
-            this.btnGo = new System.Windows.Forms.Button();
-            this.cboStatus = new System.Windows.Forms.ComboBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.lblStatus = new System.Windows.Forms.Label();
-            this.lblTo = new System.Windows.Forms.Label();
-            this.lblFrom = new System.Windows.Forms.Label();
+            this.txtMaxTime = new System.Windows.Forms.TextBox();
+            this.txtMinTime = new System.Windows.Forms.TextBox();
+            this.lbTo = new System.Windows.Forms.Label();
+            this.lbFrom = new System.Windows.Forms.Label();
             this.rdByStatus = new System.Windows.Forms.RadioButton();
             this.rdByFixTime = new System.Windows.Forms.RadioButton();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.panel1.SuspendLayout();
-            this.panel2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            this.plStatus = new System.Windows.Forms.Panel();
+            this.btnFilterStatus = new System.Windows.Forms.Button();
+            this.label2 = new System.Windows.Forms.Label();
+            this.cbStatus = new System.Windows.Forms.ComboBox();
+            this.txtToDate = new System.Windows.Forms.TextBox();
+            this.txtFromDate = new System.Windows.Forms.TextBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvDevice)).BeginInit();
+            this.plFixedTime.SuspendLayout();
+            this.plStatus.SuspendLayout();
             this.SuspendLayout();
             // 
-            // panel1
+            // dgvDevice
             // 
-            this.panel1.Controls.Add(this.panel2);
-            this.panel1.Controls.Add(this.rdByStatus);
-            this.panel1.Controls.Add(this.rdByFixTime);
-            this.panel1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.panel1.Location = new System.Drawing.Point(0, 235);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(734, 300);
-            this.panel1.TabIndex = 0;
+            this.dgvDevice.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvDevice.Location = new System.Drawing.Point(60, 29);
+            this.dgvDevice.Margin = new System.Windows.Forms.Padding(4);
+            this.dgvDevice.Name = "dgvDevice";
+            this.dgvDevice.ReadOnly = true;
+            this.dgvDevice.RowHeadersWidth = 51;
+            this.dgvDevice.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgvDevice.Size = new System.Drawing.Size(661, 255);
+            this.dgvDevice.TabIndex = 0;
             // 
-            // panel2
+            // plFixedTime
             // 
-            this.panel2.Controls.Add(this.label1);
-            this.panel2.Controls.Add(this.btnGo);
-            this.panel2.Controls.Add(this.cboStatus);
-            this.panel2.Controls.Add(this.textBox2);
-            this.panel2.Controls.Add(this.textBox1);
-            this.panel2.Controls.Add(this.lblStatus);
-            this.panel2.Controls.Add(this.lblTo);
-            this.panel2.Controls.Add(this.lblFrom);
-            this.panel2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.panel2.Location = new System.Drawing.Point(315, 45);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(381, 224);
-            this.panel2.TabIndex = 2;
+            this.plFixedTime.Controls.Add(this.btnFilterFixedTime);
+            this.plFixedTime.Controls.Add(this.label1);
+            this.plFixedTime.Controls.Add(this.txtMaxTime);
+            this.plFixedTime.Controls.Add(this.txtMinTime);
+            this.plFixedTime.Controls.Add(this.lbTo);
+            this.plFixedTime.Controls.Add(this.lbFrom);
+            this.plFixedTime.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.plFixedTime.Location = new System.Drawing.Point(287, 336);
+            this.plFixedTime.Name = "plFixedTime";
+            this.plFixedTime.Size = new System.Drawing.Size(434, 224);
+            this.plFixedTime.TabIndex = 5;
+            // 
+            // btnFilterFixedTime
+            // 
+            this.btnFilterFixedTime.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(47)))), ((int)(((byte)(65)))));
+            this.btnFilterFixedTime.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnFilterFixedTime.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.btnFilterFixedTime.Location = new System.Drawing.Point(301, 143);
+            this.btnFilterFixedTime.Margin = new System.Windows.Forms.Padding(4);
+            this.btnFilterFixedTime.Name = "btnFilterFixedTime";
+            this.btnFilterFixedTime.Size = new System.Drawing.Size(109, 47);
+            this.btnFilterFixedTime.TabIndex = 8;
+            this.btnFilterFixedTime.Text = "Go";
+            this.btnFilterFixedTime.UseVisualStyleBackColor = false;
+            this.btnFilterFixedTime.Click += new System.EventHandler(this.btnFilterFixedTime_Click);
             // 
             // label1
             // 
@@ -86,164 +102,213 @@
             this.label1.TabIndex = 7;
             this.label1.Text = "Parameter";
             // 
-            // btnGo
+            // txtMaxTime
             // 
-            this.btnGo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.btnGo.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.btnGo.Location = new System.Drawing.Point(281, 155);
-            this.btnGo.Name = "btnGo";
-            this.btnGo.Size = new System.Drawing.Size(75, 33);
-            this.btnGo.TabIndex = 6;
-            this.btnGo.Text = "GO";
-            this.btnGo.UseVisualStyleBackColor = false;
+            this.txtMaxTime.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtMaxTime.Location = new System.Drawing.Point(151, 100);
+            this.txtMaxTime.Name = "txtMaxTime";
+            this.txtMaxTime.Size = new System.Drawing.Size(259, 27);
+            this.txtMaxTime.TabIndex = 4;
             // 
-            // cboStatus
+            // txtMinTime
             // 
-            this.cboStatus.FormattingEnabled = true;
-            this.cboStatus.Items.AddRange(new object[] {
-            "Active",
-            "Broken"});
-            this.cboStatus.Location = new System.Drawing.Point(151, 155);
-            this.cboStatus.Name = "cboStatus";
-            this.cboStatus.Size = new System.Drawing.Size(121, 33);
-            this.cboStatus.TabIndex = 5;
+            this.txtMinTime.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtMinTime.Location = new System.Drawing.Point(151, 56);
+            this.txtMinTime.Name = "txtMinTime";
+            this.txtMinTime.Size = new System.Drawing.Size(259, 27);
+            this.txtMinTime.TabIndex = 3;
             // 
-            // textBox2
+            // lbTo
             // 
-            this.textBox2.Location = new System.Drawing.Point(151, 100);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(205, 30);
-            this.textBox2.TabIndex = 4;
+            this.lbTo.AutoSize = true;
+            this.lbTo.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbTo.Location = new System.Drawing.Point(30, 103);
+            this.lbTo.Name = "lbTo";
+            this.lbTo.Size = new System.Drawing.Size(82, 20);
+            this.lbTo.TabIndex = 1;
+            this.lbTo.Text = "Max Time";
             // 
-            // textBox1
+            // lbFrom
             // 
-            this.textBox1.Location = new System.Drawing.Point(151, 56);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(205, 30);
-            this.textBox1.TabIndex = 3;
-            // 
-            // lblStatus
-            // 
-            this.lblStatus.AutoSize = true;
-            this.lblStatus.Location = new System.Drawing.Point(30, 158);
-            this.lblStatus.Name = "lblStatus";
-            this.lblStatus.Size = new System.Drawing.Size(68, 25);
-            this.lblStatus.TabIndex = 2;
-            this.lblStatus.Text = "Status";
-            // 
-            // lblTo
-            // 
-            this.lblTo.AutoSize = true;
-            this.lblTo.Location = new System.Drawing.Point(30, 103);
-            this.lblTo.Name = "lblTo";
-            this.lblTo.Size = new System.Drawing.Size(99, 25);
-            this.lblTo.TabIndex = 1;
-            this.lblTo.Text = "Max Time";
-            // 
-            // lblFrom
-            // 
-            this.lblFrom.AutoSize = true;
-            this.lblFrom.Location = new System.Drawing.Point(30, 59);
-            this.lblFrom.Name = "lblFrom";
-            this.lblFrom.Size = new System.Drawing.Size(93, 25);
-            this.lblFrom.TabIndex = 0;
-            this.lblFrom.Text = "Min Time";
+            this.lbFrom.AutoSize = true;
+            this.lbFrom.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbFrom.Location = new System.Drawing.Point(30, 59);
+            this.lbFrom.Name = "lbFrom";
+            this.lbFrom.Size = new System.Drawing.Size(78, 20);
+            this.lbFrom.TabIndex = 0;
+            this.lbFrom.Text = "Min Time";
             // 
             // rdByStatus
             // 
             this.rdByStatus.AutoSize = true;
-            this.rdByStatus.Location = new System.Drawing.Point(35, 105);
+            this.rdByStatus.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rdByStatus.Location = new System.Drawing.Point(60, 396);
             this.rdByStatus.Name = "rdByStatus";
-            this.rdByStatus.Size = new System.Drawing.Size(117, 29);
-            this.rdByStatus.TabIndex = 1;
+            this.rdByStatus.Size = new System.Drawing.Size(103, 24);
+            this.rdByStatus.TabIndex = 4;
             this.rdByStatus.Text = "By Status";
             this.rdByStatus.UseVisualStyleBackColor = true;
+            this.rdByStatus.CheckedChanged += new System.EventHandler(this.rdByStatus_CheckedChanged);
             // 
             // rdByFixTime
             // 
             this.rdByFixTime.AutoSize = true;
             this.rdByFixTime.Checked = true;
-            this.rdByFixTime.Location = new System.Drawing.Point(35, 56);
+            this.rdByFixTime.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rdByFixTime.Location = new System.Drawing.Point(60, 347);
             this.rdByFixTime.Name = "rdByFixTime";
-            this.rdByFixTime.Size = new System.Drawing.Size(158, 29);
-            this.rdByFixTime.TabIndex = 0;
+            this.rdByFixTime.Size = new System.Drawing.Size(137, 24);
+            this.rdByFixTime.TabIndex = 3;
             this.rdByFixTime.TabStop = true;
             this.rdByFixTime.Text = "By Fixed Time";
             this.rdByFixTime.UseVisualStyleBackColor = true;
+            this.rdByFixTime.CheckedChanged += new System.EventHandler(this.rdByFixTime_CheckedChanged);
             // 
-            // dataGridView1
+            // plStatus
             // 
-            this.dataGridView1.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.ID,
-            this.Column1,
-            this.Column2});
-            this.dataGridView1.Location = new System.Drawing.Point(35, 23);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.RowHeadersWidth = 51;
-            this.dataGridView1.RowTemplate.Height = 24;
-            this.dataGridView1.Size = new System.Drawing.Size(661, 175);
-            this.dataGridView1.TabIndex = 1;
+            this.plStatus.Controls.Add(this.btnFilterStatus);
+            this.plStatus.Controls.Add(this.label2);
+            this.plStatus.Controls.Add(this.cbStatus);
+            this.plStatus.Controls.Add(this.txtToDate);
+            this.plStatus.Controls.Add(this.txtFromDate);
+            this.plStatus.Controls.Add(this.label3);
+            this.plStatus.Controls.Add(this.label4);
+            this.plStatus.Controls.Add(this.label5);
+            this.plStatus.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.plStatus.Location = new System.Drawing.Point(287, 336);
+            this.plStatus.Name = "plStatus";
+            this.plStatus.Size = new System.Drawing.Size(434, 224);
+            this.plStatus.TabIndex = 9;
+            this.plStatus.Visible = false;
             // 
-            // ID
+            // btnFilterStatus
             // 
-            this.ID.HeaderText = "ID";
-            this.ID.MinimumWidth = 6;
-            this.ID.Name = "ID";
-            this.ID.Width = 120;
+            this.btnFilterStatus.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(47)))), ((int)(((byte)(65)))));
+            this.btnFilterStatus.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnFilterStatus.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.btnFilterStatus.Location = new System.Drawing.Point(301, 143);
+            this.btnFilterStatus.Margin = new System.Windows.Forms.Padding(4);
+            this.btnFilterStatus.Name = "btnFilterStatus";
+            this.btnFilterStatus.Size = new System.Drawing.Size(109, 47);
+            this.btnFilterStatus.TabIndex = 8;
+            this.btnFilterStatus.Text = "Go";
+            this.btnFilterStatus.UseVisualStyleBackColor = false;
+            this.btnFilterStatus.Click += new System.EventHandler(this.btnFilterStatus_Click);
             // 
-            // Column1
+            // label2
             // 
-            this.Column1.HeaderText = "Name";
-            this.Column1.MinimumWidth = 6;
-            this.Column1.Name = "Column1";
-            this.Column1.Width = 120;
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(3, 13);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(125, 29);
+            this.label2.TabIndex = 7;
+            this.label2.Text = "Parameter";
             // 
-            // Column2
+            // cbStatus
             // 
-            this.Column2.HeaderText = "Fixed Time";
-            this.Column2.MinimumWidth = 6;
-            this.Column2.Name = "Column2";
-            this.Column2.Width = 120;
+            this.cbStatus.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cbStatus.FormattingEnabled = true;
+            this.cbStatus.Items.AddRange(new object[] {
+            "ACTIVE",
+            "BROKEN"});
+            this.cbStatus.Location = new System.Drawing.Point(151, 155);
+            this.cbStatus.Name = "cbStatus";
+            this.cbStatus.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.cbStatus.Size = new System.Drawing.Size(121, 28);
+            this.cbStatus.TabIndex = 5;
+            this.cbStatus.Text = "ACTIVE";
+            // 
+            // txtToDate
+            // 
+            this.txtToDate.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtToDate.Location = new System.Drawing.Point(151, 100);
+            this.txtToDate.Name = "txtToDate";
+            this.txtToDate.Size = new System.Drawing.Size(259, 27);
+            this.txtToDate.TabIndex = 4;
+            // 
+            // txtFromDate
+            // 
+            this.txtFromDate.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtFromDate.Location = new System.Drawing.Point(151, 56);
+            this.txtFromDate.Name = "txtFromDate";
+            this.txtFromDate.Size = new System.Drawing.Size(259, 27);
+            this.txtFromDate.TabIndex = 3;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Location = new System.Drawing.Point(30, 158);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(57, 20);
+            this.label3.TabIndex = 2;
+            this.label3.Text = "Status";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.Location = new System.Drawing.Point(30, 103);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(69, 20);
+            this.label4.TabIndex = 1;
+            this.label4.Text = "To Date";
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.Location = new System.Drawing.Point(30, 59);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(89, 20);
+            this.label5.TabIndex = 0;
+            this.label5.Text = "From Date";
             // 
             // FrmStatistic
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.PowderBlue;
-            this.ClientSize = new System.Drawing.Size(733, 534);
-            this.Controls.Add(this.dataGridView1);
-            this.Controls.Add(this.panel1);
+            this.ClientSize = new System.Drawing.Size(755, 600);
+            this.Controls.Add(this.plStatus);
+            this.Controls.Add(this.plFixedTime);
+            this.Controls.Add(this.rdByStatus);
+            this.Controls.Add(this.rdByFixTime);
+            this.Controls.Add(this.dgvDevice);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "FrmStatistic";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "FrmStatistic";
-            this.panel1.ResumeLayout(false);
-            this.panel1.PerformLayout();
-            this.panel2.ResumeLayout(false);
-            this.panel2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvDevice)).EndInit();
+            this.plFixedTime.ResumeLayout(false);
+            this.plFixedTime.PerformLayout();
+            this.plStatus.ResumeLayout(false);
+            this.plStatus.PerformLayout();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
         #endregion
-
-        private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.DataGridView dgvDevice;
+        private System.Windows.Forms.Panel plFixedTime;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Button btnGo;
-        private System.Windows.Forms.ComboBox cboStatus;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.Label lblStatus;
-        private System.Windows.Forms.Label lblTo;
-        private System.Windows.Forms.Label lblFrom;
+        private System.Windows.Forms.TextBox txtMaxTime;
+        private System.Windows.Forms.TextBox txtMinTime;
+        private System.Windows.Forms.Label lbTo;
+        private System.Windows.Forms.Label lbFrom;
         private System.Windows.Forms.RadioButton rdByStatus;
         private System.Windows.Forms.RadioButton rdByFixTime;
-        private System.Windows.Forms.DataGridView dataGridView1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ID;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
+        private System.Windows.Forms.Button btnFilterFixedTime;
+        private System.Windows.Forms.Panel plStatus;
+        private System.Windows.Forms.Button btnFilterStatus;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.ComboBox cbStatus;
+        private System.Windows.Forms.TextBox txtToDate;
+        private System.Windows.Forms.TextBox txtFromDate;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label label5;
     }
 }

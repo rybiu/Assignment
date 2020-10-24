@@ -73,17 +73,10 @@ namespace DeviceManagement.DTO
     public class RoomDTO
     {
         public int id { get; set; }
-        public int name { get; set; }
-        public int numberUser { get; set; }
+        public string name { get; set; }
+        public int numberAccount { get; set; }
         public int numberDevide { get; set; }
 
-        public RoomDTO(int id, int name, int numberUser, int numberDevide)
-        {
-            this.id = id;
-            this.name = name;
-            this.numberUser = numberUser;
-            this.numberDevide = numberDevide;
-        }
     }
 
 }
