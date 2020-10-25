@@ -21,19 +21,7 @@ namespace DeviceManagement
             accountDTO = account;
             lbRole.Text = account.role.ToString().ToUpper();
             lbUsername.Text = account.username.ToUpper();
-            /* MenuItem itemHome = new MenuItem("Home");
-            itemHome.Dock = DockStyle.Fill;
-            //pnlHome.Controls.Add(frmUser);
-            //frmUser.Dock = DockStyle.Fill;
-            //frmUser.Show();
-            itemHome.Show();
-            MenuItem itemUser = new MenuItem("User");
-            itemUser.Show();
-            itemUser.Dock = DockStyle.Fill;
-            this.panelEdge.Controls.Add(itemHome);
-            this.panelEdge.Controls.Add(itemUser);
-            //this.panelEdge.Controls.Add(itemHome);
-                */
+            LoadMenu();
         }
 
         
@@ -197,14 +185,36 @@ namespace DeviceManagement
         private void ckbByFixTime_CheckedChanged(object sender, EventArgs e)
         {
 
-            //ckbByStatus.Checked = false;
-            //pnlByFixedTime.BringToFront();
         }
 
         private void ckbByStatus_CheckedChanged(object sender, EventArgs e)
         {
-            //ckbByFixTime.Checked = false;
-            //pnlByStatus.BringToFront();
+
+        }
+        
+        private void LoadMenu()
+        {
+            if (this.accountDTO.role == AccountDTO.ROLE.ADMIN)
+            {
+
+            }
+            if (this.accountDTO.role == AccountDTO.ROLE.USER)
+            {
+                lblStatistic.Visible = false;
+                lblWorker.Visible = false;
+                lblRoom.Visible = false;
+                lblUser.Visible = false;
+                lblDevice.Location = lblUser.Location;
+            }
+            if (this.accountDTO.role == AccountDTO.ROLE.WORKER)
+            {
+                lblUser.Visible = false;
+                lblWorker.Visible = false;
+                lblStatistic.Visible = false;
+                lblUser.Visible = false;
+                lblDevice.Location = lblUser.Location;
+                lblRoom.Location = lblWorker.Location;
+            }
         }
 
         private void btnNewUser_Click(object sender, EventArgs e)
