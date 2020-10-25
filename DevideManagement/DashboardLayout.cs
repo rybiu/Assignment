@@ -21,10 +21,33 @@ namespace DeviceManagement
             accountDTO = account;
             lbRole.Text = account.role.ToString().ToUpper();
             lbUsername.Text = account.username.ToUpper();
-            
+            LoadMenu();
         }
 
-        
+        private void LoadMenu()
+        {
+            if (this.accountDTO.role == AccountDTO.ROLE.ADMIN)
+            {
+
+            }
+            if (this.accountDTO.role == AccountDTO.ROLE.USER)
+            {
+                lblStatistic.Visible = false;
+                lblWorker.Visible = false;
+                lblRoom.Visible = false;
+                lblUser.Visible = false;
+                lblDevice.Location = lblUser.Location;
+            }
+            if (this.accountDTO.role == AccountDTO.ROLE.WORKER)
+            {
+                lblUser.Visible = false;
+                lblWorker.Visible = false;
+                lblStatistic.Visible = false;
+                lblUser.Visible = false;
+                lblDevice.Location = lblUser.Location;
+                lblRoom.Location = lblWorker.Location;
+            }
+        }
 
         private void lblHome_Click(object sender, EventArgs e)
         {
