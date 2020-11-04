@@ -16,7 +16,7 @@ namespace DeviceManagement
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            new frmLogin().Show();
+            new FormLogin().Show();
             Application.Run();
         }
     }
