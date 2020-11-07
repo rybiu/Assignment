@@ -89,8 +89,8 @@
             // lbRoomName
             // 
             this.lbRoomName.AutoSize = true;
-            this.lbRoomName.ForeColor = System.Drawing.Color.DarkSlateGray;
-            this.lbRoomName.Location = new System.Drawing.Point(365, 227);
+            this.lbRoomName.ForeColor = System.Drawing.Color.PowderBlue;
+            this.lbRoomName.Location = new System.Drawing.Point(369, 235);
             this.lbRoomName.Name = "lbRoomName";
             this.lbRoomName.Size = new System.Drawing.Size(46, 17);
             this.lbRoomName.TabIndex = 60;
@@ -99,8 +99,8 @@
             // lbRoomId
             // 
             this.lbRoomId.AutoSize = true;
-            this.lbRoomId.ForeColor = System.Drawing.Color.DarkSlateGray;
-            this.lbRoomId.Location = new System.Drawing.Point(246, 227);
+            this.lbRoomId.ForeColor = System.Drawing.Color.PowderBlue;
+            this.lbRoomId.Location = new System.Drawing.Point(274, 235);
             this.lbRoomId.Name = "lbRoomId";
             this.lbRoomId.Size = new System.Drawing.Size(16, 17);
             this.lbRoomId.TabIndex = 59;

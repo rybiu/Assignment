@@ -99,6 +99,7 @@
             // lbRequestStatus
             // 
             this.lbRequestStatus.AutoSize = true;
+            this.lbRequestStatus.ForeColor = System.Drawing.Color.PowderBlue;
             this.lbRequestStatus.Location = new System.Drawing.Point(686, 296);
             this.lbRequestStatus.Name = "lbRequestStatus";
             this.lbRequestStatus.Size = new System.Drawing.Size(48, 17);

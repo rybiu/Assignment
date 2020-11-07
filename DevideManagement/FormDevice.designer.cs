@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormDevice));
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
@@ -61,7 +60,6 @@
             this.btnPrePage = new System.Windows.Forms.Button();
             this.btnNew = new System.Windows.Forms.Button();
             this.dgvDevice = new System.Windows.Forms.DataGridView();
-            this.ttDevide = new System.Windows.Forms.ToolTip(this.components);
             this.btnSearch = new System.Windows.Forms.Label();
             this.txtSearch = new System.Windows.Forms.TextBox();
             this.plMain.SuspendLayout();
@@ -125,7 +123,7 @@
             // 
             this.lbWarrantyDate.AutoSize = true;
             this.lbWarrantyDate.BackColor = System.Drawing.Color.PowderBlue;
-            this.lbWarrantyDate.ForeColor = System.Drawing.Color.DarkSlateGray;
+            this.lbWarrantyDate.ForeColor = System.Drawing.Color.PowderBlue;
             this.lbWarrantyDate.Location = new System.Drawing.Point(652, 317);
             this.lbWarrantyDate.Name = "lbWarrantyDate";
             this.lbWarrantyDate.Size = new System.Drawing.Size(96, 17);
@@ -137,7 +135,7 @@
             // 
             this.lbBoughtDate.AutoSize = true;
             this.lbBoughtDate.BackColor = System.Drawing.Color.PowderBlue;
-            this.lbBoughtDate.ForeColor = System.Drawing.Color.DarkSlateGray;
+            this.lbBoughtDate.ForeColor = System.Drawing.Color.PowderBlue;
             this.lbBoughtDate.Location = new System.Drawing.Point(554, 317);
             this.lbBoughtDate.Name = "lbBoughtDate";
             this.lbBoughtDate.Size = new System.Drawing.Size(83, 17);
@@ -149,7 +147,7 @@
             // 
             this.lbStatus.AutoSize = true;
             this.lbStatus.BackColor = System.Drawing.Color.PowderBlue;
-            this.lbStatus.ForeColor = System.Drawing.Color.DarkSlateGray;
+            this.lbStatus.ForeColor = System.Drawing.Color.PowderBlue;
             this.lbStatus.Location = new System.Drawing.Point(445, 317);
             this.lbStatus.Name = "lbStatus";
             this.lbStatus.Size = new System.Drawing.Size(85, 17);
@@ -218,7 +216,6 @@
             this.txtDeviceDescription.Name = "txtDeviceDescription";
             this.txtDeviceDescription.Size = new System.Drawing.Size(386, 72);
             this.txtDeviceDescription.TabIndex = 79;
-            this.ttDevide.SetToolTip(this.txtDeviceDescription, "Input device description");
             // 
             // lbStatusActive
             // 
@@ -306,7 +303,6 @@
             this.btnChooseImage.Size = new System.Drawing.Size(170, 43);
             this.btnChooseImage.TabIndex = 71;
             this.btnChooseImage.Text = "Choose Image";
-            this.ttDevide.SetToolTip(this.btnChooseImage, "Choose a device image");
             this.btnChooseImage.UseVisualStyleBackColor = false;
             this.btnChooseImage.Click += new System.EventHandler(this.btnChooseImage_Click);
             // 
@@ -321,7 +317,6 @@
             this.btnRemoveImage.Size = new System.Drawing.Size(170, 43);
             this.btnRemoveImage.TabIndex = 70;
             this.btnRemoveImage.Text = "Remove Image";
-            this.ttDevide.SetToolTip(this.btnRemoveImage, "Remove current device image");
             this.btnRemoveImage.UseVisualStyleBackColor = false;
             this.btnRemoveImage.Click += new System.EventHandler(this.btnRemoveImage_Click);
             // 
@@ -336,7 +331,6 @@
             this.btnAdd.Size = new System.Drawing.Size(170, 43);
             this.btnAdd.TabIndex = 69;
             this.btnAdd.Text = "Add";
-            this.ttDevide.SetToolTip(this.btnAdd, "Add new device");
             this.btnAdd.UseVisualStyleBackColor = false;
             this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
             // 
@@ -351,7 +345,6 @@
             this.btnUpdate.Size = new System.Drawing.Size(170, 43);
             this.btnUpdate.TabIndex = 68;
             this.btnUpdate.Text = "Update";
-            this.ttDevide.SetToolTip(this.btnUpdate, "Update selected device");
             this.btnUpdate.UseVisualStyleBackColor = false;
             this.btnUpdate.Click += new System.EventHandler(this.btnUpdate_Click);
             // 
@@ -366,7 +359,6 @@
             this.btnDelete.Size = new System.Drawing.Size(170, 47);
             this.btnDelete.TabIndex = 67;
             this.btnDelete.Text = "Delete";
-            this.ttDevide.SetToolTip(this.btnDelete, "Delete selected device");
             this.btnDelete.UseVisualStyleBackColor = false;
             this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
             // 
@@ -381,7 +373,6 @@
             this.btnHistory.Size = new System.Drawing.Size(190, 52);
             this.btnHistory.TabIndex = 66;
             this.btnHistory.Text = "Repair History";
-            this.ttDevide.SetToolTip(this.btnHistory, "View repair history");
             this.btnHistory.UseVisualStyleBackColor = false;
             this.btnHistory.Click += new System.EventHandler(this.btnHistory_Click);
             // 
@@ -396,7 +387,6 @@
             this.btnNextPage.Size = new System.Drawing.Size(72, 30);
             this.btnNextPage.TabIndex = 65;
             this.btnNextPage.Text = ">>";
-            this.ttDevide.SetToolTip(this.btnNextPage, "Go to the next page");
             this.btnNextPage.UseVisualStyleBackColor = false;
             this.btnNextPage.Click += new System.EventHandler(this.btnNextPage_Click);
             // 
@@ -411,7 +401,6 @@
             this.btnPrePage.Size = new System.Drawing.Size(72, 30);
             this.btnPrePage.TabIndex = 64;
             this.btnPrePage.Text = "<<";
-            this.ttDevide.SetToolTip(this.btnPrePage, "Go to the previous page");
             this.btnPrePage.UseVisualStyleBackColor = false;
             this.btnPrePage.Click += new System.EventHandler(this.btnPrePage_Click);
             // 
@@ -426,7 +415,6 @@
             this.btnNew.Size = new System.Drawing.Size(146, 52);
             this.btnNew.TabIndex = 63;
             this.btnNew.Text = "New";
-            this.ttDevide.SetToolTip(this.btnNew, "Create new devide");
             this.btnNew.UseVisualStyleBackColor = false;
             this.btnNew.Click += new System.EventHandler(this.btnNew_Click);
             // 
@@ -513,7 +501,6 @@
         private System.Windows.Forms.ComboBox cbCategory;
         private System.Windows.Forms.PictureBox pbImage;
         private System.Windows.Forms.Label lbStatusInactive;
-        private System.Windows.Forms.ToolTip ttDevide;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.TextBox txtDeviceDescription;
