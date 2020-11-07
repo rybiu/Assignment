@@ -33,13 +33,15 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.plMain = new System.Windows.Forms.Panel();
+            this.txtWarrantyDate = new System.Windows.Forms.TextBox();
+            this.txtBoughtDate = new System.Windows.Forms.TextBox();
+            this.lbWarrantyDate = new System.Windows.Forms.Label();
+            this.lbBoughtDate = new System.Windows.Forms.Label();
             this.lbStatus = new System.Windows.Forms.Label();
             this.cbCategory = new System.Windows.Forms.ComboBox();
             this.pbImage = new System.Windows.Forms.PictureBox();
             this.lbStatusInactive = new System.Windows.Forms.Label();
-            this.txtWarrantyDate = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
-            this.txtBoughtDate = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
             this.txtDeviceDescription = new System.Windows.Forms.TextBox();
             this.lbStatusActive = new System.Windows.Forms.Label();
@@ -70,13 +72,15 @@
             // plMain
             // 
             this.plMain.BackColor = System.Drawing.Color.PowderBlue;
+            this.plMain.Controls.Add(this.txtWarrantyDate);
+            this.plMain.Controls.Add(this.txtBoughtDate);
+            this.plMain.Controls.Add(this.lbWarrantyDate);
+            this.plMain.Controls.Add(this.lbBoughtDate);
             this.plMain.Controls.Add(this.lbStatus);
             this.plMain.Controls.Add(this.cbCategory);
             this.plMain.Controls.Add(this.pbImage);
             this.plMain.Controls.Add(this.lbStatusInactive);
-            this.plMain.Controls.Add(this.txtWarrantyDate);
             this.plMain.Controls.Add(this.label7);
-            this.plMain.Controls.Add(this.txtBoughtDate);
             this.plMain.Controls.Add(this.label6);
             this.plMain.Controls.Add(this.txtDeviceDescription);
             this.plMain.Controls.Add(this.lbStatusActive);
@@ -101,6 +105,46 @@
             this.plMain.Size = new System.Drawing.Size(860, 650);
             this.plMain.TabIndex = 0;
             // 
+            // txtWarrantyDate
+            // 
+            this.txtWarrantyDate.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtWarrantyDate.Location = new System.Drawing.Point(422, 591);
+            this.txtWarrantyDate.Name = "txtWarrantyDate";
+            this.txtWarrantyDate.Size = new System.Drawing.Size(116, 27);
+            this.txtWarrantyDate.TabIndex = 93;
+            // 
+            // txtBoughtDate
+            // 
+            this.txtBoughtDate.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtBoughtDate.Location = new System.Drawing.Point(152, 591);
+            this.txtBoughtDate.Name = "txtBoughtDate";
+            this.txtBoughtDate.Size = new System.Drawing.Size(116, 27);
+            this.txtBoughtDate.TabIndex = 92;
+            // 
+            // lbWarrantyDate
+            // 
+            this.lbWarrantyDate.AutoSize = true;
+            this.lbWarrantyDate.BackColor = System.Drawing.Color.PowderBlue;
+            this.lbWarrantyDate.ForeColor = System.Drawing.Color.DarkSlateGray;
+            this.lbWarrantyDate.Location = new System.Drawing.Point(652, 317);
+            this.lbWarrantyDate.Name = "lbWarrantyDate";
+            this.lbWarrantyDate.Size = new System.Drawing.Size(96, 17);
+            this.lbWarrantyDate.TabIndex = 91;
+            this.lbWarrantyDate.Text = "WarrantyDate";
+            this.lbWarrantyDate.TextChanged += new System.EventHandler(this.lbWarrantyDate_TextChanged);
+            // 
+            // lbBoughtDate
+            // 
+            this.lbBoughtDate.AutoSize = true;
+            this.lbBoughtDate.BackColor = System.Drawing.Color.PowderBlue;
+            this.lbBoughtDate.ForeColor = System.Drawing.Color.DarkSlateGray;
+            this.lbBoughtDate.Location = new System.Drawing.Point(554, 317);
+            this.lbBoughtDate.Name = "lbBoughtDate";
+            this.lbBoughtDate.Size = new System.Drawing.Size(83, 17);
+            this.lbBoughtDate.TabIndex = 90;
+            this.lbBoughtDate.Text = "BoughtDate";
+            this.lbBoughtDate.TextChanged += new System.EventHandler(this.lbBoughtDate_TextChanged);
+            // 
             // lbStatus
             // 
             this.lbStatus.AutoSize = true;
@@ -117,14 +161,14 @@
             // 
             this.cbCategory.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbCategory.FormattingEnabled = true;
-            this.cbCategory.Location = new System.Drawing.Point(145, 454);
+            this.cbCategory.Location = new System.Drawing.Point(153, 454);
             this.cbCategory.Name = "cbCategory";
             this.cbCategory.Size = new System.Drawing.Size(173, 28);
             this.cbCategory.TabIndex = 86;
             // 
             // pbImage
             // 
-            this.pbImage.Location = new System.Drawing.Point(395, 348);
+            this.pbImage.Location = new System.Drawing.Point(403, 348);
             this.pbImage.Name = "pbImage";
             this.pbImage.Size = new System.Drawing.Size(135, 135);
             this.pbImage.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -136,44 +180,23 @@
             this.lbStatusInactive.AutoSize = true;
             this.lbStatusInactive.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbStatusInactive.Image = ((System.Drawing.Image)(resources.GetObject("lbStatusInactive.Image")));
-            this.lbStatusInactive.Location = new System.Drawing.Point(339, 453);
+            this.lbStatusInactive.Location = new System.Drawing.Point(347, 453);
             this.lbStatusInactive.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lbStatusInactive.Name = "lbStatusInactive";
             this.lbStatusInactive.Size = new System.Drawing.Size(37, 29);
             this.lbStatusInactive.TabIndex = 84;
             this.lbStatusInactive.Text = "    ";
             // 
-            // txtWarrantyDate
-            // 
-            this.txtWarrantyDate.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtWarrantyDate.Location = new System.Drawing.Point(420, 591);
-            this.txtWarrantyDate.Margin = new System.Windows.Forms.Padding(2);
-            this.txtWarrantyDate.Name = "txtWarrantyDate";
-            this.txtWarrantyDate.Size = new System.Drawing.Size(110, 27);
-            this.txtWarrantyDate.TabIndex = 83;
-            this.ttDevide.SetToolTip(this.txtWarrantyDate, "MM/dd/yyyy");
-            // 
             // label7
             // 
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(293, 594);
+            this.label7.Location = new System.Drawing.Point(292, 594);
             this.label7.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(114, 20);
             this.label7.TabIndex = 82;
             this.label7.Text = "Warranty date";
-            // 
-            // txtBoughtDate
-            // 
-            this.txtBoughtDate.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtBoughtDate.Location = new System.Drawing.Point(144, 591);
-            this.txtBoughtDate.Margin = new System.Windows.Forms.Padding(2);
-            this.txtBoughtDate.Name = "txtBoughtDate";
-            this.txtBoughtDate.Size = new System.Drawing.Size(110, 27);
-            this.txtBoughtDate.TabIndex = 81;
-            this.ttDevide.SetToolTip(this.txtBoughtDate, "MM/dd/yyyy");
-            this.txtBoughtDate.Enter += new System.EventHandler(this.txtBoughtDate_Enter);
             // 
             // label6
             // 
@@ -189,7 +212,7 @@
             // txtDeviceDescription
             // 
             this.txtDeviceDescription.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtDeviceDescription.Location = new System.Drawing.Point(144, 500);
+            this.txtDeviceDescription.Location = new System.Drawing.Point(152, 500);
             this.txtDeviceDescription.Margin = new System.Windows.Forms.Padding(2);
             this.txtDeviceDescription.Multiline = true;
             this.txtDeviceDescription.Name = "txtDeviceDescription";
@@ -202,7 +225,7 @@
             this.lbStatusActive.AutoSize = true;
             this.lbStatusActive.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbStatusActive.Image = ((System.Drawing.Image)(resources.GetObject("lbStatusActive.Image")));
-            this.lbStatusActive.Location = new System.Drawing.Point(339, 453);
+            this.lbStatusActive.Location = new System.Drawing.Point(347, 453);
             this.lbStatusActive.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lbStatusActive.Name = "lbStatusActive";
             this.lbStatusActive.Size = new System.Drawing.Size(37, 29);
@@ -212,7 +235,7 @@
             // txtDeviceName
             // 
             this.txtDeviceName.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtDeviceName.Location = new System.Drawing.Point(144, 406);
+            this.txtDeviceName.Location = new System.Drawing.Point(152, 406);
             this.txtDeviceName.Margin = new System.Windows.Forms.Padding(2);
             this.txtDeviceName.Name = "txtDeviceName";
             this.txtDeviceName.Size = new System.Drawing.Size(232, 27);
@@ -221,7 +244,7 @@
             // txtDeviceId
             // 
             this.txtDeviceId.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtDeviceId.Location = new System.Drawing.Point(145, 360);
+            this.txtDeviceId.Location = new System.Drawing.Point(153, 360);
             this.txtDeviceId.Margin = new System.Windows.Forms.Padding(2);
             this.txtDeviceId.Name = "txtDeviceId";
             this.txtDeviceId.ReadOnly = true;
@@ -430,6 +453,7 @@
             this.dgvDevice.DefaultCellStyle = dataGridViewCellStyle2;
             this.dgvDevice.Location = new System.Drawing.Point(93, 32);
             this.dgvDevice.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.dgvDevice.MultiSelect = false;
             this.dgvDevice.Name = "dgvDevice";
             this.dgvDevice.ReadOnly = true;
             this.dgvDevice.RowHeadersWidth = 51;
@@ -489,10 +513,8 @@
         private System.Windows.Forms.ComboBox cbCategory;
         private System.Windows.Forms.PictureBox pbImage;
         private System.Windows.Forms.Label lbStatusInactive;
-        private System.Windows.Forms.TextBox txtWarrantyDate;
         private System.Windows.Forms.ToolTip ttDevide;
         private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.TextBox txtBoughtDate;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.TextBox txtDeviceDescription;
         private System.Windows.Forms.Label lbStatusActive;
@@ -514,5 +536,9 @@
         private System.Windows.Forms.DataGridView dgvDevice;
         private System.Windows.Forms.Label btnSearch;
         private System.Windows.Forms.TextBox txtSearch;
+        private System.Windows.Forms.Label lbBoughtDate;
+        private System.Windows.Forms.Label lbWarrantyDate;
+        private System.Windows.Forms.TextBox txtBoughtDate;
+        private System.Windows.Forms.TextBox txtWarrantyDate;
     }
 }

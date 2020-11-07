@@ -40,30 +40,39 @@ namespace DevideManagement
 
         private void LoadTable()
         {
-            List<RequestModel> requests = RequestPresenter.GetCurrentPage();
-            dgvRequest.DataSource = requests;
-            for (int i = 3; i < 10; i++) dgvRequest.Columns[i].Visible = false;
-            txtRequestId.DataBindings.Clear();
-            txtUserId.DataBindings.Clear();
-            txtRequestDate.DataBindings.Clear();
-            txtRequestDescription.DataBindings.Clear();
-            txtWorkerId.DataBindings.Clear();
-            txtStartDate.DataBindings.Clear();
-            txtFinishDate.DataBindings.Clear();
-            txtRepairDescription.DataBindings.Clear();
-            lbRequestStatus.DataBindings.Clear();
-            txtRequestId.DataBindings.Add("Text", requests, "Id");
-            txtUserId.DataBindings.Add("Text", requests, "UserId");
-            txtRequestDate.DataBindings.Add("Text", requests, "RequestDate");
-            txtRequestDescription.DataBindings.Add("Text", requests, "RequestDescription");
-            txtWorkerId.DataBindings.Add("Text", requests, "WorkerId");
-            txtStartDate.DataBindings.Add("Text", requests, "StartDate");
-            txtFinishDate.DataBindings.Add("Text", requests, "FinishDate");
-            txtRepairDescription.DataBindings.Add("Text", requests, "RepairDescription");
-            lbRequestStatus.DataBindings.Add("Text", requests, "StatusName");
-            dgvRequest.ClearSelection();
-            btnPrePage.Enabled = RequestPresenter.HasPreviousPage();
-            btnNextPage.Enabled = RequestPresenter.HasNextPage();
+            try
+            {
+                List<RequestModel> requests = RequestPresenter.GetCurrentPage();
+                dgvRequest.DataSource = requests;
+                // Hide some column
+                for (int i = 3; i < 10; i++) dgvRequest.Columns[i].Visible = false;
+
+                // Data bindings
+                txtRequestId.DataBindings.Clear();
+                txtUserId.DataBindings.Clear();
+                txtRequestDate.DataBindings.Clear();
+                txtRequestDescription.DataBindings.Clear();
+                txtWorkerId.DataBindings.Clear();
+                txtStartDate.DataBindings.Clear();
+                txtFinishDate.DataBindings.Clear();
+                txtRepairDescription.DataBindings.Clear();
+                lbRequestStatus.DataBindings.Clear();
+                txtRequestId.DataBindings.Add("Text", requests, "Id");
+                txtUserId.DataBindings.Add("Text", requests, "UserId");
+                txtRequestDate.DataBindings.Add("Text", requests, "RequestDate");
+                txtRequestDescription.DataBindings.Add("Text", requests, "RequestDescription");
+                txtWorkerId.DataBindings.Add("Text", requests, "WorkerId");
+                txtStartDate.DataBindings.Add("Text", requests, "StartDate");
+                txtFinishDate.DataBindings.Add("Text", requests, "FinishDate");
+                txtRepairDescription.DataBindings.Add("Text", requests, "RepairDescription");
+                lbRequestStatus.DataBindings.Add("Text", requests, "StatusName");
+                btnPrePage.Enabled = RequestPresenter.HasPreviousPage();
+                btnNextPage.Enabled = RequestPresenter.HasNextPage();
+                dgvRequest.ClearSelection();
+            } catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Load failed");
+            }
         }
         
 
@@ -101,6 +110,7 @@ namespace DevideManagement
 
         private void btnNew_Click(object sender, EventArgs e)
         {
+            if (dgvRequest.SelectedRows.Count == 0) return;
             string requestDescription = Interaction.InputBox("Enter the request description", "New Request");
             if (string.IsNullOrWhiteSpace(requestDescription)) return;
             if (requestDescription.Length > 300)
@@ -131,20 +141,22 @@ namespace DevideManagement
 
         private void btnFix_Click(object sender, EventArgs e)
         {
+            if (dgvRequest.SelectedRows.Count == 0) return;
             try
             {
                 RequestPresenter.StartRequestModel();
                 LoadTable();
                 MessageBox.Show("Start successful.", "Information");
             }
-            catch
+            catch (Exception ex)
             {
-                MessageBox.Show("Start failed", "Information");
+                MessageBox.Show(ex.Message, "Start failed");
             }
         }
 
         private void btnFinish_Click(object sender, EventArgs e)
         {
+            if (dgvRequest.SelectedRows.Count == 0) return;
             string repairDescription = Interaction.InputBox("Enter the repair description", "Finish Request");
             if (string.IsNullOrWhiteSpace(repairDescription)) return;
             if (repairDescription.Length > 300)
@@ -160,9 +172,9 @@ namespace DevideManagement
                 DeviceStatus.Text = "DEVICE_ACTIVE";
                 MessageBox.Show("Finish successful.", "Information");
             }
-            catch
+            catch (Exception ex)
             {
-                MessageBox.Show("Finish failed", "Information");
+                MessageBox.Show(ex.Message, "Finish failed");
             }
         }
 

@@ -1,12 +1,8 @@
 ﻿using DeviceManagementService;
 using AutoMapper;
 using BusinessObjects;
-using System;
-using System.Linq;
 using System.Collections.Generic;
-using System.Drawing;
 using DeviceManagement.Utils;
-using System.Windows.Forms;
 
 namespace DeviceManagement.Models
 {
@@ -29,8 +25,6 @@ namespace DeviceManagement.Models
             Mapper.CreateMap<RoomModel, Room>();
             Mapper.CreateMap<Request, RequestModel> ();
             Mapper.CreateMap<RequestModel, Request> ();
-            //Mapper.CreateMap<Order, OrderModel>();
-            //Mapper.CreateMap<OrderDetail, OrderDetailModel>();
         }
 
         #region Login / Logout
@@ -105,23 +99,6 @@ namespace DeviceManagement.Models
         #endregion
 
         #region Devices
-
-        public List<DeviceModel> GetDeviceList(int pageIndex, int pageSize)
-        {
-            var devices = service.GetDeviceList(pageIndex, pageSize);
-            List<DeviceModel> result = Mapper.Map<List<Device>, List<DeviceModel>>(devices);
-            foreach (var item in result)
-            {
-                if (item.Image.Length > 0) item.ImageView = ImageHelper.ByteArrayToImage(item.Image);
-            }
-            return result;
-        }
-
-        public int GetDeviceListCount()
-        {
-            return service.GetDeviceListCount();
-        }
-
         public List<DeviceModel> GetDeviceList(int roomId, string searchValue, int pageIndex, int pageSize)
         {
             var devices = service.GetDeviceList(roomId, searchValue, pageIndex, pageSize);
@@ -291,76 +268,5 @@ namespace DeviceManagement.Models
         }
         #endregion
 
-
-
-        /* #region Members
-
-         // gets a complete list of Members and their orders and order details.
-
-         public List<MemberModel> GetMembers(string sortExpression)
-         {
-             var members = service.GetMembers(sortExpression);
-             return Mapper.Map<List<Member>, List<MemberModel>>(members);
-         }
-
-         // gets a specific Member.
-         public MemberModel GetMember(int memberId)
-         {
-             var member = service.GetMember(memberId);
-             return Mapper.Map<Member, MemberModel>(member);
-         }
-
-         #endregion
-
-         #region Member persistence
-
-         // adds a new Member to the database.
-         public void AddMember(MemberModel model)
-         {
-             var member = Mapper.Map<MemberModel, Member>(model);
-             service.InsertMember(member);
-         }
-
-         // updates an existing Member in the database.
-         public void UpdateMember(MemberModel model)
-         {
-             var member = Mapper.Map<MemberModel, Member>(model);
-             service.UpdateMember(member);
-         }
-
-         // geletes a Member record.
-         public void DeleteMember(int memberId)
-         {
-             var member = service.GetMember(memberId);
-             service.DeleteMember(member);
-         }
-
-         #endregion
-
-         #region Orders
-
-         // gets a list of orders for a given Member.
-
-         public List<OrderModel> GetOrders(int memberId)
-         {
-             var orders = service.GetOrdersByMember(memberId);
-             var models = Mapper.Map<List<Order>, List<OrderModel>>(orders);
-
-             // get all products
-             var products = service.SearchProducts("", 0, 5000, "ProductId ASC").ToDictionary(p => p.ProductId);
-
-             // rather inefficient. the service API is not flexible enough to perform larger batch retrieves.
-             // see Spark for a richer API with generic Repositories
-             foreach (var model in models)
-             {
-                 var details = service.GetOrderDetails(model.OrderId);
-                 details.ForEach(d => d.ProductName = products[d.ProductId].ProductName);
-                 model.OrderDetails = Mapper.Map<List<OrderDetail>, List<OrderDetailModel>>(details);
-             }
-
-             return models;
-         }
-
-         #endregion*/
     }
 }

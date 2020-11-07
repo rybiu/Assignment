@@ -1,14 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-
-namespace DeviceManagement.Views
+﻿namespace DeviceManagement.Views
 {
     
-    // respresents login view with credentials.
+    // respresents request view with credentials.
     public interface IRequestView : IView
     {
         int Id { get; }

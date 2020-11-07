@@ -1,13 +1,8 @@
-﻿using AutoMapper;
-using BusinessObjects;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿using System.Collections.Generic;
 
 namespace DeviceManagement.Models
 {
-    // IModel interface, part of MVP design pattern. 
+    // IPagination is a helper of Model
 
     public interface IPagination<T>
     {

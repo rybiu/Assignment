@@ -1,9 +1,4 @@
-﻿using BusinessObjects;
-using System;
-using System.Collections.Generic;
-using System.Drawing;
-using System.Linq;
-using System.Text;
+﻿using System.Collections.Generic;
 
 namespace DeviceManagement.Models
 {
@@ -29,8 +24,6 @@ namespace DeviceManagement.Models
         #endregion
 
         #region Device
-        List<DeviceModel> GetDeviceList(int pageIndex, int pageSize);
-        int GetDeviceListCount();
         List<DeviceModel> GetDeviceList(int roomId, string searchValue, int pageIndex, int pageSize);
         int GetDeviceListCount(int roomId, string searchValue);
         List<DeviceModel> GetDeviceList(string searchValue, int pageIndex, int pageSize);

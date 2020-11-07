@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace DataObjects.AdoNet
+﻿namespace DataObjects.AdoNet
 {
     // Data access object factory
     // ** Factory Pattern

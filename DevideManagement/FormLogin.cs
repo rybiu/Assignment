@@ -9,8 +9,8 @@ namespace DeviceManagement
 {
     public partial class FormLogin : Form, ILoginView
     {
-        private int x, y;
-        private LoginPresenter LoginPresenter;
+        int x, y;
+        LoginPresenter LoginPresenter;
 
         public string Username { get => txtUsername.Text.Trim(); }
 
@@ -34,13 +34,13 @@ namespace DeviceManagement
                 if (LoginPresenter.Login(out UserModel userModel))
                 {
                     new FormDashboard(userModel).Show();
+                    Dispose();
                 } else
                 {
-                    MessageBox.Show("Incorrect username or password!");
+                    MessageBox.Show("Incorrect username or password!", "Login failed");
                 }
-                Dispose();
             }
-            catch (ApplicationException ex)
+            catch (Exception ex)
             {
                 MessageBox.Show(ex.Message, "Login failed");
             }

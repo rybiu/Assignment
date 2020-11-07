@@ -164,6 +164,7 @@
             this.dgvRightTable.DefaultCellStyle = dataGridViewCellStyle2;
             this.dgvRightTable.Location = new System.Drawing.Point(342, 327);
             this.dgvRightTable.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.dgvRightTable.MultiSelect = false;
             this.dgvRightTable.Name = "dgvRightTable";
             dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
@@ -239,6 +240,7 @@
             this.dgvLeftTable.DefaultCellStyle = dataGridViewCellStyle5;
             this.dgvLeftTable.Location = new System.Drawing.Point(26, 327);
             this.dgvLeftTable.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.dgvLeftTable.MultiSelect = false;
             this.dgvLeftTable.Name = "dgvLeftTable";
             dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Control;
@@ -345,6 +347,7 @@
             this.dgvRoom.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvRoom.Location = new System.Drawing.Point(93, 32);
             this.dgvRoom.Margin = new System.Windows.Forms.Padding(4);
+            this.dgvRoom.MultiSelect = false;
             this.dgvRoom.Name = "dgvRoom";
             this.dgvRoom.ReadOnly = true;
             this.dgvRoom.RowHeadersWidth = 51;

@@ -3,8 +3,6 @@ using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace DataObjects.AdoNet
 {
@@ -179,7 +177,7 @@ namespace DataObjects.AdoNet
 
             Func<IDataReader, int> Make = reader => reader["id"].AsId();
 
-            return db.Read(sql, Make, parms).SingleOrDefault() > 0;
+            return db.Read(sql, Make, parms).FirstOrDefault() > 0;
         }
 
         static Func<IDataReader, User> Make = reader =>

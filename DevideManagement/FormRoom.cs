@@ -32,15 +32,23 @@ namespace DeviceManagement
 
         private void LoadTable()
         {
-            List<RoomModel> rooms = RoomPresenter.GetCurrentPage();
-            dgvRoom.DataSource = rooms;
-            lbRoomId.DataBindings.Clear();
-            lbRoomName.DataBindings.Clear();
-            lbRoomId.DataBindings.Add("Text", rooms, "Id");
-            lbRoomName.DataBindings.Add("Text", rooms, "Name");
-            dgvRoom.ClearSelection();
-            btnPrePage.Enabled = RoomPresenter.HasPreviousPage();
-            btnNextPage.Enabled = RoomPresenter.HasNextPage();
+            try
+            {
+                List<RoomModel> rooms = RoomPresenter.GetCurrentPage();
+                btnPrePage.Enabled = RoomPresenter.HasPreviousPage();
+                btnNextPage.Enabled = RoomPresenter.HasNextPage();
+                if (rooms.Count == 0) return;
+                dgvRoom.DataSource = rooms;
+                lbRoomId.DataBindings.Clear();
+                lbRoomName.DataBindings.Clear();
+                lbRoomId.DataBindings.Add("Text", rooms, "Id");
+                lbRoomName.DataBindings.Add("Text", rooms, "Name");
+                dgvRoom.ClearSelection();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Load failed");
+            }
         }
 
         private void btnNew_Click(object sender, EventArgs e)
@@ -60,9 +68,9 @@ namespace DeviceManagement
                 LoadTable();
                 MessageBox.Show("Add successful.", "Information");
             }
-            catch
+            catch (Exception ex)
             {
-                MessageBox.Show("Add failed", "Information");
+                MessageBox.Show(ex.Message, "Add failed");
             }
         }
 
@@ -77,9 +85,9 @@ namespace DeviceManagement
                     LoadTable();
                     MessageBox.Show("Save successful.", "Information");
                 }
-                catch
+                catch (Exception ex)
                 {
-                    MessageBox.Show("Save failed", "Information");
+                    MessageBox.Show(ex.Message, "Save failed");
                 }
             }
             if (cboFeature.SelectedItem.Equals("DEVICE"))
@@ -90,9 +98,9 @@ namespace DeviceManagement
                     LoadTable();
                     MessageBox.Show("Save successful.", "Information");
                 }
-                catch
+                catch (Exception ex)
                 {
-                    MessageBox.Show("Save failed", "Information");
+                    MessageBox.Show(ex.Message, "Save failed");
                 }
             }
         }
@@ -109,9 +117,9 @@ namespace DeviceManagement
                 LoadTable();
                 MessageBox.Show("Update successful.", "Information");
             }
-            catch
+            catch (Exception ex)
             {
-                MessageBox.Show("Update failed", "Information");
+                MessageBox.Show(ex.Message, "Update failed");
             }
         }
 
@@ -127,9 +135,9 @@ namespace DeviceManagement
                 LoadTable();
                 MessageBox.Show("Delete successful.", "Information");
             }
-            catch
+            catch (Exception ex)
             {
-                MessageBox.Show("Delete failed", "Information");
+                MessageBox.Show(ex.Message, "Delete failed");
             }
         }
 
@@ -179,9 +187,16 @@ namespace DeviceManagement
         private void cboFeature_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (dgvRoom.SelectedRows.Count == 0) return;
-            GetViewByFeature(cboFeature.Text);
-            btnDrop.Visible = true;
-            btnMove.Visible = true;
+            try
+            {
+                GetViewByFeature(cboFeature.Text);
+                btnDrop.Visible = true;
+                btnMove.Visible = true;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Load feature failed");
+            }
         }
 
         private List<dynamic> ConvertUsersToView(List<UserModel> users)
@@ -217,13 +232,20 @@ namespace DeviceManagement
         private void btnSearch_Click(object sender, EventArgs e)
         {
             RoomPresenter.GoToFirstPage();
-            if (RoomPresenter.GetCurrentPage().Count == 0)
+            try
             {
-                MessageBox.Show("No rooms are matched.", "Information");
-            }
-            else
+                int records = RoomPresenter.GetCurrentPage().Count;
+                if (records == 0)
+                {
+                    MessageBox.Show("No rooms are matched.", "Information");
+                }
+                else
+                {
+                    LoadTable();
+                }
+            } catch (Exception ex)
             {
-                LoadTable();
+                MessageBox.Show(ex.Message, "Search failed");
             }
         }
 
@@ -262,6 +284,8 @@ namespace DeviceManagement
                     dgvRightTable.DataSource = rightTableData;
                     break;
             }
+            dgvLeftTable.ClearSelection();
+            dgvRightTable.ClearSelection();
         }
     }
 }

@@ -1,16 +1,11 @@
-using DeviceManagement.Utils;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Drawing;
-using System.Text;
 
 namespace DeviceManagement.Models
 {
-    // User business object as seen by the Service client.
+    // Device business object as seen by the Service client.
     public class DeviceModel
     {
-
         public int Id { get; set; }
         public string Name { get; set; }
         public string Description { get; set; }

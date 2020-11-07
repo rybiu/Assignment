@@ -1,15 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using BusinessObjects;
-using DeviceManagement.Models;
+﻿using System.Collections.Generic;
 using DeviceManagement.Views;
 
 namespace DeviceManagement.Presenters
 {
     /// <summary>
-    /// User Presenter class.
+    /// Statictis Presenter class.
     /// </summary>
     /// <remarks>
     /// MV Patterns: MVP design pattern.

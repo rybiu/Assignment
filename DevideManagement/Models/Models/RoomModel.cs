@@ -1,11 +1,6 @@
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Text;
-
 namespace DeviceManagement.Models
 {
-    // User business object as seen by the Service client.
+    // Room business object as seen by the Service client.
     public class RoomModel
     {
 

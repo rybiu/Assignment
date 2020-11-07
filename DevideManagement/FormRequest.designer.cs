@@ -30,6 +30,7 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormRequest));
             this.plMain = new System.Windows.Forms.Panel();
+            this.lbRequestStatus = new System.Windows.Forms.Label();
             this.btnFinish = new System.Windows.Forms.Button();
             this.btnFix = new System.Windows.Forms.Button();
             this.btnNew = new System.Windows.Forms.Button();
@@ -55,7 +56,6 @@
             this.txtWorkerId = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
             this.txtRequestDate = new System.Windows.Forms.TextBox();
-            this.lbRequestStatus = new System.Windows.Forms.Label();
             this.plMain.SuspendLayout();
             this.plEdge.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.lbBackIcon)).BeginInit();
@@ -95,6 +95,15 @@
             this.plMain.TabIndex = 0;
             this.plMain.MouseDown += new System.Windows.Forms.MouseEventHandler(this.plMain_MouseDown);
             this.plMain.MouseMove += new System.Windows.Forms.MouseEventHandler(this.plMain_MouseMove);
+            // 
+            // lbRequestStatus
+            // 
+            this.lbRequestStatus.AutoSize = true;
+            this.lbRequestStatus.Location = new System.Drawing.Point(686, 296);
+            this.lbRequestStatus.Name = "lbRequestStatus";
+            this.lbRequestStatus.Size = new System.Drawing.Size(48, 17);
+            this.lbRequestStatus.TabIndex = 93;
+            this.lbRequestStatus.Text = "Status";
             // 
             // btnFinish
             // 
@@ -190,6 +199,7 @@
             this.dgvRequest.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.DisplayedCells;
             this.dgvRequest.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvRequest.Location = new System.Drawing.Point(196, 34);
+            this.dgvRequest.MultiSelect = false;
             this.dgvRequest.Name = "dgvRequest";
             this.dgvRequest.ReadOnly = true;
             this.dgvRequest.RowHeadersWidth = 51;
@@ -373,15 +383,6 @@
             this.txtRequestDate.Size = new System.Drawing.Size(216, 27);
             this.txtRequestDate.TabIndex = 78;
             // 
-            // lbRequestStatus
-            // 
-            this.lbRequestStatus.AutoSize = true;
-            this.lbRequestStatus.Location = new System.Drawing.Point(686, 296);
-            this.lbRequestStatus.Name = "lbRequestStatus";
-            this.lbRequestStatus.Size = new System.Drawing.Size(48, 17);
-            this.lbRequestStatus.TabIndex = 93;
-            this.lbRequestStatus.Text = "Status";
-            // 
             // FormRequest
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -390,6 +391,7 @@
             this.ClientSize = new System.Drawing.Size(1044, 704);
             this.Controls.Add(this.plMain);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "FormRequest";
             this.Text = "Request History";
             this.Load += new System.EventHandler(this.FormRequest_Load);

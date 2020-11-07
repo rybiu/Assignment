@@ -28,22 +28,32 @@ namespace DeviceManagement
 
         private void LoadTable()
         {
-            List<UserModel> list = UserPresenter.GetCurrentPage();
-            dgvUser.DataSource = list;
-            dgvUser.Columns[2].Visible = false;
-            dgvUser.Columns[3].Visible = false;
-            dgvUser.Columns[4].Visible = false;
-            txtUserID.DataBindings.Clear();
-            txtUsername.DataBindings.Clear();
-            txtPassword.DataBindings.Clear();
-            txtRoomID.DataBindings.Clear();
-            txtUserID.DataBindings.Add("Text", list, "id");
-            txtUsername.DataBindings.Add("Text", list, "username");
-            txtPassword.DataBindings.Add("Text", list, "password");
-            txtRoomID.DataBindings.Add("Text", list, "roomId");
-            dgvUser.ClearSelection();
-            btnPrePage.Enabled = UserPresenter.HasPreviousPage();
-            btnNextPage.Enabled = UserPresenter.HasNextPage();
+            try
+            {
+                List<UserModel> list = UserPresenter.GetCurrentPage();
+                btnPrePage.Enabled = UserPresenter.HasPreviousPage();
+                btnNextPage.Enabled = UserPresenter.HasNextPage();
+                if (list.Count == 0) return;
+                dgvUser.DataSource = list;
+                // Hide some columns
+                dgvUser.Columns[2].Visible = false;
+                dgvUser.Columns[3].Visible = false;
+                dgvUser.Columns[4].Visible = false;
+                // Data bindings
+                txtUserID.DataBindings.Clear();
+                txtUsername.DataBindings.Clear();
+                txtPassword.DataBindings.Clear();
+                txtRoomID.DataBindings.Clear();
+                txtUserID.DataBindings.Add("Text", list, "id");
+                txtUsername.DataBindings.Add("Text", list, "username");
+                txtPassword.DataBindings.Add("Text", list, "password");
+                txtRoomID.DataBindings.Add("Text", list, "roomId");
+                dgvUser.ClearSelection();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Load failed");
+            }
         }
 
         private void FrmUser_Load(object sender, EventArgs e)
@@ -69,36 +79,16 @@ namespace DeviceManagement
             txtUsername.Text = string.Empty;
             txtPassword.Text = string.Empty;
             txtRoomID.Text = string.Empty;
+            txtUsername.ReadOnly = false;
         }
 
         private void btnAdd_Click(object sender, EventArgs e)
         {
             if (txtUserID.Text.Length != 0) return;
-            string username = txtUsername.Text.Trim();
-            if (username.Length == 0)
-            {
-                MessageBox.Show("Username must be not empty.", "Error");
-                return;
-            }
-            if (username.Length > 50)
-            {
-                MessageBox.Show("Username must be not greater than 50 chars.", "Error");
-                return;
-            }
+            if (!IsValidInput()) return;
             if (UserPresenter.IsExistUsername())
             {
                 MessageBox.Show("This username has existed.", "Error");
-                return;
-            }
-            string password = txtPassword.Text.Trim();
-            if (password.Length == 0)
-            {
-                MessageBox.Show("Password must be not empty.", "Error");
-                return;
-            }
-            if (password.Length > 50)
-            {
-                MessageBox.Show("Password must be not greater than 50 chars.", "Error");
                 return;
             }
             try 
@@ -108,62 +98,50 @@ namespace DeviceManagement
                 LoadTable();
                 MessageBox.Show("Add successful.", "Information");
             }
-            catch 
+            catch (Exception ex)
             {
-                MessageBox.Show("Add failed", "Information");
+                MessageBox.Show(ex.Message, "Add failed");
             }
         }
 
         private void btnUpdate_Click(object sender, EventArgs e)
         {
             if (txtUserID.Text.Length == 0) return;
-            string username = txtUsername.Text.Trim();
-            if (username.Length == 0)
-            {
-                MessageBox.Show("Username must be not empty.", "Error");
-                return;
-            }
-            if (UserPresenter.IsExistUsername())
-            {
-                MessageBox.Show("This username has existed.", "Error");
-                return;
-            }
-            string password = txtPassword.Text.Trim();
-            if (password.Length == 0)
-            {
-                MessageBox.Show("Password must be not empty.", "Error");
-                return;
-            }
+            if (!IsValidInput()) return;
             try
             {
                 UserPresenter.UpdateUserModel();
                 LoadTable();
                 MessageBox.Show("Update successful.", "Information");
             }
-            catch
+            catch (Exception ex)
             {
-                MessageBox.Show("Update failed", "Information");
+                MessageBox.Show(ex.Message, "Update failed");
             }
         }
 
         private void btnDelete_Click(object sender, EventArgs e)
         {
             if (txtUserID.Text.Length == 0) return;
+            DialogResult dr = MessageBox.Show("Are you sure to delete this user?",
+                "Delete User", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Information);
+            if (dr != DialogResult.Yes) return;
             try
             {
                 UserPresenter.DeleteUserModel();
                 LoadTable();
                 MessageBox.Show("Delete successful.", "Information");
             }
-            catch
+            catch (Exception ex)
             {
-                MessageBox.Show("Delete failed", "Information");
+                MessageBox.Show(ex.Message, "Delete failed");
             }
         }
 
         private void dgvUser_SelectionChanged(object sender, EventArgs e)
         {
             ckShowPassword.Checked = false;
+            txtUsername.ReadOnly = true;
         }
 
         private void btnPrePage_Click(object sender, EventArgs e)
@@ -186,13 +164,52 @@ namespace DeviceManagement
         private void btnSearch_Click(object sender, EventArgs e)
         {
             UserPresenter.GoToFirstPage();
-            if (UserPresenter.GetCurrentPage().Count == 0)
+            try
             {
-                MessageBox.Show("No users are matched.", "Information");
-            } else
-            {
-                LoadTable();
+                int records = UserPresenter.GetCurrentPage().Count;
+                if (records == 0)
+                {
+                    MessageBox.Show("No users are matched.", "Information");
+                }
+                else
+                {
+                    LoadTable();
+                }
             }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Search failed");
+            }
+        }
+
+        private bool IsValidInput()
+        {
+            // Validate username
+            if (string.IsNullOrWhiteSpace(txtUsername.Text))
+            {
+                MessageBox.Show("Username must be not empty.", "Error");
+                return false;
+            }
+            if (txtUsername.Text.Length > 50)
+            {
+                MessageBox.Show("Username must be not greater than 50 chars.", "Error");
+                return false;
+            }
+
+            // Validate password
+            if (string.IsNullOrWhiteSpace(txtPassword.Text))
+            {
+                MessageBox.Show("Password must be not empty.", "Error");
+                return false;
+            }
+            if (txtPassword.Text.Length > 50)
+            {
+                MessageBox.Show("Password must be not greater than 50 chars.", "Error");
+                return false;
+            }
+
+            // No error
+            return true;
         }
     }
 }

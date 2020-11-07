@@ -3,12 +3,10 @@ using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace DataObjects.AdoNet
 {
-    // Data access object for Category
+    // Data access object for Device
     // ** DAO Pattern
 
     public class DeviceDao : IDeviceDao

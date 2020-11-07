@@ -1,11 +1,8 @@
 ﻿using BusinessObjects;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace DataObjects.AdoNet
 {
@@ -49,7 +46,7 @@ namespace DataObjects.AdoNet
 
             object[] parms = { "@name", categoryName, "@statusId", statusId };
 
-            Category category = db.Read(sql, Make, parms).SingleOrDefault();
+            Category category = db.Read(sql, Make, parms).FirstOrDefault();
 
             return category != null ? category.Id : -1;
         }

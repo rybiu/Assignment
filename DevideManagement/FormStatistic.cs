@@ -82,9 +82,9 @@ namespace DeviceManagement
                     MessageBox.Show("No devices are matched.", "Information");
                 }
             }
-            catch
+            catch (Exception ex)
             {
-                MessageBox.Show("Sorry. Something went wrong.", "Error");
+                MessageBox.Show(ex.Message, "Error");
             }
         }
 
@@ -123,9 +123,9 @@ namespace DeviceManagement
                     MessageBox.Show("No devices are matched.", "Information");
                 }
             }
-            catch
+            catch (Exception ex)
             {
-                MessageBox.Show("Sorry. Something went wrong.", "Error");
+                MessageBox.Show(ex.Message, "Error");
             }
         }
     }

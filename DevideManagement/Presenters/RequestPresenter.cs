@@ -1,16 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Windows.Forms;
-using BusinessObjects;
+﻿using System.Collections.Generic;
 using DeviceManagement.Models;
 using DeviceManagement.Views;
 
 namespace DeviceManagement.Presenters
 {
     /// <summary>
-    /// User Presenter class.
+    /// Request Presenter class.
     /// </summary>
     /// <remarks>
     /// MV Patterns: MVP design pattern.
@@ -30,7 +25,7 @@ namespace DeviceManagement.Presenters
         }
 
         /// <summary>
-        /// Perform user management. Gets data from view and calls model.
+        /// Perform request management. Gets data from view and calls model.
         /// </summary>
         /// 
 
