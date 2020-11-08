@@ -5,6 +5,34 @@ VisualStudioVersion = 16.0.30503.244
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DeviceManagement", "DevideManagement\DeviceManagement.csproj", "{435AF85D-93EA-4ADE-A871-AE750BDD6936}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "1. Presentation Layer", "1. Presentation Layer", "{F9294500-C2B1-48EE-B4F7-90825668CF2E}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "2. Service Layer", "2. Service Layer", "{8E686001-7A93-4C89-98E8-DBAC292FA082}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "3. Business Layer", "3. Business Layer", "{F514AFB1-FE1F-4A8C-84B7-26191CC80AC1}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "4. Data Layer", "4. Data Layer", "{B79F5122-C610-460B-89F1-D3164500A398}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{74182EFE-FA3F-4BB6-947A-F1AA0C6BECAD}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataObjects", "DataObjects\DataObjects.csproj", "{A8619B91-6673-4ECB-8FE3-98B83CA762E8}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BusinessObjects", "BusinessObjects\BusinessObjects.csproj", "{B997C525-A860-482E-8AD2-DADE5941DA66}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DeviceManagementService", "DeviceManagementService\DeviceManagementService.csproj", "{E8C05152-4604-4905-9893-B78454588C37}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Sql Server", "Sql Server", "{AA2410BF-7D10-432B-BFEC-563AFC382CDA}"
+	ProjectSection(SolutionItems) = preProject
+		C:\Users\SE141150\Desktop\DB.sql = C:\Users\SE141150\Desktop\DB.sql
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Cloud Sql", "Cloud Sql", "{8E7C00E8-C330-40B1-AF55-3438FC8AFFC8}"
+	ProjectSection(SolutionItems) = preProject
+		C:\Users\SE141150\Desktop\bubbly-repeater-294702-2400fe8ada61.json = C:\Users\SE141150\Desktop\bubbly-repeater-294702-2400fe8ada61.json
+		C:\Users\SE141150\Desktop\cloud_sql_proxy.exe = C:\Users\SE141150\Desktop\cloud_sql_proxy.exe
+		C:\Users\SE141150\Desktop\start_cloud_sql_proxy.bat = C:\Users\SE141150\Desktop\start_cloud_sql_proxy.bat
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,9 +43,29 @@ Global
 		{435AF85D-93EA-4ADE-A871-AE750BDD6936}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{435AF85D-93EA-4ADE-A871-AE750BDD6936}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{435AF85D-93EA-4ADE-A871-AE750BDD6936}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A8619B91-6673-4ECB-8FE3-98B83CA762E8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A8619B91-6673-4ECB-8FE3-98B83CA762E8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A8619B91-6673-4ECB-8FE3-98B83CA762E8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A8619B91-6673-4ECB-8FE3-98B83CA762E8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B997C525-A860-482E-8AD2-DADE5941DA66}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B997C525-A860-482E-8AD2-DADE5941DA66}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B997C525-A860-482E-8AD2-DADE5941DA66}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B997C525-A860-482E-8AD2-DADE5941DA66}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E8C05152-4604-4905-9893-B78454588C37}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E8C05152-4604-4905-9893-B78454588C37}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E8C05152-4604-4905-9893-B78454588C37}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E8C05152-4604-4905-9893-B78454588C37}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{435AF85D-93EA-4ADE-A871-AE750BDD6936} = {F9294500-C2B1-48EE-B4F7-90825668CF2E}
+		{A8619B91-6673-4ECB-8FE3-98B83CA762E8} = {B79F5122-C610-460B-89F1-D3164500A398}
+		{B997C525-A860-482E-8AD2-DADE5941DA66} = {F514AFB1-FE1F-4A8C-84B7-26191CC80AC1}
+		{E8C05152-4604-4905-9893-B78454588C37} = {8E686001-7A93-4C89-98E8-DBAC292FA082}
+		{AA2410BF-7D10-432B-BFEC-563AFC382CDA} = {74182EFE-FA3F-4BB6-947A-F1AA0C6BECAD}
+		{8E7C00E8-C330-40B1-AF55-3438FC8AFFC8} = {74182EFE-FA3F-4BB6-947A-F1AA0C6BECAD}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {568FE872-0682-474C-9FA7-2532A20DF96B}
