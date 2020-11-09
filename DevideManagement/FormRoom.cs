@@ -190,8 +190,13 @@ namespace DeviceManagement
             try
             {
                 GetViewByFeature(cboFeature.Text);
-                btnDrop.Visible = true;
-                btnMove.Visible = true;
+                btnDrop.Visible = false;
+                btnMove.Visible = false;
+                if (cboFeature.Text.Length > 0)
+                {
+                    btnDrop.Visible = true;
+                    btnMove.Visible = true;
+                }
             }
             catch (Exception ex)
             {
