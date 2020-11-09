@@ -173,7 +173,7 @@
             this.btnNextPage.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(47)))), ((int)(((byte)(65)))));
             this.btnNextPage.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnNextPage.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.btnNextPage.Location = new System.Drawing.Point(603, 248);
+            this.btnNextPage.Location = new System.Drawing.Point(645, 260);
             this.btnNextPage.Margin = new System.Windows.Forms.Padding(4);
             this.btnNextPage.Name = "btnNextPage";
             this.btnNextPage.Size = new System.Drawing.Size(72, 30);
@@ -201,7 +201,7 @@
             this.btnPrePage.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(47)))), ((int)(((byte)(65)))));
             this.btnPrePage.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnPrePage.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.btnPrePage.Location = new System.Drawing.Point(523, 248);
+            this.btnPrePage.Location = new System.Drawing.Point(565, 260);
             this.btnPrePage.Margin = new System.Windows.Forms.Padding(4);
             this.btnPrePage.Name = "btnPrePage";
             this.btnPrePage.Size = new System.Drawing.Size(72, 30);
@@ -215,7 +215,7 @@
             this.btnNew.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(47)))), ((int)(((byte)(65)))));
             this.btnNew.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnNew.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.btnNew.Location = new System.Drawing.Point(44, 248);
+            this.btnNew.Location = new System.Drawing.Point(55, 263);
             this.btnNew.Margin = new System.Windows.Forms.Padding(4);
             this.btnNew.Name = "btnNew";
             this.btnNew.Size = new System.Drawing.Size(146, 52);

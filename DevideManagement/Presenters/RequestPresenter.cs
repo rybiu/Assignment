@@ -75,20 +75,30 @@ namespace DeviceManagement.Presenters
         }
 
         public void AddRequestModel()
-        {
-            Model.AddRequest(View.UserId, View.RequestDescription, View.DeviceId);
+        {  
+            Model.AddRequest(View.UserModel.Id, View.RequestDescription, View.DeviceId);
             Model.ChangeDeviceStatus(View.DeviceId, false);
         }
 
         public void StartRequestModel()
         {
-            Model.StartRequest(View.Id, View.UserId);
+            Model.StartRequest(View.Id, View.UserModel.Id);
         }
 
         public void FinishRequestModel()
         {
             Model.FinishRequest(View.Id, View.RepairDescription);
             Model.ChangeDeviceStatus(View.DeviceId, true);
+        }
+
+        public UserModel GetUserModel()
+        {
+            return Model.Login(View.UserModel.Username, View.UserModel.Password);
+        }
+
+        public DeviceModel GetDeviceModel()
+        {
+            return Model.GetDevice(View.DeviceId);
         }
     }
 }

@@ -14,29 +14,25 @@ namespace DataObjects
 
         bool UpdateDeviceStatusId(int deviceId, int statusId);
 
-        bool DeleteDevice(int deviceId, int statusId);
+        bool DeleteDevice(int deviceId, int statusInactiveId);
 
-        Device GetDevice(int deviceId, int statusId);
+        Device GetDevice(int deviceId, int statusInactiveId);
 
-        List<Device> GetDevices(int statusId, int startRow, int pageSize);
+        List<Device> GetDevices(int roomId, string searchValue, int statusInactiveId, int startRow, int pageSize);
 
-        List<Device> GetDevices(int roomId, string searchValue, int statusId, int startRow, int pageSize);
+        List<Device> GetDevices(string searchValue, int statusInactiveId, int startRow, int pageSize);
 
-        List<Device> GetDevices(string searchValue, int statusId, int startRow, int pageSize);
+        int GetDevicesCount(int roomId, string searchValue, int statusInactiveId);
 
-        int GetDevicesCount(int statusId);
+        int GetDevicesCount(string searchValue, int statusInactiveId);
 
-        int GetDevicesCount(int roomId, string searchValue, int statusId);
+        List<Device> GetDevices(int roomId, int statusInactiveId);
 
-        int GetDevicesCount(string searchValue, int statusId);
+        List<Device> GetDevicesNoneRoom(int statusInactiveId);
 
-        List<Device> GetDevices(int roomId, int statusId);
+        List<dynamic> GetDevicesByFixedTime(int min, int max, int statusInactiveId);
 
-        List<Device> GetDevicesNoneRoom(int statusId);
-
-        List<dynamic> GetDevicesByFixedTime(int min, int max, int statusId);
-
-        List<dynamic> GetDevicesByStatus(bool isActive, string startDate, string finishDate, int statusActiveId);
+        List<dynamic> GetDevicesByStatus(bool isActive, string startDate, string finishDate, int statusInactiveId);
 
     }
 }

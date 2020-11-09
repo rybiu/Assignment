@@ -20,7 +20,6 @@ namespace DeviceManagementService
         static readonly IStatusDao statusDao = factory.StatusDao;
 
         #region User Service
-
         public int AddUser(User user)
         {
             user.RoleId = roleDao.GetRole(Role.VALUE.USER.ToString()).Id;
@@ -94,7 +93,6 @@ namespace DeviceManagementService
         {
             return userDao.IsExist(username);
         }
-
         #endregion
 
         #region Category Service
@@ -152,26 +150,10 @@ namespace DeviceManagementService
             return deviceDao.DeleteDevice(deviceId, statusId);
         }
 
-        public List<Device> GetDeviceList(int pageIndex, int pageSize)
+        public Device GetDevice(int deviceId)
         {
             int statusId = statusDao.GetStatus(Status.VALUE.DEVICE_INACTIVE.ToString()).Id;
-            List<Device> devices = deviceDao.GetDevices(statusId, (pageIndex - 1) * pageSize, pageSize);
-            int categoryStatusId = statusDao.GetStatus(Status.VALUE.CATEGORY_ACTIVE.ToString()).Id;
-            foreach (var device in devices)
-            {
-                device.StatusName = statusDao.GetStatus(device.StatusId).Name;
-                if (device.CategoryId != 0)
-                {
-                    device.CategoryName = categoryDao.GetCategory(device.CategoryId, categoryStatusId).Name;
-                }
-            }
-            return devices;
-        }
-
-        public int GetDeviceListCount()
-        {
-            int statusId = statusDao.GetStatus(Status.VALUE.DEVICE_INACTIVE.ToString()).Id;
-            return deviceDao.GetDevicesCount(statusId);
+            return deviceDao.GetDevice(deviceId, statusId);
         }
 
         public List<Device> GetDeviceList(int roomId, string searchValue, int pageIndex, int pageSize)
@@ -330,6 +312,12 @@ namespace DeviceManagementService
         public int GetRequestsCount(int deviceId)
         {
             return requestDao.GetRequestsCount(deviceId);
+        }
+
+        public string GetLastRequestStatusName(int deviceId)
+        {
+            int statusId = requestDao.GetLastRequestStatusId(deviceId);
+            return statusDao.GetStatus(statusId).Name;
         }
         #endregion
 

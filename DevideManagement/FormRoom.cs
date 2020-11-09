@@ -254,21 +254,21 @@ namespace DeviceManagement
             switch (feature)
             {
                 case "ACCOUNT":
-                    lbLeftTableTitle.Text = "INSIDE";
+                    lbLeftTableTitle.Text = "OUTSIDE";
                     List<UserModel> usersNoneRoom = RoomPresenter.GetUserListNoneRoom();
                     leftTableData = ConvertUsersToView(usersNoneRoom);
                     dgvLeftTable.DataSource = leftTableData;
-                    lbRightTableTitle.Text = "OUTSIDE";
+                    lbRightTableTitle.Text = "INSIDE";
                     List<UserModel> usersInRoom = RoomPresenter.GetUserListInRoom();
                     rightTableData = ConvertUsersToView(usersInRoom);
                     dgvRightTable.DataSource = rightTableData;
                     break;
                 case "DEVICE":
-                    lbLeftTableTitle.Text = "INSIDE";
+                    lbLeftTableTitle.Text = "OUTSIDE";
                     List<DeviceModel> devicesNoneRoom = RoomPresenter.GetDeviceListNoneRoom();
                     leftTableData = ConvertDevicesToView(devicesNoneRoom);
                     dgvLeftTable.DataSource = leftTableData;
-                    lbRightTableTitle.Text = "OUTSIDE";
+                    lbRightTableTitle.Text = "INSIDE";
                     List<DeviceModel> devicesInRoom = RoomPresenter.GetDeviceListInRoom();
                     rightTableData = ConvertDevicesToView(devicesInRoom);
                     dgvRightTable.DataSource = rightTableData;

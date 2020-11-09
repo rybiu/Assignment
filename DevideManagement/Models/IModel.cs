@@ -32,6 +32,7 @@ namespace DeviceManagement.Models
         bool UpdateDevice(DeviceModel deviceModel);
         bool UpdateDeviceImage(DeviceModel deviceModel);
         bool DeleteDevice(int deviceId);
+        DeviceModel GetDevice(int deviceId);
         List<dynamic> GetDeviceListByFixedTime(int minTime, int maxTime);
         List<dynamic> GetDeviceListByStatus(string fromDate, string toDate, bool status);
         #endregion
@@ -57,6 +58,7 @@ namespace DeviceManagement.Models
         List<RequestModel> GetRequestList(int deviceId, int pageIndex, int pageSize);
         int GetRequestListCount(int deviceId);
         bool ChangeDeviceStatus(int deviceId, bool isActive);
+        string GetLastRequestStatusName(int deviceId);
         #endregion
     }
 }

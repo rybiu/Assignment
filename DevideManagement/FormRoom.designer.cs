@@ -125,10 +125,10 @@
             "",
             "ACCOUNT",
             "DEVICE"});
-            this.cboFeature.Location = new System.Drawing.Point(688, 311);
+            this.cboFeature.Location = new System.Drawing.Point(675, 311);
             this.cboFeature.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.cboFeature.Name = "cboFeature";
-            this.cboFeature.Size = new System.Drawing.Size(100, 28);
+            this.cboFeature.Size = new System.Drawing.Size(113, 28);
             this.cboFeature.TabIndex = 57;
             this.cboFeature.SelectedIndexChanged += new System.EventHandler(this.cboFeature_SelectedIndexChanged);
             // 

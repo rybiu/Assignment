@@ -160,6 +160,12 @@ namespace DeviceManagement.Models
             return service.DeleteDevice(deviceId);
         }
 
+        public DeviceModel GetDevice(int deviceId)
+        {
+            var device = service.GetDevice(deviceId);
+            return Mapper.Map<Device, DeviceModel>(device);
+        }
+
         public List<dynamic> GetDeviceListByFixedTime(int minTime, int maxTime)
         {
             return service.GetDevicesByFixedTime(minTime, maxTime);
@@ -265,6 +271,11 @@ namespace DeviceManagement.Models
         public bool ChangeDeviceStatus(int deviceId, bool isActive)
         {
             return service.ChangeDeviceStatus(deviceId, isActive);
+        }
+
+        public string GetLastRequestStatusName(int deviceId)
+        {
+            return service.GetLastRequestStatusName(deviceId);
         }
         #endregion
 

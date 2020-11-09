@@ -1,14 +1,13 @@
 ﻿using DeviceManagement.Models;
 using DeviceManagement.Views;
 using System;
-using System.Drawing;
 using System.Windows.Forms;
 
 namespace DeviceManagement
 {
     public partial class FormDashboard : Form, IDashboard
     {
-        int x, y;
+
         UserModel UserModel;
 
         FormHome FormHome;
@@ -17,7 +16,6 @@ namespace DeviceManagement
         FormStatistic FormStatistic;
         FormDevice FormDevice;
         FormRoom FormRoom;
-
         Label[] MenuItems;
 
         public FormDashboard(UserModel userModel)
@@ -79,7 +77,7 @@ namespace DeviceManagement
 
             if (!plContent.Controls.Contains(FormDevice))
             {
-                FormDevice = new FormDevice(UserModel);
+                FormDevice = new FormDevice(UserModel, this);
                 FormDevice.TopLevel = false;
                 plContent.Controls.Add(FormDevice);
                 FormDevice.Dock = DockStyle.Fill;
@@ -102,20 +100,6 @@ namespace DeviceManagement
                 FormRoom.Show();
             }
             FormRoom.BringToFront();
-        }
-
-        private void panelEdge_MouseDown(object sender, MouseEventArgs e)
-        {
-            x = e.X;
-            y = e.Y;
-        }
-
-        private void panelEdge_MouseMove(object sender, MouseEventArgs e)
-        {
-            if (e.Button == MouseButtons.Left)
-            {
-                Location = new Point(Location.X + e.X - x, Location.Y + e.Y - y);
-            }
         }
 
         private void FormDashboard_Load(object sender, EventArgs e)
@@ -146,20 +130,6 @@ namespace DeviceManagement
             plContent.Controls.Add(FormHome);
             FormHome.Dock = DockStyle.Fill;
             FormHome.Show();
-        }
-
-        private void FormDashboard_MouseDown(object sender, MouseEventArgs e)
-        {
-            x = e.X;
-            y = e.Y;
-        }
-
-        private void FormDashboard_MouseMove(object sender, MouseEventArgs e)
-        {
-            if (e.Button == MouseButtons.Left)
-            {
-                Location = new Point(Location.X + e.X - x, Location.Y + e.Y - y);
-            }
         }
 
         private void lblStatistic_Click(object sender, EventArgs e)

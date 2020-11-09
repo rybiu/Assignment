@@ -34,8 +34,7 @@ namespace DeviceManagementService
         bool UpdateDeviceRoomId(int deviceId, int roomId);
         bool ChangeDeviceStatus(int deviceId, bool isActive);
         bool DeleteDevice(int deviceId);
-        List<Device> GetDeviceList(int pageIndex, int pageSize);
-        int GetDeviceListCount();
+        Device GetDevice(int deviceId);
         List<Device> GetDeviceList(int roomId, string searchValue, int pageIndex, int pageSize);
         int GetDeviceListCount(int roomId, string searchValue);
         List<Device> GetDeviceList(string searchValue, int pageIndex, int pageSize);
@@ -66,6 +65,7 @@ namespace DeviceManagementService
 
         List<Request> GetRequests(int deviceId, int pageIndex, int pageSize);
         int GetRequestsCount(int deviceId);
+        string GetLastRequestStatusName(int deviceId);
         #endregion
 
     }

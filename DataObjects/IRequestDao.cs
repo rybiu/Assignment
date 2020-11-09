@@ -16,5 +16,6 @@ namespace DataObjects
 
         int GetRequestsCount(int deviceId);
 
+        int GetLastRequestStatusId(int deviceId);
     }
 }

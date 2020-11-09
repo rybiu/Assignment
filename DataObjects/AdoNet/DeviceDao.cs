@@ -80,57 +80,57 @@ namespace DataObjects.AdoNet
             return db.Update(sql, parms) > 0;
         }
 
-        public bool DeleteDevice(int deviceId, int statusId)
+        public bool DeleteDevice(int deviceId, int statusInactiveId)
         {
             string sql =
-            @"UPDATE tblDevice SET statusId = @StatusId WHERE id = @Id";
+            @"UPDATE tblDevice SET statusId = @statusInactiveId WHERE id = @id";
 
-            object[] parms = new object[] { "@StatusId", statusId, "@Id", deviceId };
+            object[] parms = new object[] { "@statusInactiveId", statusInactiveId, "@id", deviceId };
 
             return db.Update(sql, parms) > 0;
         }
 
-        public Device GetDevice(int deviceId, int statusId)
-        {
-            string sql =
-            @"SELECT name, categoryId, description, image, boughtDate, warrantySate, roomId, statusId 
-                FROM tblDevice 
-                WHERE id = @id AND statusId <> @statusId";
-
-            object[] parms = new object[] { "@id", deviceId, "@statusId", statusId };
-
-            return db.Read(sql, Make, parms).FirstOrDefault();
-        }
-
-        public List<Device> GetDevices(int statusId, int startRow, int pageSize)
+        public Device GetDevice(int deviceId, int statusInactiveId)
         {
             string sql =
             @"SELECT id, name, categoryId, description, image, boughtDate, warrantyDate, roomId, statusId 
                 FROM tblDevice 
-                WHERE statusId <> @statusId
+                WHERE id = @id AND statusId <> @statusInactiveId";
+
+            object[] parms = new object[] { "@id", deviceId, "@statusInactiveId", statusInactiveId };
+
+            return db.Read(sql, Make, parms).FirstOrDefault();
+        }
+
+        public List<Device> GetDevices(int statusInactiveId, int startRow, int pageSize)
+        {
+            string sql =
+            @"SELECT id, name, categoryId, description, image, boughtDate, warrantyDate, roomId, statusId 
+                FROM tblDevice 
+                WHERE statusId <> @statusInactiveId
                 ORDER BY id
                 OFFSET @startRow ROWS
                 FETCH NEXT @pageSize ROWS ONLY";
 
-            object[] parms = new object[] { "@statusId", statusId, "@startRow", startRow, "@pageSize", pageSize };
+            object[] parms = new object[] { "@statusInactiveId", statusInactiveId, "@startRow", startRow, "@pageSize", pageSize };
 
             return db.Read(sql, Make, parms).ToList();
         }
 
-        public List<Device> GetDevices(int roomId, string searchValue, int statusId, int startRow, int pageSize)
+        public List<Device> GetDevices(int roomId, string searchValue, int statusInactiveId, int startRow, int pageSize)
         {
             string sql =
             @"SELECT id, name, categoryId, description, image, boughtDate, warrantyDate, roomId, statusId
                 FROM tblDevice 
-                WHERE roomId = @roomId AND statusId <> @statusId AND name LIKE @name
+                WHERE roomId = @roomId AND statusId <> @statusInactiveId AND name LIKE @name
                 ORDER BY id
                 OFFSET @startRow ROWS
                 FETCH NEXT @pageSize ROWS ONLY";
 
             object[] parms = new object[] 
             { 
-                "@roomId", roomId, 
-                "@statusId", statusId, 
+                "@roomId", roomId,
+                "@statusInactiveId", statusInactiveId, 
                 "@name", "%" + searchValue + "%",
                 "@startRow", startRow,
                 "@pageSize", pageSize
@@ -139,19 +139,19 @@ namespace DataObjects.AdoNet
             return db.Read(sql, Make, parms).ToList();
         }
 
-        public List<Device> GetDevices(string searchValue, int statusId, int startRow, int pageSize)
+        public List<Device> GetDevices(string searchValue, int statusInactiveId, int startRow, int pageSize)
         {
             string sql =
             @"SELECT id, name, categoryId, description, image, boughtDate, warrantyDate, roomId, statusId  
                 FROM tblDevice 
-                WHERE statusId <> @statusId AND name LIKE @name
+                WHERE statusId <> @statusInactiveId AND name LIKE @name
                 ORDER BY id
                 OFFSET @startRow ROWS
                 FETCH NEXT @pageSize ROWS ONLY";
 
             object[] parms = new object[]
             {
-                "@statusId", statusId,
+                "@statusInactiveId", statusInactiveId,
                 "@name", "%" + searchValue + "%",
                 "@startRow", startRow,
                 "@pageSize", pageSize
@@ -160,17 +160,17 @@ namespace DataObjects.AdoNet
             return db.Read(sql, Make, parms).ToList();
         }
 
-        public List<Device> GetDevices(int roomId, int statusId)
+        public List<Device> GetDevices(int roomId, int statusInactiveId)
         {
             string sql =
             @"SELECT id, name 
                 FROM tblDevice 
-                WHERE roomId = @roomId AND statusId <> @statusId";
+                WHERE roomId = @roomId AND statusId <> @statusInactiveId";
 
             object[] parms = new object[]
             {
                 "@roomId", roomId,
-                "@statusId", statusId
+                "@statusInactiveId", statusInactiveId
             };
 
             Func<IDataReader, Device> Make = reader =>
@@ -183,14 +183,14 @@ namespace DataObjects.AdoNet
             return db.Read(sql, Make, parms).ToList();
         }
 
-        public List<Device> GetDevicesNoneRoom(int statusId)
+        public List<Device> GetDevicesNoneRoom(int statusInactiveId)
         {
             string sql =
             @"SELECT id, name 
                 FROM tblDevice 
-                WHERE roomId IS NULL AND statusId <> @statusid";
+                WHERE roomId IS NULL AND statusId <> @statusInactiveId";
 
-            object[] parms = new object[] { "@statusId", statusId };
+            object[] parms = new object[] { "@statusInactiveId", statusInactiveId };
 
             Func<IDataReader, Device> Make = reader =>
             new Device
@@ -202,31 +202,31 @@ namespace DataObjects.AdoNet
             return db.Read(sql, Make, parms).ToList();
         }
 
-        public int GetDevicesCount(int statusId)
+        public int GetDevicesCount(int statusInactiveId)
         {
             string sql =
             @"SELECT COUNT(*) AS count 
                 FROM tblDevice 
-                WHERE statusId <> @statusId";
+                WHERE statusId <> @statusInactiveId";
 
-            object[] parms = new object[] { "@statusId", statusId };
+            object[] parms = new object[] { "@statusInactiveId", statusInactiveId };
 
             Func<IDataReader, int> Make = reader => reader["count"].AsInt();
 
             return db.Read(sql, Make, parms).FirstOrDefault();
         }
 
-        public int GetDevicesCount(int roomId, string searchValue, int statusId)
+        public int GetDevicesCount(int roomId, string searchValue, int statusInactiveId)
         {
             string sql =
             @"SELECT COUNT(*) AS count
                 FROM tblDevice 
-                WHERE roomId = @roomId AND statusId <> @statusId AND name LIKE @name";
+                WHERE roomId = @roomId AND statusId <> @statusInactiveId AND name LIKE @name";
 
             object[] parms = new object[]
             {
                 "@roomId", roomId,
-                "@statusId", statusId,
+                "@statusInactiveId", statusInactiveId,
                 "@name", "%" + searchValue + "%"
             };
 
@@ -235,14 +235,14 @@ namespace DataObjects.AdoNet
             return db.Read(sql, Make, parms).FirstOrDefault();
         }
 
-        public int GetDevicesCount(string searchValue, int statusId)
+        public int GetDevicesCount(string searchValue, int statusInactiveId)
         {
             string sql =
             @"SELECT COUNT(*) AS count
                 FROM tblDevice 
-                WHERE statusId <> @statusId AND name LIKE @name";
+                WHERE statusId <> @statusInactiveId AND name LIKE @name";
 
-            object[] parms = new object[] { "@statusId", statusId, "@name", "%" + searchValue + "%" };
+            object[] parms = new object[] { "@statusInactiveId", statusInactiveId, "@name", "%" + searchValue + "%" };
 
             Func<IDataReader, int> Make = reader => reader["count"].AsInt();
 
@@ -258,9 +258,9 @@ namespace DataObjects.AdoNet
                     FROM tblRequest
                     GROUP BY deviceId
                     HAVING COUNT(*) >= @min AND COUNT(*) <= @max
-                ) r JOIN tblDevice d ON r.deviceId = d.id AND d.statusId <> @statusId";
+                ) r JOIN tblDevice d ON r.deviceId = d.id AND d.statusId <> @statusInactiveId";
 
-            object[] parms = new object[] { "@min", min, "@max", max, "@statusId", statusInactiveId };
+            object[] parms = new object[] { "@min", min, "@max", max, "@statusInactiveId", statusInactiveId };
 
             Func<IDataReader, dynamic> Make = reader =>
             new
@@ -286,9 +286,9 @@ namespace DataObjects.AdoNet
                 + "    WHERE (requestDate >= @startDate AND requestDate <= @finishDate) "
                 + "    OR (finishDate >= @startDate AND finishDate <= @finishDate) "
                 + "    OR (requestDate <= @startDate AND finishDate >= @finishDate)"
-                + ") AND statusId <> @statusId";
+                + ") AND statusId <> @statusInactiveId";
 
-            object[] parms = new object[] { "@startDate", startDate, "@finishDate", finishDate, "@statusId", statusInactiveId };
+            object[] parms = new object[] { "@startDate", startDate, "@finishDate", finishDate, "@statusInactiveId", statusInactiveId };
 
             Func<IDataReader, dynamic> Make = reader =>
             new

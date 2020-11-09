@@ -149,5 +149,10 @@ namespace DeviceManagement.Presenters
             Model.UpdateDeviceImage(model);
         }
 
+        public UserModel GetUserModel()
+        {
+            return Model.Login(View.UserModel.Username, View.UserModel.Password);
+        }
+
     }
 }

@@ -14,7 +14,9 @@ namespace DeviceManagement
     
         bool isChangeImage = false;
 
-        private DevicePresenter DevicePresenter;
+        DevicePresenter DevicePresenter;
+
+        FormDashboard FormDashboard;
 
         public int Id { get => int.Parse(txtDeviceId.Text); }
 
@@ -48,10 +50,11 @@ namespace DeviceManagement
 
         public UserModel UserModel { get; set; }
 
-        public FormDevice(UserModel userModel)
+        public FormDevice(UserModel userModel, FormDashboard formDashboard)
         {
             InitializeComponent();
             UserModel = userModel;
+            FormDashboard = formDashboard;
             DevicePresenter = new DevicePresenter(this);
         }
 
@@ -255,6 +258,8 @@ namespace DeviceManagement
         {
             if (dgvDevice.SelectedRows.Count == 0) return;
             new FormRequest(Id, UserModel, ref lbStatus).ShowDialog();
+            UserModel user = DevicePresenter.GetUserModel();
+            if (user == null || user.RoomId != UserModel.RoomId) FormDashboard.Close();
             LoadTable();
         }
 

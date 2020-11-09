@@ -203,6 +203,5 @@ namespace DataObjects.AdoNet
                 "@StatusId", user.StatusId
             };
         }
-
     }
 }

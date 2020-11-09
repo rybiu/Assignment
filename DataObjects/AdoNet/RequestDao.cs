@@ -100,6 +100,20 @@ namespace DataObjects.AdoNet
             return db.Read(sql, Make, parms).FirstOrDefault();
         }
 
+        public int GetLastRequestStatusId(int deviceId)
+        {
+            string sql =
+            @"SELECT statusId
+                FROM tblRequest 
+                WHERE deviceId = @deviceId";
+
+            object[] parms = new object[] { "@deviceId", deviceId };
+
+            Func<IDataReader, int> Make = reader => reader["statusId"].AsInt();
+
+            return db.Read(sql, Make, parms).LastOrDefault();
+        }
+
         static Func<IDataReader, Request> Make = reader =>
            new Request
            {

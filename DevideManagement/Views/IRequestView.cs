@@ -1,4 +1,6 @@
-﻿namespace DeviceManagement.Views
+﻿using DeviceManagement.Models;
+
+namespace DeviceManagement.Views
 {
     
     // respresents request view with credentials.
@@ -6,7 +8,7 @@
     {
         int Id { get; }
         int DeviceId { get; }
-        int UserId { get; }
+        UserModel UserModel { get; }
         string RequestDescription { get; }
         string RepairDescription { get; }
 

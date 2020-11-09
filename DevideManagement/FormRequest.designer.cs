@@ -30,7 +30,6 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormRequest));
             this.plMain = new System.Windows.Forms.Panel();
-            this.lbRequestStatus = new System.Windows.Forms.Label();
             this.btnFinish = new System.Windows.Forms.Button();
             this.btnFix = new System.Windows.Forms.Button();
             this.btnNew = new System.Windows.Forms.Button();
@@ -65,7 +64,6 @@
             // plMain
             // 
             this.plMain.BackColor = System.Drawing.Color.PowderBlue;
-            this.plMain.Controls.Add(this.lbRequestStatus);
             this.plMain.Controls.Add(this.btnFinish);
             this.plMain.Controls.Add(this.btnFix);
             this.plMain.Controls.Add(this.btnNew);
@@ -89,22 +87,10 @@
             this.plMain.Controls.Add(this.txtWorkerId);
             this.plMain.Controls.Add(this.label7);
             this.plMain.Controls.Add(this.txtRequestDate);
-            this.plMain.Location = new System.Drawing.Point(2, 2);
+            this.plMain.Location = new System.Drawing.Point(0, 0);
             this.plMain.Name = "plMain";
             this.plMain.Size = new System.Drawing.Size(1040, 700);
             this.plMain.TabIndex = 0;
-            this.plMain.MouseDown += new System.Windows.Forms.MouseEventHandler(this.plMain_MouseDown);
-            this.plMain.MouseMove += new System.Windows.Forms.MouseEventHandler(this.plMain_MouseMove);
-            // 
-            // lbRequestStatus
-            // 
-            this.lbRequestStatus.AutoSize = true;
-            this.lbRequestStatus.ForeColor = System.Drawing.Color.PowderBlue;
-            this.lbRequestStatus.Location = new System.Drawing.Point(686, 296);
-            this.lbRequestStatus.Name = "lbRequestStatus";
-            this.lbRequestStatus.Size = new System.Drawing.Size(48, 17);
-            this.lbRequestStatus.TabIndex = 93;
-            this.lbRequestStatus.Text = "Status";
             // 
             // btnFinish
             // 
@@ -158,8 +144,6 @@
             this.plEdge.Name = "plEdge";
             this.plEdge.Size = new System.Drawing.Size(122, 700);
             this.plEdge.TabIndex = 67;
-            this.plEdge.MouseDown += new System.Windows.Forms.MouseEventHandler(this.plEdge_MouseDown);
-            this.plEdge.MouseMove += new System.Windows.Forms.MouseEventHandler(this.plEdge_MouseMove);
             // 
             // lbBack
             // 
@@ -208,7 +192,6 @@
             this.dgvRequest.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvRequest.Size = new System.Drawing.Size(782, 185);
             this.dgvRequest.TabIndex = 68;
-            this.dgvRequest.SelectionChanged += new System.EventHandler(this.dgvRequest_SelectionChanged);
             // 
             // btnPrePage
             // 
@@ -389,10 +372,10 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(47)))), ((int)(((byte)(65)))));
-            this.ClientSize = new System.Drawing.Size(1044, 704);
+            this.ClientSize = new System.Drawing.Size(1040, 700);
             this.Controls.Add(this.plMain);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.MaximizeBox = false;
             this.Name = "FormRequest";
             this.Text = "Request History";
             this.Load += new System.EventHandler(this.FormRequest_Load);
@@ -434,6 +417,5 @@
         private System.Windows.Forms.Button btnFinish;
         private System.Windows.Forms.Button btnFix;
         private System.Windows.Forms.Button btnNew;
-        private System.Windows.Forms.Label lbRequestStatus;
     }
 }

@@ -65,8 +65,6 @@
             this.plEdge.Name = "plEdge";
             this.plEdge.Size = new System.Drawing.Size(150, 700);
             this.plEdge.TabIndex = 0;
-            this.plEdge.MouseDown += new System.Windows.Forms.MouseEventHandler(this.panelEdge_MouseDown);
-            this.plEdge.MouseMove += new System.Windows.Forms.MouseEventHandler(this.panelEdge_MouseMove);
             // 
             // lblStatistic
             // 
@@ -267,7 +265,6 @@
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.lblLogOut);
             this.Controls.Add(this.plEdge);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.MaximizeBox = false;
@@ -276,8 +273,6 @@
             this.Text = "Device Management";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.FormDashboard_FormClosed);
             this.Load += new System.EventHandler(this.FormDashboard_Load);
-            this.MouseDown += new System.Windows.Forms.MouseEventHandler(this.FormDashboard_MouseDown);
-            this.MouseMove += new System.Windows.Forms.MouseEventHandler(this.FormDashboard_MouseMove);
             this.plEdge.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();

@@ -60,8 +60,6 @@
             this.pnRight.Name = "pnRight";
             this.pnRight.Size = new System.Drawing.Size(482, 544);
             this.pnRight.TabIndex = 0;
-            this.pnRight.MouseDown += new System.Windows.Forms.MouseEventHandler(this.pnRight_MouseDown);
-            this.pnRight.MouseMove += new System.Windows.Forms.MouseEventHandler(this.pnRight_MouseMove);
             // 
             // label5
             // 
@@ -183,13 +181,11 @@
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(97)))), ((int)(((byte)(212)))), ((int)(((byte)(195)))));
             this.ClientSize = new System.Drawing.Size(598, 544);
             this.Controls.Add(this.pnRight);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.MaximizeBox = false;
             this.Name = "FormLogin";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Login";
-            this.MouseDown += new System.Windows.Forms.MouseEventHandler(this.pnLeft_MouseDown);
-            this.MouseMove += new System.Windows.Forms.MouseEventHandler(this.pnLeft_MouseMove);
+            this.Text = "Sign in";
             this.pnRight.ResumeLayout(false);
             this.pnRight.PerformLayout();
             this.ResumeLayout(false);

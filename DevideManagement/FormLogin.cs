@@ -2,14 +2,12 @@
 using DeviceManagement.Presenters;
 using DeviceManagement.Views;
 using System;
-using System.Drawing;
 using System.Windows.Forms;
 
 namespace DeviceManagement
 {
     public partial class FormLogin : Form, ILoginView
     {
-        int x, y;
         LoginPresenter LoginPresenter;
 
         public string Username { get => txtUsername.Text.Trim(); }
@@ -53,34 +51,6 @@ namespace DeviceManagement
             } else
             {
                 txtPassword.PasswordChar = '*';
-            }
-        }
-
-        private void pnRight_MouseDown(object sender, MouseEventArgs e)
-        {
-            x = e.X;
-            y = e.Y;
-        }
-
-        private void pnRight_MouseMove(object sender, MouseEventArgs e)
-        {
-            if (e.Button == MouseButtons.Left)
-            {
-                Location = new Point(Location.X + e.X - x, Location.Y + e.Y - y);
-            }
-        }
-
-        private void pnLeft_MouseDown(object sender, MouseEventArgs e)
-        {
-            x = e.X;
-            y = e.Y;
-        }
-
-        private void pnLeft_MouseMove(object sender, MouseEventArgs e)
-        {
-            if (e.Button == MouseButtons.Left)
-            {
-                Location = new Point(Location.X + e.X - x, Location.Y + e.Y - y);
             }
         }
     }
