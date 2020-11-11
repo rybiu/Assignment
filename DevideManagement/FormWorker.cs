@@ -34,7 +34,19 @@ namespace DeviceManagement
                 btnPrePage.Enabled = WorkerPresenter.HasPreviousPage();
                 btnNextPage.Enabled = WorkerPresenter.HasNextPage();
                 if (list.Count == 0) return;
-                dgvUser.DataSource = list;
+                List<dynamic> workers = new List<dynamic>();
+                foreach (var item in list)
+                {
+                    workers.Add(new
+                    {
+                        Id = item.Id,
+                        Username = item.Username,
+                        Password = item.Password,
+                        RoleName = item.RoleName,
+                        RoomId = item.RoomId
+                    });
+                }
+                dgvUser.DataSource = workers;
                 // Hide some columns
                 dgvUser.Columns[2].Visible = false;
                 dgvUser.Columns[3].Visible = false;
@@ -43,9 +55,9 @@ namespace DeviceManagement
                 txtUserID.DataBindings.Clear();
                 txtUsername.DataBindings.Clear();
                 txtPassword.DataBindings.Clear();
-                txtUserID.DataBindings.Add("Text", list, "id");
-                txtUsername.DataBindings.Add("Text", list, "username");
-                txtPassword.DataBindings.Add("Text", list, "password");
+                txtUserID.DataBindings.Add("Text", workers, "id");
+                txtUsername.DataBindings.Add("Text", workers, "username");
+                txtPassword.DataBindings.Add("Text", workers, "password");
                 dgvUser.ClearSelection();
             } catch (Exception ex)
             {

@@ -48,6 +48,7 @@ namespace DeviceManagement.Models
         {
             int count = GetListCountFunc();
             PageIndex = (int)Math.Ceiling((decimal)count / PageSize);
+            if (PageIndex <= 0) PageIndex = 1;
         }
 
         public bool HasPreviousPage()

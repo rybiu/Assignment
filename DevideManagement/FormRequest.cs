@@ -100,7 +100,7 @@ namespace DevideManagement
                 RequestPresenter.GoToLastPage();
                 LoadTable();
                 // Check last request status
-                if (!LastRequestModel.StatusName.Equals("REQUEST_FINISH")) return;
+                if (LastRequestModel != null && !LastRequestModel.StatusName.Equals("REQUEST_FINISH")) return;
                 // Is valid
                 string requestDescription = Interaction.InputBox("Enter the request description", "New Request");
                 if (string.IsNullOrWhiteSpace(requestDescription)) return;
@@ -146,7 +146,7 @@ namespace DevideManagement
                 RequestPresenter.GoToLastPage();
                 LoadTable();
                 // Check last request status
-                if (!LastRequestModel.StatusName.Equals("REQUEST_INITIAL")) return;
+                if (LastRequestModel == null || !LastRequestModel.StatusName.Equals("REQUEST_INITIAL")) return;
                 // Is valid
                 RequestPresenter.StartRequestModel();
                 LoadTable();
@@ -176,7 +176,7 @@ namespace DevideManagement
                 RequestPresenter.GoToLastPage();
                 LoadTable();
                 // Check last request status
-                if (!LastRequestModel.StatusName.Equals("REQUEST_START") || LastRequestModel.WorkerId != user.Id) return;
+                if (LastRequestModel == null || !LastRequestModel.StatusName.Equals("REQUEST_START") || LastRequestModel.WorkerId != user.Id) return;
                 // Is valid
                 string repairDescription = Interaction.InputBox("Enter the repair description", "Finish Request");
                 if (string.IsNullOrWhiteSpace(repairDescription)) return;
