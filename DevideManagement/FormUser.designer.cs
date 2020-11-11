@@ -90,6 +90,7 @@
             // 
             // txtRoomID
             // 
+            this.txtRoomID.Enabled = false;
             this.txtRoomID.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtRoomID.Location = new System.Drawing.Point(158, 517);
             this.txtRoomID.Name = "txtRoomID";
@@ -117,6 +118,7 @@
             // 
             // txtUserID
             // 
+            this.txtUserID.Enabled = false;
             this.txtUserID.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtUserID.Location = new System.Drawing.Point(158, 357);
             this.txtUserID.Name = "txtUserID";
