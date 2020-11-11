@@ -44,7 +44,7 @@ namespace DataObjects.AdoNet
         }
 
         public List<Room> GetRooms(string searchValue, int statusRoomActiveId, 
-            int statusUserActiveId, int statusDeviceActiveId, int startRow, int pageSize)
+            int statusUserActiveId, int statusDeviceInactiveId, int startRow, int pageSize)
         {
             string sql =
             @"SELECT id, name, ISNULL(numberUser, 0) AS numberUser, 
@@ -59,7 +59,7 @@ namespace DataObjects.AdoNet
                 LEFT JOIN ( 
                     SELECT roomId, COUNT(*) as numberDevice 
                     FROM tblDevice 
-                    WHERE statusId = @statusDeviceActiveId  
+                    WHERE statusId <> @statusDeviceInactiveId  
                     GROUP BY roomId 
                 ) d on r.id = d.roomId 
                 WHERE r.statusId = @statusId AND name LIKE @searchValue
@@ -70,7 +70,7 @@ namespace DataObjects.AdoNet
             object[] parms = 
             { 
                 "@statusUserActiveId", statusUserActiveId,
-                "@statusDeviceActiveId", statusDeviceActiveId,
+                "@statusDeviceInactiveId", statusDeviceInactiveId,
                 "@statusId", statusRoomActiveId,
                 "searchValue", "%" + searchValue + "%",
                 "@startRow", startRow,
@@ -81,7 +81,7 @@ namespace DataObjects.AdoNet
         }
 
         public int GetRoomsCount(string searchValue, int statusRoomActiveId, 
-            int statusUserActiveId, int statusDeviceActiveId)
+            int statusUserActiveId, int statusDeviceInactiveId)
         {
             string sql =
             @"SELECT COUNT(*) AS count
@@ -95,7 +95,7 @@ namespace DataObjects.AdoNet
                 LEFT JOIN ( 
                     SELECT roomId, COUNT(*) as numberDevice 
                     FROM tblDevice 
-                    WHERE statusId = @statusDeviceActiveId  
+                    WHERE statusId <> @statusDeviceInactiveId  
                     GROUP BY roomId 
                 ) d on r.id = d.roomId 
                 WHERE r.statusId = @statusId AND name LIKE @searchValue";
@@ -103,7 +103,7 @@ namespace DataObjects.AdoNet
             object[] parms =
             {
                 "@statusUserActiveId", statusUserActiveId,
-                "@statusDeviceActiveId", statusDeviceActiveId,
+                "@statusDeviceInactiveId", statusDeviceInactiveId,
                 "@statusId", statusRoomActiveId,
                 "searchValue", "%" + searchValue + "%"
             };

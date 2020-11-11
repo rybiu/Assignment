@@ -266,17 +266,17 @@ namespace DeviceManagementService
         {
             int statusRoomActiveId = statusDao.GetStatus(Status.VALUE.ROOM_ACTIVE.ToString()).Id;
             int statusUserActiveId = statusDao.GetStatus(Status.VALUE.USER_ACTIVE.ToString()).Id;
-            int statusDeviceActiveId = statusDao.GetStatus(Status.VALUE.DEVICE_ACTIVE.ToString()).Id;
-            return roomDao.GetRooms(searchValue, statusRoomActiveId, statusUserActiveId, 
-                statusDeviceActiveId, (pageIndex - 1) * pageSize, pageSize);
+            int statusDeviceInactiveId = statusDao.GetStatus(Status.VALUE.DEVICE_INACTIVE.ToString()).Id;
+            return roomDao.GetRooms(searchValue, statusRoomActiveId, statusUserActiveId,
+                statusDeviceInactiveId, (pageIndex - 1) * pageSize, pageSize);
         }
 
         public int GetRoomsCount(string searchValue)
         {
             int statusRoomActiveId = statusDao.GetStatus(Status.VALUE.ROOM_ACTIVE.ToString()).Id;
             int statusUserActiveId = statusDao.GetStatus(Status.VALUE.USER_ACTIVE.ToString()).Id;
-            int statusDeviceActiveId = statusDao.GetStatus(Status.VALUE.DEVICE_ACTIVE.ToString()).Id;
-            return roomDao.GetRoomsCount(searchValue, statusRoomActiveId, statusUserActiveId, statusDeviceActiveId);
+            int statusDeviceInactiveId = statusDao.GetStatus(Status.VALUE.DEVICE_INACTIVE.ToString()).Id;
+            return roomDao.GetRoomsCount(searchValue, statusRoomActiveId, statusUserActiveId, statusDeviceInactiveId);
         }
         #endregion
 
