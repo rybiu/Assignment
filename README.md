@@ -11,9 +11,13 @@ This project tends to simulate the process management device in the internal of 
 - Add user/device into room
 - Drop user/device from room
 - Make a request about broken device
-- Reponse to the fixing request
+- Response to the fixing request
 
 ## Techniques & Services
 - Winform
 - ADO.NET
 - Google Cloud Sql
+
+## Application Architecture
+- 3-layer
+- MVP
